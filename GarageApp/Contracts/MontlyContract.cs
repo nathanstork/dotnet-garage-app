@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GarageApp
+namespace GarageApp.Contracts
 {
     internal class MontlyContract : Contract
     {
-        public MontlyContract(int salary, int hours) : base(salary, hours) { }
+        public MontlyContract(int salary, int hours) : base(salary, hours)
+        {
+        }
 
         internal override int GetMontlyHours()
         {
@@ -22,12 +24,12 @@ namespace GarageApp
 
         internal override int GetWeeklyHours()
         {
-            return (hours * 12) / 52;
+            return hours * 12 / 52;
         }
 
         internal override int GetWeeklySalary()
         {
-            return (salary * 12) / 52;
+            return salary * 12 / 52;
         }
 
         internal override int GetYearlyHours()

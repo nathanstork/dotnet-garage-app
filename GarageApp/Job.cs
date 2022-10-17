@@ -9,7 +9,7 @@
 
     internal class Job
     {
-        public int id 
+        public int id
         {
             get;
         }
@@ -51,7 +51,7 @@
         {
             this.id = id;
             this.type = type;
-            this.description = desc;
+            description = desc;
             this.price = price;
             this.car = car;
             this.customer = customer;

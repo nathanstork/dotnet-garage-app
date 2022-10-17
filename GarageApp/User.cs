@@ -16,7 +16,7 @@
         private string Address
         {
             get { return Address; }
-            set { Address = value;  }
+            set { Address = value; }
         }
 
         protected User(int identifier, string name, string address)

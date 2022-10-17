@@ -48,7 +48,7 @@
             this.plate = plate;
             this.model = model;
             this.color = color;
-            this.customer = cust;
+            customer = cust;
             jobs.Add(job);
         }
 

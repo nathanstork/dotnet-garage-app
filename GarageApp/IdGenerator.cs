@@ -36,13 +36,14 @@ namespace GarageApp
             {
                 countLength = 4;
             }
-            int min = Int32.Parse("1" + new string('0', (countLength - 1)));
-            int max = Int32.Parse("1" + new string('0', countLength));
+            int min = int.Parse("1" + new string('0', countLength - 1));
+            int max = int.Parse("1" + new string('0', countLength));
 
             while (true)
             {
                 int attempt = random.Next(min, max);
-                if (!generatedIds.Contains(attempt)) {
+                if (!generatedIds.Contains(attempt))
+                {
                     generatedIds.Add(attempt);
                     return attempt;
                 }

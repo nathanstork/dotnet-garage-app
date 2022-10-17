@@ -14,7 +14,10 @@ namespace GarageApp
             //Console.WriteLine("Bruh"); // Write to console window
             //System.Diagnostics.Debug.WriteLine("Nigger"); // Write to immediate window
 
-            Job newJob = new Job(0, JobType.Medium, "Test description", 1200, 0, 0, 0);
+            //Job newJob = new Job(0, JobType.Medium, "Test description", 1200, 0, 0, 0);
+            Manager manager = new Manager();
+
+            Mechanic mechanic = new Mechanic();
 
             Garage garage = Garage.GetInstance();
             IdGenerator idGenerator = IdGenerator.GetInstance();
@@ -24,7 +27,7 @@ namespace GarageApp
             }
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new AuthenticationForm());
         }
     }
 }

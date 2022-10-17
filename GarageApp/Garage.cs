@@ -29,7 +29,7 @@
                 cars.Add(car);
             }
 
-            if(!customers.Any(item => item.id == customer.id))
+            if (!customers.Any(item => item.id == customer.id))
             {
                 customers.Add(customer);
             }
