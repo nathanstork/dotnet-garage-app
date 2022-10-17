@@ -1,6 +1,6 @@
 ﻿namespace GarageApp
 {
-    internal abstract class User
+    internal class User
     {
         private int UserId
         {
