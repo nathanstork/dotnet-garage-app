@@ -29,23 +29,25 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.mechanicButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.passTextBox = new System.Windows.Forms.TextBox();
+            this.userTextBox = new System.Windows.Forms.TextBox();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.errorLabel);
+            this.groupBox1.Controls.Add(this.mechanicButton);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.passTextBox);
+            this.groupBox1.Controls.Add(this.userTextBox);
+            this.groupBox1.Controls.Add(this.submitButton);
             this.groupBox1.Location = new System.Drawing.Point(116, 76);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(450, 300);
@@ -53,14 +55,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login";
             // 
-            // button2
+            // mechanicButton
             // 
-            this.button2.Location = new System.Drawing.Point(125, 250);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 30);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Login as Mechanic";
-            this.button2.UseVisualStyleBackColor = true;
+            this.mechanicButton.Location = new System.Drawing.Point(125, 250);
+            this.mechanicButton.Name = "mechanicButton";
+            this.mechanicButton.Size = new System.Drawing.Size(200, 30);
+            this.mechanicButton.TabIndex = 5;
+            this.mechanicButton.Text = "Login as Mechanic";
+            this.mechanicButton.UseVisualStyleBackColor = true;
+            this.mechanicButton.Click += new System.EventHandler(this.mechanicButton_Click);
             // 
             // label2
             // 
@@ -80,29 +83,41 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             // 
-            // textBox2
+            // passTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(75, 141);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '●';
-            this.textBox2.Size = new System.Drawing.Size(300, 27);
-            this.textBox2.TabIndex = 2;
+            this.passTextBox.Location = new System.Drawing.Point(75, 141);
+            this.passTextBox.Name = "passTextBox";
+            this.passTextBox.PasswordChar = '●';
+            this.passTextBox.Size = new System.Drawing.Size(300, 27);
+            this.passTextBox.TabIndex = 2;
+            this.passTextBox.TextChanged += new System.EventHandler(this.passTextBox_TextChanged);
             // 
-            // textBox1
+            // userTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(75, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 27);
-            this.textBox1.TabIndex = 1;
+            this.userTextBox.Location = new System.Drawing.Point(75, 69);
+            this.userTextBox.Name = "userTextBox";
+            this.userTextBox.Size = new System.Drawing.Size(300, 27);
+            this.userTextBox.TabIndex = 1;
+            this.userTextBox.TextChanged += new System.EventHandler(this.userTextBox_TextChanged);
             // 
-            // button1
+            // submitButton
             // 
-            this.button1.Location = new System.Drawing.Point(275, 188);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submitButton.Location = new System.Drawing.Point(275, 188);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(100, 30);
+            this.submitButton.TabIndex = 0;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(75, 193);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 20);
+            this.errorLabel.TabIndex = 6;
             // 
             // AuthenticationForm
             // 
@@ -115,6 +130,7 @@
             this.Name = "AuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authentication";
+            this.Load += new System.EventHandler(this.AuthenticationForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -124,11 +140,12 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button button2;
+        private Button mechanicButton;
         private Label label2;
         private Label label1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox passTextBox;
+        private TextBox userTextBox;
+        private Button submitButton;
+        private Label errorLabel;
     }
 }

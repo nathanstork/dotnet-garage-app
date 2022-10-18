@@ -11,13 +11,6 @@ namespace GarageApp
     {
         private static IdGenerator? _instance;
 
-        private List<int> generatedIds = new List<int>();
-
-        private IdGenerator()
-        {
-            // TODO: Get generated id's from save files
-        }
-
         internal static IdGenerator GetInstance()
         {
             if (_instance == null)
@@ -27,27 +20,10 @@ namespace GarageApp
             return _instance;
         }
 
-        public int GetId()
+        public string GetId()
         {
-            Random random = new Random();
-
-            int countLength = generatedIds.Count.ToString().Length;
-            if (countLength < 4)
-            {
-                countLength = 4;
-            }
-            int min = int.Parse("1" + new string('0', countLength - 1));
-            int max = int.Parse("1" + new string('0', countLength));
-
-            while (true)
-            {
-                int attempt = random.Next(min, max);
-                if (!generatedIds.Contains(attempt))
-                {
-                    generatedIds.Add(attempt);
-                    return attempt;
-                }
-            }
+            string uuid = Guid.NewGuid().ToString();
+            return uuid;
         }
     }
 }

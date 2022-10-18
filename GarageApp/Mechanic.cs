@@ -7,13 +7,31 @@ using GarageApp.Contracts;
 
 namespace GarageApp
 {
-    internal class Mechanic
+    internal class Mechanic : User
     {
-        internal Mechanic()
+        internal Contract Contract
         {
-            MontlyContract contract = new MontlyContract(2000, 36);
-            Console.WriteLine(contract.salary.ToString());
-            Console.WriteLine(contract.hours.ToString());
+            get;
+            set;
+        }
+
+        internal List<string> jobs = new List<string>(); 
+
+        internal Mechanic(string name, string address, Contract contract) : base(name, address)
+        {
+            Name = name;
+            Address = address;
+            Contract = contract;
+        }
+
+        internal void AddJob(string jobId)
+        {
+            jobs.Add(jobId);
+        }
+
+        internal void RemoveJob(string jobId)
+        {
+
         }
     }
 }

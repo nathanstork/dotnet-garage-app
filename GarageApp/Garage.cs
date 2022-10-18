@@ -22,9 +22,9 @@
             return _instance;
         }
 
-        public void AddJob(JobType type, string description, int price, Car car, Customer customer, int employeeId)
+        public void AddJob(JobType type, string description, int price, Car car, Customer customer, string employeeId)
         {
-            if (!cars.Any(item => item.id == car.id))
+            if (!cars.Any(item => item.Id == car.Id))
             {
                 cars.Add(car);
             }
@@ -34,7 +34,7 @@
                 customers.Add(customer);
             }
 
-            Job newJob = new Job(0, type, description, price, car.id, customer.id, employeeId);
+            Job newJob = new Job(type, description, price, car.Id, customer.id, employeeId);
 
             jobs.Add(newJob);
         }

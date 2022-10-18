@@ -9,53 +9,53 @@
 
     internal class Job
     {
-        public int id
+        public string Id
         {
             get;
         }
-        public JobType type
-        {
-            get;
-            set;
-        }
-        public string description
+        public JobType Type
         {
             get;
             set;
         }
-        public int price
+        public string Description
         {
             get;
             set;
         }
-        public int car
-        {
-            get;
-        }
-        public int employee
+        public int Price
         {
             get;
             set;
         }
-        public int customer
+        public string Car
         {
             get;
         }
-        public bool finished
+        public string Employee
+        {
+            get;
+            set;
+        }
+        public string Customer
+        {
+            get;
+        }
+        public bool Finished
         {
             get;
             set;
         }
 
-        internal Job(int id, JobType type, string desc, int price, int car, int customer, int employee)
+        internal Job(JobType type, string description, int price, string carId, string customerId, string employeeId)
         {
-            this.id = id;
-            this.type = type;
-            description = desc;
-            this.price = price;
-            this.car = car;
-            this.customer = customer;
-            this.employee = employee;
+            Id = IdGenerator.GetInstance().GetId();
+            Type = type;
+            Description = description;
+            Price = price;
+            Car = carId;
+            Customer = customerId;
+            Employee = employeeId;
         }
     }
 }

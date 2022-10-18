@@ -2,7 +2,7 @@
 {
     internal class Customer
     {
-        public int id
+        public string id
         {
             get;
         }
@@ -16,36 +16,36 @@
             set;
         }
 
-        private List<int> cars = new List<int>();
-        private List<int> jobs = new List<int>();
+        private List<string> cars = new List<string>();
+        private List<string> jobs = new List<string>();
 
-        internal Customer(int id, string name, string address, int car, int job)
+        internal Customer(string name, string address, string carId, string jobId)
         {
-            this.id = id;
+            id = IdGenerator.GetInstance().GetId();
             this.name = name;
             this.address = address;
-            cars.Add(car);
-            jobs.Add(job);
+            cars.Add(carId);
+            jobs.Add(jobId);
         }
 
-        public List<int> getCars()
+        public List<string> getCars()
         {
             return cars;
         }
 
-        public void AddCar(int car)
+        public void AddCar(string carId)
         {
-            cars.Add(car);
+            cars.Add(carId);
         }
 
-        public List<int> GetJobs()
+        public List<string> GetJobs()
         {
             return jobs;
         }
 
-        public void AddJob(int job)
+        public void AddJob(string jobId)
         {
-            jobs.Add(job);
+            jobs.Add(jobId);
         }
     }
 }

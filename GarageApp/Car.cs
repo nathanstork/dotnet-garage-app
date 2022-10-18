@@ -19,36 +19,36 @@
 
     internal class Car
     {
-        public int id
+        public string Id
         {
             get;
         }
-        public string plate
+        public string Plate
         {
             get;
         }
-        public string model
+        public string Model
         {
             get;
         }
-        public CarColor color
+        public CarColor Color
         {
             get;
         }
-        public int customer
+        public int Customer
         {
             get;
         }
 
         private List<int> jobs = new List<int>();
 
-        internal Car(int id, string plate, string model, CarColor color, int job, int cust)
+        internal Car(string plate, string model, CarColor color, int job, int cust)
         {
-            this.id = id;
-            this.plate = plate;
-            this.model = model;
-            this.color = color;
-            customer = cust;
+            Id = IdGenerator.GetInstance().GetId();
+            Plate = plate;
+            Model = model;
+            Color = color;
+            Customer = cust;
             jobs.Add(job);
         }
 

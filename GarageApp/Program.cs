@@ -1,3 +1,5 @@
+using GarageApp.Contracts;
+
 namespace GarageApp
 {
     internal static class Program
@@ -14,17 +16,9 @@ namespace GarageApp
             //Console.WriteLine("Bruh"); // Write to console window
             //System.Diagnostics.Debug.WriteLine("Nigger"); // Write to immediate window
 
-            //Job newJob = new Job(0, JobType.Medium, "Test description", 1200, 0, 0, 0);
-            Manager manager = new Manager();
-
-            Mechanic mechanic = new Mechanic();
+            Registry registry = Registry.GetInstance();
 
             Garage garage = Garage.GetInstance();
-            IdGenerator idGenerator = IdGenerator.GetInstance();
-            for (int i = 0; i < 1; i++)
-            {
-                Console.WriteLine(idGenerator.GetId());
-            }
 
             ApplicationConfiguration.Initialize();
             Application.Run(new AuthenticationForm());

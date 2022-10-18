@@ -2,26 +2,26 @@
 {
     internal class User
     {
-        private int UserId
+        internal string Id
         {
-            get { return UserId; }
-            set { UserId = value; }
+            get;
         }
 
-        private string Name
+        internal string Name
         {
-            get { return Name; }
-            set { Name = value; }
-        }
-        private string Address
-        {
-            get { return Address; }
-            set { Address = value; }
+            get;
+            set;
         }
 
-        protected User(int identifier, string name, string address)
+        internal string Address
         {
-            UserId = identifier;
+            get;
+            set;
+        }
+
+        internal User(string name, string address)
+        {
+            Id = IdGenerator.GetInstance().GetId();
             Name = name;
             Address = address;
         }
