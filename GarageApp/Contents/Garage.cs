@@ -4,9 +4,9 @@
     {
         private static Garage? _instance;
 
-        private List<Job> jobs = new List<Job>();
-        private List<Car> cars = new List<Car>();
-        private List<Customer> customers = new List<Customer>();
+        private List<Job> Jobs = new List<Job>();
+        private List<Car> Cars = new List<Car>();
+        private List<Customer> Customers = new List<Customer>();
 
         private Garage()
         {
@@ -24,19 +24,19 @@
 
         public void AddJob(JobType type, string description, int price, Car car, Customer customer, string employeeId)
         {
-            if (!cars.Any(item => item.Id == car.Id))
+            if (!Cars.Any(item => item.Id == car.Id))
             {
-                cars.Add(car);
+                Cars.Add(car);
             }
 
-            if (!customers.Any(item => item.Id == customer.Id))
+            if (!Customers.Any(item => item.Id == customer.Id))
             {
-                customers.Add(customer);
+                Customers.Add(customer);
             }
 
-            Job newJob = new Job(type, description, price, car.Id, customer.Id, employeeId);
+            Job newJob = new(type, description, price, car.Id, customer.Id, employeeId);
 
-            jobs.Add(newJob);
+            Jobs.Add(newJob);
         }
     }
 }

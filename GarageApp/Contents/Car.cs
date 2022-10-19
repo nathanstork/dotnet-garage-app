@@ -39,38 +39,38 @@ namespace GarageApp.Tempname
             get;
             set;
         }
-        public int Customer
+        public string Customer
         {
             get;
         }
 
-        private List<int> jobs = new List<int>();
+        private List<string> Jobs = new List<string>();
 
-        internal Car(string plate, string model, CarColor color, int job, int cust)
+        internal Car(string plate, string model, CarColor color, string customerId, string jobId)
         {
             Id = IdGenerator.GetInstance().GetId();
             Plate = plate;
             Model = model;
             Color = color;
-            Customer = cust;
-            jobs.Add(job);
+            Customer = customerId;
+            Jobs.Add(jobId);
         }
 
-        public List<int> getJobs()
+        public List<string> getJobs()
         {
-            return jobs;
+            return Jobs;
         }
 
-        public void AddJob(int jobId)
+        public void AddJob(string jobId)
         {
-            jobs.Add(jobId);
+            Jobs.Add(jobId);
 
             // TODO: If jobId is already in list, throw exception
         }
 
-        public void RemoveJob(int jobId)
+        public void RemoveJob(string jobId)
         {
-            jobs.Remove(jobId);
+            Jobs.Remove(jobId);
 
             //TODO: If item is not in list, throw exception
         }
