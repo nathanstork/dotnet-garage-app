@@ -1,4 +1,6 @@
 using GarageApp.Contracts;
+using GarageApp.Tempname;
+using GarageApp.Users;
 
 namespace GarageApp
 {
@@ -14,7 +16,7 @@ namespace GarageApp
             // see https://aka.ms/applicationconfiguration.
 
             //Console.WriteLine("Bruh"); // Write to console window
-            //System.Diagnostics.Debug.WriteLine("Nigger"); // Write to immediate window
+            //System.Diagnostics.Debug.WriteLine("Bruh"); // Write to immediate window
 
             Registry registry = Registry.GetInstance();
 

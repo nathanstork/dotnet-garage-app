@@ -1,4 +1,6 @@
-﻿namespace GarageApp
+﻿using GarageApp.Utils;
+
+namespace GarageApp.Tempname
 {
     public enum JobType
     {

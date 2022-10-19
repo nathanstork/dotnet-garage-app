@@ -17,13 +17,13 @@ namespace GarageApp.Contracts
             this.hours = hours;
         }
 
-        internal abstract int GetMontlySalary();
         internal abstract int GetWeeklySalary();
-
-        internal abstract int GetMontlyHours();
         internal abstract int GetWeeklyHours();
 
-        internal abstract int GetYearlyHours();
+        internal abstract int GetMontlySalary();
+        internal abstract int GetMontlyHours();
+
         internal abstract int GetYearlySalary();
+        internal abstract int GetYearlyHours();
     }
 }

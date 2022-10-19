@@ -1,4 +1,5 @@
 ﻿using GarageApp.Forms;
+using GarageApp.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,15 +47,31 @@ namespace GarageApp
                     }
                     else
                     {
-                        ResetTextBoxes();
-                        errorLabel.Text = "Incorrect password";
+                        if (passTextBox.Text == "")
+                        {
+                            ResetTextBoxes();
+                            errorLabel.Text = "Invalid password";
+                        }
+                        else
+                        {
+                            ResetTextBoxes();
+                            errorLabel.Text = "Incorrect password";
+                        }
                     }
                 }
             }
             catch (NullReferenceException)
             {
-                ResetTextBoxes();
-                errorLabel.Text = "Unknown username";
+                if (userTextBox.Text == "")
+                {
+                    ResetTextBoxes();
+                    errorLabel.Text = "Invalid username";
+                }
+                else
+                {
+                    ResetTextBoxes();
+                    errorLabel.Text = "Unknown username";
+                }
             }
         }
 

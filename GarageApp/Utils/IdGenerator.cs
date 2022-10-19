@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GarageApp
+namespace GarageApp.Utils
 {
     internal class IdGenerator
     {

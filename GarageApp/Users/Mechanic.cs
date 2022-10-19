@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GarageApp.Contracts;
 
-namespace GarageApp
+namespace GarageApp.Users
 {
     internal class Mechanic : User
     {
@@ -15,7 +15,7 @@ namespace GarageApp
             set;
         }
 
-        internal List<string> jobs = new List<string>(); 
+        internal List<string> jobs = new List<string>();
 
         internal Mechanic(string name, string address, Contract contract) : base(name, address)
         {

@@ -1,4 +1,6 @@
-﻿namespace GarageApp
+﻿using GarageApp.Utils;
+
+namespace GarageApp.Tempname
 {
     public enum CarColor
     {
@@ -26,6 +28,7 @@
         public string Plate
         {
             get;
+            set;
         }
         public string Model
         {
@@ -34,6 +37,7 @@
         public CarColor Color
         {
             get;
+            set;
         }
         public int Customer
         {

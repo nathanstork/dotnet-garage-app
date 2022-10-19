@@ -1,4 +1,4 @@
-﻿namespace GarageApp
+﻿namespace GarageApp.Tempname
 {
     internal class Garage
     {
@@ -29,12 +29,12 @@
                 cars.Add(car);
             }
 
-            if (!customers.Any(item => item.id == customer.id))
+            if (!customers.Any(item => item.Id == customer.Id))
             {
                 customers.Add(customer);
             }
 
-            Job newJob = new Job(type, description, price, car.Id, customer.id, employeeId);
+            Job newJob = new Job(type, description, price, car.Id, customer.Id, employeeId);
 
             jobs.Add(newJob);
         }
