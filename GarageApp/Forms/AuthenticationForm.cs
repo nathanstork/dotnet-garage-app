@@ -27,43 +27,34 @@ namespace GarageApp
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(userTextBox.Text);
-            Console.WriteLine(passTextBox.Text);
-
             Registry registry = Registry.GetInstance();
             List<Manager> managers = registry.GetManagers();
 
-            Manager manager = managers.FirstOrDefault(manager => manager.Username == userTextBox.Text);
+            Manager? manager = null;
+            try
+            {
+                manager = managers.Find(manager => manager.Username == userTextBox.Text);
 
-            if (manager == null)
+                if (manager.Username == userTextBox.Text)
+                {
+                    if (manager.Password == passTextBox.Text)
+                    {
+                        this.Hide();
+                        var testForm = new TestForm("Logged in as manager");
+                        testForm.Closed += (s, args) => this.Close();
+                        testForm.Show();
+                    }
+                    else
+                    {
+                        ResetTextBoxes();
+                        errorLabel.Text = "Incorrect password";
+                    }
+                }
+            }
+            catch (NullReferenceException)
             {
                 ResetTextBoxes();
-                return;
-            }
-
-            Console.WriteLine(manager.Id);
-            Console.WriteLine(manager.Username);
-            Console.WriteLine(manager.Password);
-
-            if (manager.Username == userTextBox.Text)
-            {
-                if (manager.Password == passTextBox.Text)
-                {
-                    this.Hide();
-                    var testForm = new TestForm("Logged in as manager");
-                    testForm.Closed += (s, args) => this.Close();
-                    testForm.Show();
-                }
-                else
-                {
-                    errorLabel.Text = "Incorrect password";
-                    ResetTextBoxes();
-                }
-            }
-            else
-            {
                 errorLabel.Text = "Unknown username";
-                ResetTextBoxes();
             }
         }
 
