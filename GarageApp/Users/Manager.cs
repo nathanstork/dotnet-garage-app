@@ -8,22 +8,9 @@ namespace GarageApp.Users
 {
     internal class Manager : User
     {
-        internal string Username
+        internal Manager(string username, string password, string name, string address) : base(username, password, name, address)
         {
-            get;
-            set;
-        }
-
-        internal string Password
-        {
-            get;
-            set;
-        }
-
-        internal Manager(string name, string address, string username, string password) : base(name, address)
-        {
-            Username = username;
-            Password = password;
+            
         }
     }
 }

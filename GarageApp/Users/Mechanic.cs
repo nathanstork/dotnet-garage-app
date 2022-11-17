@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GarageApp.Contracts;
 
 namespace GarageApp.Users
 {
@@ -17,10 +16,8 @@ namespace GarageApp.Users
 
         internal List<string> jobs = new List<string>();
 
-        internal Mechanic(string name, string address, Contract contract) : base(name, address)
+        internal Mechanic(string username, string password, string name, string address, Contract contract) : base(username, password, name, address)
         {
-            Name = name;
-            Address = address;
             Contract = contract;
         }
 

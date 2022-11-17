@@ -1,6 +1,4 @@
-﻿using GarageApp.Utils;
-
-namespace GarageApp.Tempname
+﻿namespace GarageApp
 {
     public enum JobType
     {
@@ -11,10 +9,6 @@ namespace GarageApp.Tempname
 
     internal class Job
     {
-        public string Id
-        {
-            get;
-        }
         public JobType Type
         {
             get;
@@ -51,7 +45,6 @@ namespace GarageApp.Tempname
 
         internal Job(JobType type, string description, int price, string carId, string customerId, string employeeId)
         {
-            Id = IdGenerator.GetInstance().GetId();
             Type = type;
             Description = description;
             Price = price;

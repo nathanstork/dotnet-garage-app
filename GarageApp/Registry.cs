@@ -1,11 +1,12 @@
 ﻿using GarageApp.Contracts;
+using GarageApp.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GarageApp.Users
+namespace GarageApp
 {
 
     internal class Registry
@@ -17,11 +18,11 @@ namespace GarageApp.Users
 
         private Registry()
         {
-            mechanics.Add(new Mechanic("Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
+            /*mechanics.Add(new Mechanic("Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
             mechanics.Add(new Mechanic("Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
             mechanics.Add(new Mechanic("Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
 
-            managers.Add(new Manager("Admin", "", "admin", "password"));
+            managers.Add(new Manager("Admin", "", "admin", "password"));*/
 
             // TODO: Get mechanics and managers form local file
         }
@@ -52,11 +53,11 @@ namespace GarageApp.Users
 
         internal void FireMechanic(string id)
         {
-            Mechanic user = mechanics.FirstOrDefault(mechanic => mechanic.Id == id);
+           /* Mechanic user = mechanics.FirstOrDefault(mechanic => mechanic.Id == id);
             if (user != null)
             {
                 mechanics.Remove(user);
-            }
+            }*/
         }
     }
 }

@@ -1,13 +1,7 @@
-﻿using GarageApp.Utils;
-
-namespace GarageApp.Tempname
+﻿namespace GarageApp
 {
     internal class Customer
     {
-        public string Id
-        {
-            get;
-        }
         public string Name
         {
             get;
@@ -23,7 +17,6 @@ namespace GarageApp.Tempname
 
         internal Customer(string name, string address, string carId, string jobId)
         {
-            Id = IdGenerator.GetInstance().GetId();
             Name = name;
             Address = address;
             Cars.Add(carId);

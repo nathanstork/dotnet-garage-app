@@ -1,6 +1,4 @@
 using GarageApp.Contracts;
-using GarageApp.Tempname;
-using GarageApp.Users;
 
 namespace GarageApp
 {
@@ -18,9 +16,9 @@ namespace GarageApp
             //Console.WriteLine("Bruh"); // Write to console window
             //System.Diagnostics.Debug.WriteLine("Bruh"); // Write to immediate window
 
-            Registry registry = Registry.GetInstance();
+            Employees employees = Employees.GetInstance();
 
-            Garage garage = Garage.GetInstance();
+            //Garage garage = Garage.GetInstance();
 
             ApplicationConfiguration.Initialize();
             Application.Run(new AuthenticationForm());

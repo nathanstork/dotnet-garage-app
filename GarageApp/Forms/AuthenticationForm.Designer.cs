@@ -28,60 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.mechanicButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.loginGroupBox = new System.Windows.Forms.GroupBox();
+            this.errorLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.passTextBox = new System.Windows.Forms.TextBox();
             this.userTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
-            this.errorLabel = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.loginGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // loginGroupBox
             // 
-            this.groupBox1.Controls.Add(this.errorLabel);
-            this.groupBox1.Controls.Add(this.mechanicButton);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.passTextBox);
-            this.groupBox1.Controls.Add(this.userTextBox);
-            this.groupBox1.Controls.Add(this.submitButton);
-            this.groupBox1.Location = new System.Drawing.Point(116, 76);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(450, 300);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login";
+            this.loginGroupBox.Controls.Add(this.errorLabel);
+            this.loginGroupBox.Controls.Add(this.passwordLabel);
+            this.loginGroupBox.Controls.Add(this.usernameLabel);
+            this.loginGroupBox.Controls.Add(this.passTextBox);
+            this.loginGroupBox.Controls.Add(this.userTextBox);
+            this.loginGroupBox.Controls.Add(this.submitButton);
+            this.loginGroupBox.Location = new System.Drawing.Point(116, 76);
+            this.loginGroupBox.Name = "loginGroupBox";
+            this.loginGroupBox.Size = new System.Drawing.Size(450, 263);
+            this.loginGroupBox.TabIndex = 6;
+            this.loginGroupBox.TabStop = false;
+            this.loginGroupBox.Text = "Login";
+            this.loginGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // mechanicButton
+            // errorLabel
             // 
-            this.mechanicButton.Location = new System.Drawing.Point(125, 250);
-            this.mechanicButton.Name = "mechanicButton";
-            this.mechanicButton.Size = new System.Drawing.Size(200, 30);
-            this.mechanicButton.TabIndex = 5;
-            this.mechanicButton.Text = "Login as Mechanic";
-            this.mechanicButton.UseVisualStyleBackColor = true;
-            this.mechanicButton.Click += new System.EventHandler(this.mechanicButton_Click);
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(75, 176);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 20);
+            this.errorLabel.TabIndex = 6;
             // 
-            // label2
+            // passwordLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(75, 118);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(70, 20);
+            this.passwordLabel.TabIndex = 4;
+            this.passwordLabel.Text = "Password";
             // 
-            // label1
+            // usernameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(75, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(75, 46);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(75, 20);
+            this.usernameLabel.TabIndex = 3;
+            this.usernameLabel.Text = "Username";
             // 
             // passTextBox
             // 
@@ -102,7 +100,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(275, 188);
+            this.submitButton.Location = new System.Drawing.Point(275, 198);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(100, 30);
             this.submitButton.TabIndex = 0;
@@ -110,39 +108,29 @@
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // errorLabel
-            // 
-            this.errorLabel.AutoSize = true;
-            this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(75, 193);
-            this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(0, 20);
-            this.errorLabel.TabIndex = 6;
-            // 
             // AuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(682, 453);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.loginGroupBox);
             this.MaximizeBox = false;
             this.Name = "AuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authentication";
             this.Load += new System.EventHandler(this.AuthenticationForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.loginGroupBox.ResumeLayout(false);
+            this.loginGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private Button mechanicButton;
-        private Label label2;
-        private Label label1;
+        private GroupBox loginGroupBox;
+        private Label passwordLabel;
+        private Label usernameLabel;
         private TextBox passTextBox;
         private TextBox userTextBox;
         private Button submitButton;

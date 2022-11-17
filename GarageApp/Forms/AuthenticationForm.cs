@@ -1,17 +1,4 @@
-﻿using GarageApp.Forms;
-using GarageApp.Users;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
-
-namespace GarageApp
+﻿namespace GarageApp
 {
     public partial class AuthenticationForm : Form
     {
@@ -28,59 +15,17 @@ namespace GarageApp
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Registry registry = Registry.GetInstance();
-            List<Manager> managers = registry.GetManagers();
-
-            Manager? manager = null;
+            Employees employees = Employees.GetInstance();
+            
             try
             {
-                manager = managers.Find(manager => manager.Username == userTextBox.Text);
-
-                if (manager.Username == userTextBox.Text)
-                {
-                    if (manager.Password == passTextBox.Text)
-                    {
-                        this.Hide();
-                        var testForm = new TestForm("Logged in as manager");
-                        testForm.Closed += (s, args) => this.Close();
-                        testForm.Show();
-                    }
-                    else
-                    {
-                        if (passTextBox.Text == "")
-                        {
-                            ResetTextBoxes();
-                            errorLabel.Text = "Invalid password";
-                        }
-                        else
-                        {
-                            ResetTextBoxes();
-                            errorLabel.Text = "Incorrect password";
-                        }
-                    }
-                }
+                employees.Login(userTextBox.Text, passTextBox.Text);
+                // Close current window and open new UI.
             }
-            catch (NullReferenceException)
+            catch(Exception ex)
             {
-                if (userTextBox.Text == "")
-                {
-                    ResetTextBoxes();
-                    errorLabel.Text = "Invalid username";
-                }
-                else
-                {
-                    ResetTextBoxes();
-                    errorLabel.Text = "Unknown username";
-                }
+                errorLabel.Text= ex.Message;
             }
-        }
-
-        private void mechanicButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var testForm = new TestForm("Logged in as mechanic");
-            testForm.Closed += (s, args) => this.Close();
-            testForm.Show();
         }
 
         private void userTextBox_TextChanged(object sender, EventArgs e)
@@ -94,6 +39,11 @@ namespace GarageApp
         }
 
         private void AuthenticationForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

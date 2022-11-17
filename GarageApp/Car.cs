@@ -1,6 +1,4 @@
-﻿using GarageApp.Utils;
-
-namespace GarageApp.Tempname
+﻿namespace GarageApp
 {
     public enum CarColor
     {
@@ -21,10 +19,6 @@ namespace GarageApp.Tempname
 
     internal class Car
     {
-        public string Id
-        {
-            get;
-        }
         public string Plate
         {
             get;
@@ -48,7 +42,6 @@ namespace GarageApp.Tempname
 
         internal Car(string plate, string model, CarColor color, string customerId, string jobId)
         {
-            Id = IdGenerator.GetInstance().GetId();
             Plate = plate;
             Model = model;
             Color = color;

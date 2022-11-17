@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GarageApp.Contracts
+namespace GarageApp
 {
     internal abstract class Contract
     {
