@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthenticationForm));
             this.loginGroupBox = new System.Windows.Forms.GroupBox();
             this.errorLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
@@ -48,11 +49,10 @@
             this.loginGroupBox.Controls.Add(this.submitButton);
             this.loginGroupBox.Location = new System.Drawing.Point(116, 76);
             this.loginGroupBox.Name = "loginGroupBox";
-            this.loginGroupBox.Size = new System.Drawing.Size(450, 263);
+            this.loginGroupBox.Size = new System.Drawing.Size(450, 275);
             this.loginGroupBox.TabIndex = 6;
             this.loginGroupBox.TabStop = false;
             this.loginGroupBox.Text = "Login";
-            this.loginGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // errorLabel
             // 
@@ -89,6 +89,7 @@
             this.passTextBox.Size = new System.Drawing.Size(300, 27);
             this.passTextBox.TabIndex = 2;
             this.passTextBox.TextChanged += new System.EventHandler(this.passTextBox_TextChanged);
+            this.passTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passTextBox_KeyDown);
             // 
             // userTextBox
             // 
@@ -97,10 +98,11 @@
             this.userTextBox.Size = new System.Drawing.Size(300, 27);
             this.userTextBox.TabIndex = 1;
             this.userTextBox.TextChanged += new System.EventHandler(this.userTextBox_TextChanged);
+            this.userTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.userTextBox_KeyDown);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(275, 198);
+            this.submitButton.Location = new System.Drawing.Point(275, 211);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(100, 30);
             this.submitButton.TabIndex = 0;
@@ -115,11 +117,11 @@
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(682, 453);
             this.Controls.Add(this.loginGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authentication";
-            this.Load += new System.EventHandler(this.AuthenticationForm_Load);
             this.loginGroupBox.ResumeLayout(false);
             this.loginGroupBox.PerformLayout();
             this.ResumeLayout(false);

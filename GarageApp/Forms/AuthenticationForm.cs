@@ -1,4 +1,6 @@
-﻿namespace GarageApp
+﻿using GarageApp.Forms;
+
+namespace GarageApp
 {
     public partial class AuthenticationForm : Form
     {
@@ -7,24 +9,38 @@
             InitializeComponent();
         }
 
-        private void ResetTextBoxes()
+        private void SubmitForm()
         {
-            userTextBox.Text = "";
-            passTextBox.Text = "";
+            Employees employees = Employees.GetInstance();
+
+            try
+            {
+                employees.Login(userTextBox.Text, passTextBox.Text);
+
+                // Close current window and open new UI.
+                MainForm testForm = new MainForm("Logged in as " + employees.CurrentUser.Name);
+                this.Hide();
+                testForm.ShowDialog();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                errorLabel.Text = ex.Message;
+            }
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Employees employees = Employees.GetInstance();
-            
-            try
+            SubmitForm();
+        }
+
+        private void userTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                employees.Login(userTextBox.Text, passTextBox.Text);
-                // Close current window and open new UI.
-            }
-            catch(Exception ex)
-            {
-                errorLabel.Text= ex.Message;
+                SubmitForm();
+
+                e.SuppressKeyPress = true; // To supress "ding" sound
             }
         }
 
@@ -33,19 +49,19 @@
             errorLabel.Text = "";
         }
 
+        private void passTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SubmitForm();
+
+                e.SuppressKeyPress = true; // To supress "ding" sound
+            }
+        }
+
         private void passTextBox_TextChanged(object sender, EventArgs e)
         {
             errorLabel.Text = "";
-        }
-
-        private void AuthenticationForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

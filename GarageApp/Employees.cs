@@ -65,7 +65,7 @@ namespace GarageApp
                 }
             });
 
-            if (CurrentUser == null) throw new Exception("Unknown user. Please try again.");
+            if (CurrentUser == null) throw new Exception("Incorrect credentials. Please try again.");
         }
     }
 }
