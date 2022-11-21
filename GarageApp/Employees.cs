@@ -13,8 +13,6 @@ namespace GarageApp
     [Serializable]
     public class Employees
     {
-        private string Data_Filename = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/users.bin";
-
         private static Employees? _instance;
 
         public dynamic CurrentUser;
@@ -22,22 +20,18 @@ namespace GarageApp
         private List<Mechanic> mechanics = new List<Mechanic>();
         private List<Manager> managers = new List<Manager>();
 
+        private string dataFileName = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/users.bin";
+
         private Employees()
         {
-            // Example users
-            /*mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
-            mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
-            mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
-
-            managers.Add(new Manager("admin", "password", "Admin", "unknown", mechanics));*/
-
             // Get mechanics and managers form local file
-            if (File.Exists(Data_Filename))
+            if (File.Exists(dataFileName))
             {
                 ValueTuple<List<Mechanic>, List<Manager>> data = LoadData();
                 mechanics = data.Item1;
                 managers = data.Item2;
-            } else
+            }
+            else
             {
                 // TODO: Throw warning window
             }
@@ -81,22 +75,29 @@ namespace GarageApp
                 }
             });
 
+            // Admin credentials
+            if (user == "admin" & pass == "password")
+            {
+                CurrentUser = new Manager(user, pass, "Admin", "Unknown", mechanics);
+            }
+
             if (CurrentUser == null) throw new Exception("Incorrect credentials. Please try again.");
         }
 
+        // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
         private ValueTuple<List<Mechanic>, List<Manager>> LoadData()
         {
-            // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
-            using (Stream stream = File.Open(Data_Filename, FileMode.Open))
+            using (Stream stream = File.Open(dataFileName, FileMode.Open))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 return (ValueTuple<List<Mechanic>, List<Manager>>) binaryFormatter.Deserialize(stream);
             }
         }
 
+        // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
         public void SaveData()
         {
-            using (Stream stream = File.Open(Data_Filename, FileMode.Create))
+            using (Stream stream = File.Open(dataFileName, FileMode.Create))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, (mechanics, managers));

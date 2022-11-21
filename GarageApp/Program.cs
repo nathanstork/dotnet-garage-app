@@ -18,8 +18,6 @@ namespace GarageApp
 
             Employees employees = Employees.GetInstance();
 
-            //Garage garage = Garage.GetInstance();
-
             ApplicationConfiguration.Initialize();
             Application.Run(new AuthenticationForm());
         }
