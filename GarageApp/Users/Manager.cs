@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Users
 {
+    [Serializable]
     internal class Manager : User
     {
-        internal Manager(string username, string password, string name, string address) : base(username, password, name, address)
+        internal List<Mechanic> Mechanics;
+
+        internal Manager(string username, string password, string name, string address, List<Mechanic> mechanics) : base(username, password, name, address)
         {
-            
+            Mechanics = mechanics;
+        }
+
+        public List<Mechanic> GetMechanics()
+        {
+            return Mechanics;
         }
     }
 }

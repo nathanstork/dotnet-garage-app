@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Users
 {
+    [Serializable]
     internal class Mechanic : User
     {
         internal Contract Contract
@@ -14,7 +15,7 @@ namespace GarageApp.Users
             set;
         }
 
-        internal List<string> jobs = new List<string>();
+        //internal List<string> jobs = new List<string>();
 
         internal Mechanic(string username, string password, string name, string address, Contract contract) : base(username, password, name, address)
         {
@@ -23,10 +24,10 @@ namespace GarageApp.Users
 
         internal void AddJob(string jobId)
         {
-            jobs.Add(jobId);
+            //jobs.Add(jobId);
         }
 
-        internal void RemoveJob(string jobId)
+        internal void setJobStatus(string status)
         {
 
         }

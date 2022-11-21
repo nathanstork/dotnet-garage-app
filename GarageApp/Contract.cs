@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageApp
 {
+    [Serializable]
     internal abstract class Contract
     {
         internal int salary;
