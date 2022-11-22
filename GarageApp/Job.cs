@@ -1,56 +1,54 @@
 ﻿namespace GarageApp
 {
-    public enum JobType
+    internal enum JobStatus
     {
-        Small,
-        Medium,
-        Large
+        Unassigned,
+        Assigned,
+        WorkInProgress,
+        OnHold,
+        Completed,
+        UnableToComplete
     }
 
     internal class Job
     {
-        public JobType Type
+        internal JobStatus Status
         {
             get;
             set;
         }
-        public string Description
+        internal string Description
         {
             get;
             set;
         }
-        public int Price
+        internal string Date
         {
             get;
             set;
         }
-        public string Car
-        {
-            get;
-        }
-        public string Employee
+        internal int Price
         {
             get;
             set;
         }
-        public string Customer
+        internal Car Car
         {
             get;
         }
-        public bool Finished
+        internal Customer Customer
         {
             get;
-            set;
         }
 
-        internal Job(JobType type, string description, int price, string carId, string customerId, string employeeId)
+        internal Job(string description, string date, int price, Car car, Customer customer)
         {
-            Type = type;
+            Status = JobStatus.Unassigned;
             Description = description;
+            Date = date;
             Price = price;
-            Car = carId;
-            Customer = customerId;
-            Employee = employeeId;
+            Car = car;
+            Customer = customer;
         }
     }
 }

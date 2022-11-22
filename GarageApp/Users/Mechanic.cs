@@ -9,27 +9,22 @@ namespace GarageApp.Users
     [Serializable]
     internal class Mechanic : User
     {
+        internal List<Job> Jobs = new List<Job>();
+
         internal Contract Contract
         {
             get;
             set;
         }
 
-        //internal List<string> jobs = new List<string>();
-
         internal Mechanic(string username, string password, string name, string address, Contract contract) : base(username, password, name, address)
         {
             Contract = contract;
         }
 
-        internal void AddJob(string jobId)
+        internal void SetJobStatus(Job job, JobStatus status)
         {
-            //jobs.Add(jobId);
-        }
-
-        internal void setJobStatus(string status)
-        {
-
+            job.Status = status;
         }
     }
 }

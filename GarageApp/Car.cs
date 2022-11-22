@@ -1,6 +1,6 @@
 ﻿namespace GarageApp
 {
-    public enum CarColor
+    internal enum CarColor
     {
         White,
         Yellow,
@@ -19,53 +19,30 @@
 
     internal class Car
     {
-        public string Plate
+        internal string Plate
+        {
+            get;
+        }
+        internal string Brand
+        {
+            get;
+        }
+        internal string Model
+        {
+            get;
+        }
+        internal CarColor Color
         {
             get;
             set;
         }
-        public string Model
-        {
-            get;
-        }
-        public CarColor Color
-        {
-            get;
-            set;
-        }
-        public string Customer
-        {
-            get;
-        }
 
-        private List<string> Jobs = new List<string>();
-
-        internal Car(string plate, string model, CarColor color, string customerId, string jobId)
+        internal Car(string plate, string model, string brand, CarColor color)
         {
             Plate = plate;
             Model = model;
+            Brand = brand;
             Color = color;
-            Customer = customerId;
-            Jobs.Add(jobId);
-        }
-
-        public List<string> getJobs()
-        {
-            return Jobs;
-        }
-
-        public void AddJob(string jobId)
-        {
-            Jobs.Add(jobId);
-
-            // TODO: If jobId is already in list, throw exception
-        }
-
-        public void RemoveJob(string jobId)
-        {
-            Jobs.Remove(jobId);
-
-            //TODO: If item is not in list, throw exception
         }
     }
 }

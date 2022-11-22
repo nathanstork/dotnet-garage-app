@@ -10,8 +10,8 @@ namespace GarageApp
 
         public dynamic CurrentUser;
 
-        private List<Mechanic> mechanics = new List<Mechanic>();
-        private List<Manager> managers = new List<Manager>();
+        private List<Mechanic> Mechanics = new List<Mechanic>();
+        private List<Manager> Managers = new List<Manager>();
 
         private readonly string dataFileName = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/users.bin";
 
@@ -21,8 +21,8 @@ namespace GarageApp
             if (File.Exists(dataFileName))
             {
                 ValueTuple<List<Mechanic>, List<Manager>> data = LoadData();
-                mechanics = data.Item1;
-                managers = data.Item2;
+                Mechanics = data.Item1;
+                Managers = data.Item2;
             }
         }
 
@@ -46,7 +46,7 @@ namespace GarageApp
                 throw new Exception("Invalid password");
             }
 
-            mechanics.ForEach(mechanic =>
+            Mechanics.ForEach(mechanic =>
             {
                 if (mechanic.Username == user && mechanic.Password == pass)
                 {
@@ -54,7 +54,7 @@ namespace GarageApp
                 }
             });
 
-            managers.ForEach(manager =>
+            Managers.ForEach(manager =>
             {
                 if (manager.Username == user && manager.Password == pass)
                 {
@@ -65,7 +65,7 @@ namespace GarageApp
             // Admin credentials
             if (user == "admin" & pass == "password")
             {
-                CurrentUser = new Manager(user, pass, "Admin", "Unknown", mechanics);
+                CurrentUser = new Manager(user, pass, "Admin", "Unknown", Mechanics);
             }
 
             if (CurrentUser == null) throw new Exception("Incorrect credentials. Please try again.");
@@ -88,7 +88,7 @@ namespace GarageApp
             using (Stream stream = File.Open(dataFileName, FileMode.Create))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(stream, (mechanics, managers));
+                binaryFormatter.Serialize(stream, (Mechanics, Managers));
             }
             Console.WriteLine("Done! Bye now.");
         }
