@@ -1,6 +1,6 @@
 ﻿namespace GarageApp.Forms
 {
-    partial class MainForm
+    partial class MechanicForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MechanicForm));
             this.testLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.mechanicsListBox = new System.Windows.Forms.ListBox();
+            this.mechanicsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testLabel
@@ -55,21 +57,41 @@
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // MainForm
+            // mechanicsListBox
+            // 
+            this.mechanicsListBox.FormattingEnabled = true;
+            this.mechanicsListBox.ItemHeight = 20;
+            this.mechanicsListBox.Location = new System.Drawing.Point(12, 29);
+            this.mechanicsListBox.Name = "mechanicsListBox";
+            this.mechanicsListBox.Size = new System.Drawing.Size(250, 404);
+            this.mechanicsListBox.TabIndex = 2;
+            // 
+            // mechanicsLabel
+            // 
+            this.mechanicsLabel.AutoSize = true;
+            this.mechanicsLabel.Location = new System.Drawing.Point(12, 6);
+            this.mechanicsLabel.Name = "mechanicsLabel";
+            this.mechanicsLabel.Size = new System.Drawing.Size(50, 20);
+            this.mechanicsLabel.TabIndex = 3;
+            this.mechanicsLabel.Text = "label1";
+            // 
+            // MechanicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mechanicsLabel);
+            this.Controls.Add(this.mechanicsListBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.testLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MainForm";
+            this.Name = "MechanicForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Garage App v1.0";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MechanicForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,5 +101,7 @@
 
         private Label testLabel;
         private Button button1;
+        private ListBox mechanicsListBox;
+        private Label mechanicsLabel;
     }
 }

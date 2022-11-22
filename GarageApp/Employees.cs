@@ -1,12 +1,5 @@
-﻿using GarageApp.Contracts;
-using GarageApp.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using GarageApp.Users;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GarageApp
 {
@@ -20,23 +13,17 @@ namespace GarageApp
         private List<Mechanic> mechanics = new List<Mechanic>();
         private List<Manager> managers = new List<Manager>();
 
-        private string dataFileName = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/users.bin";
+        private readonly string dataFileName = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/users.bin";
 
         private Employees()
         {
-            // Get mechanics and managers form local file
+            // Get mechanics and managers form local file, if it exists
             if (File.Exists(dataFileName))
             {
                 ValueTuple<List<Mechanic>, List<Manager>> data = LoadData();
                 mechanics = data.Item1;
                 managers = data.Item2;
             }
-            else
-            {
-                // TODO: Throw warning window
-            }
-
-            // TODO: Save data to file before application is closed
         }
 
         internal static Employees GetInstance()
@@ -48,7 +35,7 @@ namespace GarageApp
             return _instance;
         }
 
-        public void Login(string user, string pass)
+        internal void Login(string user, string pass)
         {
             if (user == null || user == "")
             {
@@ -95,13 +82,15 @@ namespace GarageApp
         }
 
         // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
-        public void SaveData()
+        internal void SaveData()
         {
+            Console.WriteLine("Saving data...");
             using (Stream stream = File.Open(dataFileName, FileMode.Create))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, (mechanics, managers));
             }
+            Console.WriteLine("Done! Bye now.");
         }
     }
 }

@@ -18,7 +18,7 @@ namespace GarageApp
                 employees.Login(userTextBox.Text, passTextBox.Text);
 
                 // Close current window and open new UI.
-                MainForm testForm = new MainForm("Logged in as " + employees.CurrentUser.Name);
+                MechanicForm testForm = new MechanicForm("Logged in as " + employees.CurrentUser.Name);
                 this.Hide();
                 testForm.ShowDialog();
                 this.Close();
