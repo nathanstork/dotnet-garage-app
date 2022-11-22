@@ -91,7 +91,7 @@
             this.Name = "MechanicForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Garage App v1.0";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MechanicForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

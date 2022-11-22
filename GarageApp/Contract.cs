@@ -9,13 +9,18 @@ namespace GarageApp
     [Serializable]
     internal abstract class Contract
     {
-        internal int salary;
-        internal int hours;
+        internal int Salary;
+        internal int Hours;
 
         internal Contract(int salary, int hours)
         {
-            this.salary = salary;
-            this.hours = hours;
+            Salary = salary;
+            Hours = hours;
+        }
+
+        internal int GetHourlySalary()
+        {
+            return Salary / Hours;
         }
 
         internal abstract int GetWeeklySalary();

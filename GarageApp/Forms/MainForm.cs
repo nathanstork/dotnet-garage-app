@@ -30,8 +30,6 @@ namespace GarageApp.Forms
         {
             Employees employees = Employees.GetInstance();
 
-            //employees.CurrentUser
-
             Console.WriteLine(employees.CurrentUser.GetType().Name);
 
             if (employees.CurrentUser.GetType().Name == "Manager")
@@ -47,7 +45,7 @@ namespace GarageApp.Forms
         }
 
         // Save employees data before window closes
-        private void MechanicForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Employees employees = Employees.GetInstance();
             employees.SaveData();

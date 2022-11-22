@@ -15,32 +15,32 @@ namespace GarageApp.Contracts
 
         internal override int GetMontlyHours()
         {
-            return hours;
+            return Hours;
         }
 
         internal override int GetMontlySalary()
         {
-            return salary;
+            return Salary;
         }
 
         internal override int GetWeeklyHours()
         {
-            return hours * 12 / 52;
+            return Hours * 12 / 52;
         }
 
         internal override int GetWeeklySalary()
         {
-            return salary * 12 / 52;
+            return Salary * 12 / 52;
         }
 
         internal override int GetYearlyHours()
         {
-            return hours * 12;
+            return Hours * 12;
         }
 
         internal override int GetYearlySalary()
         {
-            return salary * 12;
+            return Salary * 12;
         }
     }
 }
