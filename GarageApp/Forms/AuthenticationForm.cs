@@ -15,7 +15,7 @@ namespace GarageApp
 
             try
             {
-                employees.Login(userTextBox.Text, passTextBox.Text);
+                employees.LogIn(userTextBox.Text, passTextBox.Text);
 
                 // Close current window and open new UI.
                 MechanicForm testForm = new MechanicForm("Logged in as " + employees.CurrentUser.Name);

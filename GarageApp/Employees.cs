@@ -1,4 +1,4 @@
-﻿using GarageApp.Contracts;
+using GarageApp.Contracts;
 using GarageApp.Users;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
@@ -20,13 +20,6 @@ namespace GarageApp
 
         private Employees()
         {
-            // Example users
-            /*Mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
-            Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
-            Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
-
-            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));*/
-
             // Get mechanics and managers form local file, if it exists
             if (File.Exists(SaveFilePath))
             {
@@ -46,7 +39,7 @@ namespace GarageApp
             return _instance;
         }
 
-        internal void Login(string user, string pass)
+        internal void LogIn(string user, string pass)
         {
             if (user == null || user == "")
             {
@@ -84,7 +77,7 @@ namespace GarageApp
 
         internal void LogOut()
         {
-            if (CurrentUser != null) CurrentUser = null;
+            CurrentUser = null;
         }
 
         // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
