@@ -1,5 +1,6 @@
 ﻿namespace GarageApp
 {
+    [Serializable]
     internal class Customer
     {
         internal string Name

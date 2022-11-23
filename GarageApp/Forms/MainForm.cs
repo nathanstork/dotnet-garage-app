@@ -14,9 +14,13 @@ namespace GarageApp.Forms
 {
     public partial class MechanicForm : Form
     {
+        readonly Employees Entry;
+
         public MechanicForm(string? label)
         {
             InitializeComponent();
+
+            Entry = Employees.GetInstance();
 
             if (label != null)
             {
@@ -28,15 +32,13 @@ namespace GarageApp.Forms
 
         private void SetupForm()
         {
-            Employees employees = Employees.GetInstance();
+            Console.WriteLine(Entry.CurrentUser.GetType().Name);
 
-            Console.WriteLine(employees.CurrentUser.GetType().Name);
-
-            if (employees.CurrentUser.GetType().Name == "Manager")
+            if (Entry.CurrentUser.GetType().Name == "Manager")
             {
-                Console.WriteLine(employees.CurrentUser.GetMechanics());
+                Console.WriteLine(Entry.CurrentUser.GetMechanics());
 
-                List<Mechanic> mechanics = employees.CurrentUser.GetMechanics();
+                List<Mechanic> mechanics = Entry.CurrentUser.GetMechanics();
                 mechanics.ForEach(mechanic =>
                 {
                     mechanicsListBox.Items.Add(mechanic.Name);
@@ -47,8 +49,18 @@ namespace GarageApp.Forms
         // Save employees data before window closes
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Employees employees = Employees.GetInstance();
-            employees.SaveData();
+            
+            Entry.SaveData();
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            Entry.LogOut();
+
+            AuthenticationForm authForm = new AuthenticationForm();
+            this.Hide();
+            authForm.ShowDialog();
+            this.Close();
         }
     }
 }

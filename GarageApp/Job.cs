@@ -10,6 +10,7 @@
         UnableToComplete
     }
 
+    [Serializable]
     internal class Job
     {
         internal JobStatus Status

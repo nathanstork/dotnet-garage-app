@@ -33,6 +33,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.mechanicsListBox = new System.Windows.Forms.ListBox();
             this.mechanicsLabel = new System.Windows.Forms.Label();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testLabel
@@ -75,6 +76,19 @@
             this.mechanicsLabel.TabIndex = 3;
             this.mechanicsLabel.Text = "label1";
             // 
+            // logoutButton
+            // 
+            this.logoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logoutButton.Location = new System.Drawing.Point(720, 32);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(68, 29);
+            this.logoutButton.TabIndex = 4;
+            this.logoutButton.Text = "Log out";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            // 
             // MechanicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -82,6 +96,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.mechanicsLabel);
             this.Controls.Add(this.mechanicsListBox);
             this.Controls.Add(this.button1);
@@ -103,5 +118,6 @@
         private Button button1;
         private ListBox mechanicsListBox;
         private Label mechanicsLabel;
+        private Button logoutButton;
     }
 }

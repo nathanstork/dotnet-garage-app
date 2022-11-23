@@ -1,5 +1,8 @@
-﻿using GarageApp.Users;
+﻿using GarageApp.Contracts;
+using GarageApp.Users;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace GarageApp
 {
@@ -8,21 +11,29 @@ namespace GarageApp
     {
         private static Employees? _instance;
 
-        public dynamic CurrentUser;
+        public dynamic? CurrentUser;
 
         private List<Mechanic> Mechanics = new List<Mechanic>();
         private List<Manager> Managers = new List<Manager>();
 
-        private readonly string dataFileName = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/users.bin";
+        private readonly string SaveFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/save.bin";
 
         private Employees()
         {
+            // Example users
+            /*Mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
+            Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
+            Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
+
+            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));*/
+
             // Get mechanics and managers form local file, if it exists
-            if (File.Exists(dataFileName))
+            if (File.Exists(SaveFilePath))
             {
                 ValueTuple<List<Mechanic>, List<Manager>> data = LoadData();
                 Mechanics = data.Item1;
                 Managers = data.Item2;
+                Console.WriteLine(data.Item1[0].Garage.GetJobs());
             }
         }
 
@@ -71,10 +82,15 @@ namespace GarageApp
             if (CurrentUser == null) throw new Exception("Incorrect credentials. Please try again.");
         }
 
+        internal void LogOut()
+        {
+            if (CurrentUser != null) CurrentUser = null;
+        }
+
         // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
         private ValueTuple<List<Mechanic>, List<Manager>> LoadData()
         {
-            using (Stream stream = File.Open(dataFileName, FileMode.Open))
+            using (Stream stream = File.Open(SaveFilePath, FileMode.Open))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 return (ValueTuple<List<Mechanic>, List<Manager>>) binaryFormatter.Deserialize(stream);
@@ -85,7 +101,7 @@ namespace GarageApp
         internal void SaveData()
         {
             Console.WriteLine("Saving data...");
-            using (Stream stream = File.Open(dataFileName, FileMode.Create))
+            using (Stream stream = File.Open(SaveFilePath, FileMode.Create))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, (Mechanics, Managers));

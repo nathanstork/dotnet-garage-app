@@ -17,6 +17,7 @@
         Black
     }
 
+    [Serializable]
     internal class Car
     {
         internal string Plate
