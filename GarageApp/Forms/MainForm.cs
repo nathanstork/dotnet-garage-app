@@ -34,8 +34,15 @@ namespace GarageApp.Forms
         {
             Console.WriteLine(Entry.CurrentUser.GetType().Name);
 
+            List<Job> jobs = Entry.CurrentUser.Garage.GetJobs();
+            jobs.ForEach(job =>
+            {
+                jobsListBox.Items.Add(job.Description);
+            });
+
             if (Entry.CurrentUser.GetType().Name == "Manager")
             {
+
                 Console.WriteLine(Entry.CurrentUser.GetMechanics());
 
                 List<Mechanic> mechanics = Entry.CurrentUser.GetMechanics();
@@ -61,6 +68,11 @@ namespace GarageApp.Forms
             this.Hide();
             authForm.ShowDialog();
             this.Close();
+        }
+
+        private void mechanicsLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
