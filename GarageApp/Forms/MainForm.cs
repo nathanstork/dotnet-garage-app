@@ -18,45 +18,56 @@ namespace GarageApp.Forms
 
         public MechanicForm(string? label)
         {
-            InitializeComponent();
-
             Entry = Employees.GetInstance();
+
+            InitializeComponent();
 
             if (label != null)
             {
-                testLabel.Text = label;
+                userLabel.Text = label;
             }
 
             SetupForm();
         }
 
-        private void SetupForm()
+        private void SetJobs()
         {
-            Console.WriteLine(Entry.CurrentUser.GetType().Name);
+            jobsListBox.Items.Clear();
 
-            List<Job> jobs = Entry.CurrentUser.Garage.GetJobs();
+            List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
             jobs.ForEach(job =>
             {
+                Console.WriteLine(job.Description);
                 jobsListBox.Items.Add(job.Description);
             });
 
+            removeJobButton.Enabled = false;
+        }
+
+        private void SetupForm()
+        {
+            SetJobs();
+
+            if (Entry.CurrentUser.Garage.Jobs.Count == 0) removeJobButton.Enabled = false;
+
             if (Entry.CurrentUser.GetType().Name == "Manager")
             {
-
-                Console.WriteLine(Entry.CurrentUser.GetMechanics());
-
                 List<Mechanic> mechanics = Entry.CurrentUser.GetMechanics();
                 mechanics.ForEach(mechanic =>
                 {
                     mechanicsListBox.Items.Add(mechanic.Name);
                 });
             }
+
+            foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
+            {
+                jobStatusComboBox.Items.Add(status.ToString());
+            }
         }
 
         // Save employees data before window closes
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
             Entry.SaveData();
         }
 
@@ -70,9 +81,64 @@ namespace GarageApp.Forms
             this.Close();
         }
 
-        private void mechanicsLabel_Click(object sender, EventArgs e)
+        private void UpdateJobDetails(Job job)
         {
+            jobDetailsDateLabel.Text = job.Date;
+            jobDescriptionTextBox.Text = job.Description;
+            jobPriceTextBox.Text = job.Price.ToString();
+            jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(job.Status.ToString());
+        }
 
+        private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            removeJobButton.Enabled = true;
+
+            List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
+            Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
+
+            if (selectedJob != null)
+            {
+                UpdateJobDetails(selectedJob);
+            }
+            else
+            {
+                jobDetailsDateLabel.Text = "";
+                jobDescriptionTextBox.Text = "";
+                jobPriceTextBox.Text = "";
+                jobStatusComboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void mechanicsListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Mechanic selectedMechanic = Entry.Mechanics.Find(mechanic => mechanic.Name == mechanicsListBox.SelectedItem);
+
+            if (selectedMechanic != null)
+            {
+                Console.WriteLine(selectedMechanic.Name);
+                Console.WriteLine(selectedMechanic.Address);
+                Console.WriteLine(selectedMechanic.Contract);
+                Console.WriteLine("----------");
+            }
+            else
+            {
+                // Set empty values
+            }
+        }
+
+        private void addJobButton_Click(object sender, EventArgs e)
+        {
+            JobForm jobForm = new JobForm(SetJobs);
+            jobForm.ShowDialog();
+        }
+
+        private void removeJobButton_Click(object sender, EventArgs e)
+        {
+            List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
+            Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
+
+            RemoveJobForm removeJobForm = new RemoveJobForm(selectedJob, SetJobs);
+            removeJobForm.ShowDialog();
         }
     }
 }
