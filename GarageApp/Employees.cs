@@ -1,4 +1,4 @@
-using GarageApp.Contracts;
+﻿using GarageApp.Contracts;
 using GarageApp.Users;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
@@ -11,22 +11,29 @@ namespace GarageApp
     {
         private static Employees? _instance;
 
-        public dynamic? CurrentUser;
+        internal dynamic? CurrentUser;
 
-        private List<Mechanic> Mechanics = new List<Mechanic>();
-        private List<Manager> Managers = new List<Manager>();
+        internal List<Mechanic> Mechanics = new List<Mechanic>();
+        internal List<Manager> Managers = new List<Manager>();
 
-        private readonly string SaveFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/save.bin";
+        internal readonly string SaveFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/save.bin";
 
         private Employees()
         {
+            // Example users
+            /*Mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
+            Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
+            Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
+
+            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));*/
+
+
             // Get mechanics and managers form local file, if it exists
             if (File.Exists(SaveFilePath))
             {
                 ValueTuple<List<Mechanic>, List<Manager>> data = LoadData();
                 Mechanics = data.Item1;
                 Managers = data.Item2;
-                Console.WriteLine(data.Item1[0].Garage.GetJobs());
             }
         }
 
@@ -78,6 +85,7 @@ namespace GarageApp
         internal void LogOut()
         {
             CurrentUser = null;
+            SaveData();
         }
 
         // BinaryFormatter is obsolete: https://aka.ms/binaryformatter

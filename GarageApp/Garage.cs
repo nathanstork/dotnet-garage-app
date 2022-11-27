@@ -5,7 +5,7 @@
     {
         private static Garage? _instance;
 
-        private List<Job> Jobs = new List<Job>();
+        internal List<Job> Jobs = new List<Job>();
 
         private Garage()
         {
@@ -27,11 +27,6 @@
         internal void AddJob(Job job)
         {
             Jobs.Add(job);
-        }
-
-        internal List<Job> GetJobs()
-        {
-            return Jobs;
         }
     }
 }
