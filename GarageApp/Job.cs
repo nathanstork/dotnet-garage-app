@@ -26,7 +26,6 @@
         internal string Date
         {
             get;
-            set;
         }
         internal int Price
         {

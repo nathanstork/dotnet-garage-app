@@ -15,10 +15,5 @@ namespace GarageApp.Users
         {
             Mechanics = mechanics;
         }
-
-        public List<Mechanic> GetMechanics()
-        {
-            return Mechanics;
-        }
     }
 }

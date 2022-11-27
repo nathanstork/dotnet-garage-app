@@ -21,12 +21,12 @@ namespace GarageApp.Forms
             InitializeComponent();
         }
 
-        private void submitButton_Click(object sender, EventArgs e)
+        private void SubmitForm()
         {
             Employees employees = Employees.GetInstance();
             employees.CurrentUser.Garage.Jobs.Add(new Job(
                 descriptionTextBox.Text,
-                dateTimePicker.Value.ToString(),
+                dateTimePicker.Value.ToShortDateString(),
                 Convert.ToInt32(priceNumericUpDown.Value),
                 new Car("", "", "", CarColor.Grey),
                 new Customer("", "", "", "")
@@ -36,8 +36,32 @@ namespace GarageApp.Forms
             {
                 Callback();
             }
+        }
 
-            Console.WriteLine(employees.CurrentUser.Garage.Jobs.Count);
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            if (descriptionTextBox.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show(
+                    "The job's description can not be empty.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+            else if (priceNumericUpDown.Value == 0)
+            {
+                MessageBox.Show(
+                    "The job's price must be greater than zero.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            SubmitForm();           
 
             this.Hide();
             this.Close();

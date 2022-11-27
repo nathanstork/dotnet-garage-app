@@ -35,7 +35,6 @@
         internal CarColor Color
         {
             get;
-            set;
         }
 
         internal Car(string plate, string model, string brand, CarColor color)

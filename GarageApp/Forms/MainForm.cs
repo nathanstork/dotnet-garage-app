@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,6 +36,9 @@ namespace GarageApp.Forms
             jobsListBox.Items.Clear();
 
             List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
+
+            if (jobs.Count == 0) removeJobButton.Enabled = false;
+
             jobs.ForEach(job =>
             {
                 Console.WriteLine(job.Description);
@@ -48,11 +52,10 @@ namespace GarageApp.Forms
         {
             SetJobs();
 
-            if (Entry.CurrentUser.Garage.Jobs.Count == 0) removeJobButton.Enabled = false;
 
             if (Entry.CurrentUser.GetType().Name == "Manager")
             {
-                List<Mechanic> mechanics = Entry.CurrentUser.GetMechanics();
+                List<Mechanic> mechanics = Entry.CurrentUser.Mechanics;
                 mechanics.ForEach(mechanic =>
                 {
                     mechanicsListBox.Items.Add(mechanic.Name);
@@ -61,7 +64,7 @@ namespace GarageApp.Forms
 
             foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
-                jobStatusComboBox.Items.Add(status.ToString());
+                jobStatusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
             }
         }
 
@@ -137,8 +140,18 @@ namespace GarageApp.Forms
             List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
             Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
 
-            RemoveJobForm removeJobForm = new RemoveJobForm(selectedJob, SetJobs);
-            removeJobForm.ShowDialog();
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to remove this job?\nThis action can not be reversed.",
+                "Job deletion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Entry.CurrentUser.Garage.Jobs.Remove(selectedJob);
+                SetJobs();
+            }
         }
     }
 }
