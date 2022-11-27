@@ -52,7 +52,6 @@ namespace GarageApp.Forms
         {
             SetJobs();
 
-
             if (Entry.CurrentUser.GetType().Name == "Manager")
             {
                 List<Mechanic> mechanics = Entry.CurrentUser.Mechanics;
@@ -94,13 +93,14 @@ namespace GarageApp.Forms
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            removeJobButton.Enabled = true;
-
             List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
             Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
 
+            Console.WriteLine(jobStatusComboBox.SelectedIndex);
+
             if (selectedJob != null)
             {
+                removeJobButton.Enabled = true;
                 UpdateJobDetails(selectedJob);
             }
             else
@@ -108,7 +108,7 @@ namespace GarageApp.Forms
                 jobDetailsDateLabel.Text = "";
                 jobDescriptionTextBox.Text = "";
                 jobPriceTextBox.Text = "";
-                jobStatusComboBox.SelectedIndex = 0;
+                jobStatusComboBox.SelectedIndex = -1;
             }
         }
 
