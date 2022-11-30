@@ -151,7 +151,20 @@ namespace GarageApp.Forms
             {
                 Entry.CurrentUser.Garage.Jobs.Remove(selectedJob);
                 SetJobs();
+                // TODO: Reset details values if the removed job was selected
             }
+        }
+
+        private void changeContractButton_Click(object sender, EventArgs e)
+        {
+            ContractForm contractForm = new ContractForm();
+            contractForm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            NoteForm noteForm = new NoteForm();
+            noteForm.ShowDialog();
         }
     }
 }
