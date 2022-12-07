@@ -13,7 +13,7 @@ namespace GarageApp.Forms
 {
     public partial class NoteForm : Form
     {
-        public NoteForm(string? note)
+        public NoteForm(string? note = null)
         {
             InitializeComponent();
 

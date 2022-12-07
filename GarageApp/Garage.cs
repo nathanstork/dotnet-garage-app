@@ -9,9 +9,9 @@
 
         private Garage()
         {
-            Jobs.Add(new Job("Test description", "23/11/2022", 1200, new Car("plate", "model", "brand", CarColor.Navy), new Customer("name", "address", "email@gmail.nl", "+31 0612345678")));
+            /*Jobs.Add(new Job("Test description", "23/11/2022", 1200, new Car("plate", "model", "brand", CarColor.Navy), new Customer("name", "address", "email@gmail.nl", "+31 0612345678")));
             Jobs.Add(new Job("Test description 2", "23/11/2022", 1200, new Car("plate", "model", "brand", CarColor.Navy), new Customer("name", "address", "email@gmail.nl", "+31 0612345678")));
-            Jobs.Add(new Job("Test description 3", "23/11/2022", 1200, new Car("plate", "model", "brand", CarColor.Navy), new Customer("name", "address", "email@gmail.nl", "+31 0612345678")));
+            Jobs.Add(new Job("Test description 3", "23/11/2022", 1200, new Car("plate", "model", "brand", CarColor.Navy), new Customer("name", "address", "email@gmail.nl", "+31 0612345678")));*/
         }
 
         internal static Garage GetInstance()

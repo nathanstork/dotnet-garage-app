@@ -1,5 +1,6 @@
 ﻿using GarageApp.Contracts;
 using GarageApp.Users;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -25,7 +26,9 @@ namespace GarageApp
             Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
             Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
 
-            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));*/
+            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));
+            Managers.Add(new Manager("admin", "password", "Admin", "Unknown", Mechanics));*/
+
 
 
             // Get mechanics and managers form local file, if it exists
@@ -34,6 +37,11 @@ namespace GarageApp
                 ValueTuple<List<Mechanic>, List<Manager>> data = LoadData();
                 Mechanics = data.Item1;
                 Managers = data.Item2;
+            }
+            else
+            {
+                // Always add admin user
+                Managers.Add(new Manager("admin", "password", "Admin", "Unknown", Mechanics));
             }
         }
 
@@ -74,10 +82,12 @@ namespace GarageApp
             });
 
             // Admin credentials
-            if (user == "admin" & pass == "password")
+            /*if (user == "admin" & pass == "password")
             {
+                Garage garageInstance = 
                 CurrentUser = new Manager(user, pass, "Admin", "Unknown", Mechanics);
-            }
+                // TODO: Add all jobs to new Garage class instance
+            }*/
 
             if (CurrentUser == null) throw new Exception("Incorrect credentials. Please try again.");
         }

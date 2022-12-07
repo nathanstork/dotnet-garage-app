@@ -41,6 +41,8 @@
             get;
         }
 
+        internal List<String> Notes = new List<String>();
+
         internal Job(string description, string date, int price, Car car, Customer customer)
         {
             Status = JobStatus.Unassigned;

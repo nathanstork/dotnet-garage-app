@@ -91,6 +91,18 @@ namespace GarageApp.Forms
             jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(job.Status.ToString());
         }
 
+        private void ResetJobFields()
+        {
+            jobStatusComboBox.SelectedIndex = -1;
+            jobStatusComboBox.Enabled = false;
+            jobPriceTextBox.Text = string.Empty;
+            jobDescriptionTextBox.Text = string.Empty;
+            jobDescriptionTextBox.Enabled = false;
+            notesListBox.Items.Clear();
+            removeJobButton.Enabled = false;
+            addNoteButton.Enabled = false;
+        }
+
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
@@ -100,11 +112,15 @@ namespace GarageApp.Forms
 
             if (selectedJob != null)
             {
+                jobStatusComboBox.Enabled = true;
+                jobDescriptionTextBox.Enabled = true;
                 removeJobButton.Enabled = true;
+                addNoteButton.Enabled = true;
                 UpdateJobDetails(selectedJob);
             }
             else
             {
+                Console.WriteLine("Selected job is null!");
                 jobDetailsDateLabel.Text = "";
                 jobDescriptionTextBox.Text = "";
                 jobPriceTextBox.Text = "";
@@ -125,7 +141,7 @@ namespace GarageApp.Forms
             }
             else
             {
-                // Set empty values
+                // Set empty values?
             }
         }
 
@@ -151,7 +167,7 @@ namespace GarageApp.Forms
             {
                 Entry.CurrentUser.Garage.Jobs.Remove(selectedJob);
                 SetJobs();
-                // TODO: Reset details values if the removed job was selected
+                ResetJobFields();
             }
         }
 
@@ -161,10 +177,15 @@ namespace GarageApp.Forms
             contractForm.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void addNoteButton_Click(object sender, EventArgs e)
         {
             NoteForm noteForm = new NoteForm();
             noteForm.ShowDialog();
+        }
+
+        private void removeNoteButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

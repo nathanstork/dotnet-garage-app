@@ -55,8 +55,8 @@
             this.mechanicJobsLabel = new System.Windows.Forms.Label();
             this.mechanicJobsListBox = new System.Windows.Forms.ListBox();
             this.jobDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.removeNoteButton = new System.Windows.Forms.Button();
+            this.addNoteButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.notesListBox = new System.Windows.Forms.ListBox();
             this.jobStatusComboBox = new System.Windows.Forms.ComboBox();
@@ -341,8 +341,8 @@
             this.jobDetailsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.jobDetailsGroupBox.Controls.Add(this.button3);
-            this.jobDetailsGroupBox.Controls.Add(this.button2);
+            this.jobDetailsGroupBox.Controls.Add(this.removeNoteButton);
+            this.jobDetailsGroupBox.Controls.Add(this.addNoteButton);
             this.jobDetailsGroupBox.Controls.Add(this.label2);
             this.jobDetailsGroupBox.Controls.Add(this.notesListBox);
             this.jobDetailsGroupBox.Controls.Add(this.jobStatusComboBox);
@@ -362,28 +362,29 @@
             this.jobDetailsGroupBox.TabStop = false;
             this.jobDetailsGroupBox.Text = "Job";
             // 
-            // button3
+            // removeNoteButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(578, 223);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 29);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
+            this.removeNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeNoteButton.Enabled = false;
+            this.removeNoteButton.Location = new System.Drawing.Point(578, 223);
+            this.removeNoteButton.Name = "removeNoteButton";
+            this.removeNoteButton.Size = new System.Drawing.Size(76, 29);
+            this.removeNoteButton.TabIndex = 19;
+            this.removeNoteButton.Text = "Remove";
+            this.removeNoteButton.UseVisualStyleBackColor = true;
+            this.removeNoteButton.Click += new System.EventHandler(this.removeNoteButton_Click);
             // 
-            // button2
+            // addNoteButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(578, 188);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 29);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.addNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addNoteButton.Enabled = false;
+            this.addNoteButton.Location = new System.Drawing.Point(578, 188);
+            this.addNoteButton.Name = "addNoteButton";
+            this.addNoteButton.Size = new System.Drawing.Size(76, 29);
+            this.addNoteButton.TabIndex = 18;
+            this.addNoteButton.Text = "Add";
+            this.addNoteButton.UseVisualStyleBackColor = true;
+            this.addNoteButton.Click += new System.EventHandler(this.addNoteButton_Click);
             // 
             // label2
             // 
@@ -407,6 +408,7 @@
             // 
             // jobStatusComboBox
             // 
+            this.jobStatusComboBox.Enabled = false;
             this.jobStatusComboBox.FormattingEnabled = true;
             this.jobStatusComboBox.Location = new System.Drawing.Point(100, 20);
             this.jobStatusComboBox.Name = "jobStatusComboBox";
@@ -481,6 +483,7 @@
             this.jobDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.jobDescriptionTextBox.Enabled = false;
             this.jobDescriptionTextBox.Location = new System.Drawing.Point(100, 87);
             this.jobDescriptionTextBox.Multiline = true;
             this.jobDescriptionTextBox.Name = "jobDescriptionTextBox";
@@ -577,7 +580,7 @@
         private Button button1;
         private Label label2;
         private ListBox notesListBox;
-        private Button button2;
-        private Button button3;
+        private Button addNoteButton;
+        private Button removeNoteButton;
     }
 }
