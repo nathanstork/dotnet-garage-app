@@ -405,6 +405,7 @@
             this.notesListBox.Name = "notesListBox";
             this.notesListBox.Size = new System.Drawing.Size(472, 64);
             this.notesListBox.TabIndex = 16;
+            this.notesListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notesListBox_MouseDoubleClick);
             // 
             // jobStatusComboBox
             // 

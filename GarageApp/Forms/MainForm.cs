@@ -89,6 +89,10 @@ namespace GarageApp.Forms
             jobDescriptionTextBox.Text = job.Description;
             jobPriceTextBox.Text = job.Price.ToString();
             jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(job.Status.ToString());
+            job.Notes.ForEach(note =>
+            {
+                notesListBox.Items.Add(note);
+            });
         }
 
         private void ResetJobFields()
@@ -101,14 +105,13 @@ namespace GarageApp.Forms
             notesListBox.Items.Clear();
             removeJobButton.Enabled = false;
             addNoteButton.Enabled = false;
+            notesListBox.Items.Clear();
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
             Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
-
-            Console.WriteLine(jobStatusComboBox.SelectedIndex);
 
             if (selectedJob != null)
             {
@@ -179,13 +182,39 @@ namespace GarageApp.Forms
 
         private void addNoteButton_Click(object sender, EventArgs e)
         {
-            NoteForm noteForm = new NoteForm();
+            List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
+            Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
+
+            NoteForm noteForm = new NoteForm(selectedJob);
             noteForm.ShowDialog();
         }
 
         private void removeNoteButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(notesListBox.SelectedItem);
+            //String selectedNote = notesListBox.SelectedItem
 
+            /*if (selectedMechanic != null)
+            {
+                Console.WriteLine(selectedMechanic.Name);
+                Console.WriteLine(selectedMechanic.Address);
+                Console.WriteLine(selectedMechanic.Contract);
+                Console.WriteLine("----------");
+            }
+            else
+            {
+                // Set empty values?
+            }*/
+        }
+
+        private void notesListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = notesListBox.IndexFromPoint(e.Location);
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+                NoteForm noteForm = new NoteForm(null, notesListBox.Items[index].ToString());
+                noteForm.ShowDialog();
+            }
         }
     }
 }
