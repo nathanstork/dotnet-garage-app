@@ -26,5 +26,11 @@ namespace GarageApp.Users
         {
             job.Status = status;
         }
+
+        // Override display member with Name property
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

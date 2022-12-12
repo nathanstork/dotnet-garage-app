@@ -52,5 +52,11 @@
             Car = car;
             Customer = customer;
         }
+
+        // Override display member with Description property
+        public override string ToString()
+        {
+            return Date + " - " + Description;
+        }
     }
 }

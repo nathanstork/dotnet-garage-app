@@ -33,38 +33,32 @@ namespace GarageApp.Forms
 
         private void SetJobs()
         {
-            jobsListBox.Items.Clear();
-
             List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
 
-            if (jobs.Count == 0) removeJobButton.Enabled = false;
+            BindingSource jobsBinding = new BindingSource();
+            jobsBinding.DataSource = jobs;
 
-            jobs.ForEach(job =>
-            {
-                Console.WriteLine(job.Description);
-                jobsListBox.Items.Add(job.Description);
-            });
-
-            removeJobButton.Enabled = false;
+            jobsListBox.DataSource = jobsBinding;
         }
 
         private void SetupForm()
         {
-            SetJobs();
-
             if (Entry.CurrentUser.GetType().Name == "Manager")
             {
                 List<Mechanic> mechanics = Entry.CurrentUser.Mechanics;
-                mechanics.ForEach(mechanic =>
-                {
-                    mechanicsListBox.Items.Add(mechanic.Name);
-                });
+
+                BindingSource mechanicsBinding = new BindingSource();
+                mechanicsBinding.DataSource = mechanics;
+
+                mechanicsListBox.DataSource = mechanicsBinding;
             }
 
             foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
                 jobStatusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
             }
+
+            SetJobs();
         }
 
         // Save employees data before window closes
@@ -85,14 +79,21 @@ namespace GarageApp.Forms
 
         private void UpdateJobDetails(Job job)
         {
+            Console.WriteLine("Update job details!");
             jobDetailsDateLabel.Text = job.Date;
             jobDescriptionTextBox.Text = job.Description;
             jobPriceTextBox.Text = job.Price.ToString();
             jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(job.Status.ToString());
-            job.Notes.ForEach(note =>
+
+            BindingSource notesBinding = new BindingSource();
+            notesBinding.DataSource = job.Notes;
+
+            notesListBox.DataSource = notesBinding;
+
+            /*job.Notes.ForEach(note =>
             {
                 notesListBox.Items.Add(note);
-            });
+            });*/
         }
 
         private void ResetJobFields()
@@ -102,38 +103,43 @@ namespace GarageApp.Forms
             jobPriceTextBox.Text = string.Empty;
             jobDescriptionTextBox.Text = string.Empty;
             jobDescriptionTextBox.Enabled = false;
-            notesListBox.Items.Clear();
+            notesListBox.DataSource = null;
             removeJobButton.Enabled = false;
             addNoteButton.Enabled = false;
-            notesListBox.Items.Clear();
+            notesListBox.DataSource = null;
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
-            Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
+            if (jobsListBox.SelectedIndex == -1)
+            {
+                ResetJobFields();
+                return;
+            }
 
-            if (selectedJob != null)
-            {
-                jobStatusComboBox.Enabled = true;
-                jobDescriptionTextBox.Enabled = true;
-                removeJobButton.Enabled = true;
-                addNoteButton.Enabled = true;
-                UpdateJobDetails(selectedJob);
-            }
-            else
-            {
-                Console.WriteLine("Selected job is null!");
-                jobDetailsDateLabel.Text = "";
-                jobDescriptionTextBox.Text = "";
-                jobPriceTextBox.Text = "";
-                jobStatusComboBox.SelectedIndex = -1;
-            }
+            jobStatusComboBox.Enabled = true;
+            jobDescriptionTextBox.Enabled = true;
+            removeJobButton.Enabled = true;
+            addNoteButton.Enabled = true;
+
+            Job selectedJob = jobsListBox.SelectedItem as Job;
+            UpdateJobDetails(selectedJob);
         }
 
         private void mechanicsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            Mechanic selectedMechanic = Entry.Mechanics.Find(mechanic => mechanic.Name == mechanicsListBox.SelectedItem);
+            if (mechanicsListBox.SelectedIndex == -1)
+            {
+                // Reset mechanic fields
+                return;
+            }
+
+            // Enable mechanic components
+
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+            // Update mechanic details
+
+            /*Mechanic selectedMechanic = Entry.Mechanics.Find(mechanic => mechanic.Name == mechanicsListBox.SelectedItem);
 
             if (selectedMechanic != null)
             {
@@ -145,7 +151,7 @@ namespace GarageApp.Forms
             else
             {
                 // Set empty values?
-            }
+            }*/
         }
 
         private void addJobButton_Click(object sender, EventArgs e)
@@ -156,8 +162,7 @@ namespace GarageApp.Forms
 
         private void removeJobButton_Click(object sender, EventArgs e)
         {
-            List<Job> jobs = Entry.CurrentUser.Garage.Jobs;
-            Job selectedJob = jobs.Find(job => job.Description == jobsListBox.SelectedItem);
+            Job selectedJob = jobsListBox.SelectedItem as Job;
 
             DialogResult result = MessageBox.Show(
                 "Are you sure you want to remove this job?\nThis action can not be reversed.",
@@ -170,7 +175,14 @@ namespace GarageApp.Forms
             {
                 Entry.CurrentUser.Garage.Jobs.Remove(selectedJob);
                 SetJobs();
-                ResetJobFields();
+                if (jobsListBox.Items.Count == 0)
+                {
+                    ResetJobFields();
+                }
+                else
+                {
+                    UpdateJobDetails(jobsListBox.SelectedValue as Job);
+                }
             }
         }
 
