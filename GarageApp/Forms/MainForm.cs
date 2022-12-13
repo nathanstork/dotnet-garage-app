@@ -80,7 +80,8 @@ namespace GarageApp.Forms
         private void UpdateJobDetails(Job job)
         {
             Console.WriteLine("Update job details!");
-            jobDetailsDateLabel.Text = job.Date;
+
+            jobDateLabel.Text = job.Date;
             jobDescriptionTextBox.Text = job.Description;
             jobPriceTextBox.Text = job.Price.ToString();
             jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(job.Status.ToString());
@@ -89,24 +90,50 @@ namespace GarageApp.Forms
             notesBinding.DataSource = job.Notes;
 
             notesListBox.DataSource = notesBinding;
+        }
 
-            /*job.Notes.ForEach(note =>
-            {
-                notesListBox.Items.Add(note);
-            });*/
+        private void UpdateMechanicDetails(Mechanic mechanic)
+        {
+            Console.WriteLine("Update mechanic details!");
+
+            mechanicNameTextBox.Text = mechanic.Name;
+            mechanicAddressTextBox.Text = mechanic.Address;
+            salaryTextBox.Text = mechanic.Contract.Salary.ToString();
+            hoursTextBox.Text = mechanic.Contract.Hours.ToString();
+
+            BindingSource mechanicJobsBinding = new BindingSource();
+            mechanicJobsBinding.DataSource = mechanic.Jobs;
+
+            mechanicJobsListBox.DataSource = mechanicJobsBinding;
         }
 
         private void ResetJobFields()
         {
-            jobStatusComboBox.SelectedIndex = -1;
-            jobStatusComboBox.Enabled = false;
+            jobDateLabel.Text = string.Empty;
             jobPriceTextBox.Text = string.Empty;
             jobDescriptionTextBox.Text = string.Empty;
-            jobDescriptionTextBox.Enabled = false;
+
+            jobStatusComboBox.SelectedIndex = -1;
             notesListBox.DataSource = null;
+
+            jobStatusComboBox.Enabled = false;
+            jobDescriptionTextBox.Enabled = false;
             removeJobButton.Enabled = false;
             addNoteButton.Enabled = false;
-            notesListBox.DataSource = null;
+        }
+
+        private void ResetMechanicFields()
+        {
+            mechanicNameTextBox.Text = string.Empty;
+            mechanicAddressTextBox.Text = string.Empty;
+            salaryTextBox.Text = string.Empty;
+            hoursTextBox.Text = string.Empty;
+
+            mechanicJobsListBox.DataSource = null;
+
+            mechanicNameTextBox.Enabled = false;
+            mechanicAddressTextBox.Enabled = false;
+            changeContractButton.Enabled = false;
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -130,28 +157,16 @@ namespace GarageApp.Forms
         {
             if (mechanicsListBox.SelectedIndex == -1)
             {
-                // Reset mechanic fields
+                ResetMechanicFields();
                 return;
             }
 
-            // Enable mechanic components
+            mechanicNameTextBox.Enabled = true;
+            mechanicAddressTextBox.Enabled = true;
+            changeContractButton.Enabled = true;
 
             Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
-            // Update mechanic details
-
-            /*Mechanic selectedMechanic = Entry.Mechanics.Find(mechanic => mechanic.Name == mechanicsListBox.SelectedItem);
-
-            if (selectedMechanic != null)
-            {
-                Console.WriteLine(selectedMechanic.Name);
-                Console.WriteLine(selectedMechanic.Address);
-                Console.WriteLine(selectedMechanic.Contract);
-                Console.WriteLine("----------");
-            }
-            else
-            {
-                // Set empty values?
-            }*/
+            UpdateMechanicDetails(selectedMechanic);
         }
 
         private void addJobButton_Click(object sender, EventArgs e)
@@ -227,6 +242,33 @@ namespace GarageApp.Forms
                 NoteForm noteForm = new NoteForm(null, notesListBox.Items[index].ToString());
                 noteForm.ShowDialog();
             }
+        }
+
+        private void mechanicJobsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mechanicJobsListBox.SelectedIndex == -1)
+            {
+                unassignJobButton.Enabled = false;
+                return;
+            }
+
+            unassignJobButton.Enabled = true;
+        }
+
+        private void assignJobButton_Click(object sender, EventArgs e)
+        {
+            Job selectedJob = jobsListBox.SelectedItem as Job;
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+
+            selectedMechanic.Jobs.Add(selectedJob);
+        }
+
+        private void unassignJobButton_Click(object sender, EventArgs e)
+        {
+            Job selectedJob = mechanicJobsListBox.SelectedItem as Job;
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+
+            selectedMechanic.Jobs.Remove(selectedJob);
         }
     }
 }
