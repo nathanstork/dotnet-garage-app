@@ -120,6 +120,7 @@ namespace GarageApp.Forms
             jobDescriptionTextBox.Enabled = false;
             removeJobButton.Enabled = false;
             addNoteButton.Enabled = false;
+            assignJobButton.Enabled = false;
         }
 
         private void ResetMechanicFields()
@@ -148,9 +149,10 @@ namespace GarageApp.Forms
             jobDescriptionTextBox.Enabled = true;
             removeJobButton.Enabled = true;
             addNoteButton.Enabled = true;
+            assignJobButton.Enabled = true;
 
             Job selectedJob = jobsListBox.SelectedItem as Job;
-            UpdateJobDetails(selectedJob);
+            if (selectedJob != null) UpdateJobDetails(selectedJob);
         }
 
         private void mechanicsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -166,7 +168,7 @@ namespace GarageApp.Forms
             changeContractButton.Enabled = true;
 
             Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
-            UpdateMechanicDetails(selectedMechanic);
+            if (selectedMechanic != null) UpdateMechanicDetails(selectedMechanic);
         }
 
         private void addJobButton_Click(object sender, EventArgs e)
@@ -249,18 +251,33 @@ namespace GarageApp.Forms
             if (mechanicJobsListBox.SelectedIndex == -1)
             {
                 unassignJobButton.Enabled = false;
+                mechanicJobsListBox.DataSource = null;
                 return;
             }
 
             unassignJobButton.Enabled = true;
+
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+
+            BindingSource mechanicJobsBinding = new BindingSource();
+            mechanicJobsBinding.DataSource = selectedMechanic.Jobs;
+
+            mechanicJobsListBox.DataSource = mechanicJobsBinding;
         }
 
         private void assignJobButton_Click(object sender, EventArgs e)
         {
-            Job selectedJob = jobsListBox.SelectedItem as Job;
-            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+            // Validate if job is not already in list
 
-            selectedMechanic.Jobs.Add(selectedJob);
+            Console.WriteLine("Assign job!");
+            Job selectedJob = jobsListBox.SelectedItem as Job;
+            Console.WriteLine(selectedJob.ToString());
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+            Console.WriteLine(selectedMechanic.ToString());
+
+            if (selectedMechanic != null) selectedMechanic.Jobs.Add(selectedJob);
+
+            // Refresh mechanic jobs list
         }
 
         private void unassignJobButton_Click(object sender, EventArgs e)
@@ -268,7 +285,7 @@ namespace GarageApp.Forms
             Job selectedJob = mechanicJobsListBox.SelectedItem as Job;
             Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
 
-            selectedMechanic.Jobs.Remove(selectedJob);
+            if (selectedMechanic != null) selectedMechanic.Jobs.Remove(selectedJob);
         }
     }
 }
