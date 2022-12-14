@@ -10,5 +10,10 @@
   <ItemGroup>
     <InternalsVisibleTo Include="GarageAppTests" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Forms\MechanicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 
 </Project>

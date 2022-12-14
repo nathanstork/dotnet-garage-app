@@ -17,14 +17,23 @@ namespace GarageApp
             {
                 employees.LogIn(userTextBox.Text, passTextBox.Text);
 
-                // Close current window and open new UI.
-                MechanicForm testForm = new MechanicForm("Logged in as " + employees.CurrentUser.Name);
+                if (employees.CurrentUser.GetType().Name == "Manager")
+                {
+                    ManagerForm managerForm = new ManagerForm("Logged in as " + employees.CurrentUser.Name);
+                    managerForm.ShowDialog();
+                }
+                else
+                {
+                    MechanicForm mechanicForm = new MechanicForm("Logged in as " + employees.CurrentUser.Name);
+                    mechanicForm.ShowDialog();
+                }
+
                 this.Hide();
-                testForm.ShowDialog();
                 this.Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 errorLabel.Text = ex.Message;
             }
         }

@@ -41,7 +41,29 @@
             get;
         }
 
-        internal List<String> Notes = new List<String>();
+        internal string Notes
+        {
+            get;
+            set;
+        }
+
+        internal int Costs
+        {
+            get;
+            set;
+        }
+
+        internal int Hours
+        {
+            get;
+            set;
+        }
+
+        internal string CompletedBy
+        {
+            get;
+            set;
+        }
 
         internal Job(string description, string date, int price, Car car, Customer customer)
         {

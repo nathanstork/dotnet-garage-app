@@ -1,6 +1,6 @@
 ﻿namespace GarageApp.Forms
 {
-    partial class MechanicForm
+    partial class ManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MechanicForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerForm));
             this.userLabel = new System.Windows.Forms.Label();
             this.jobsListBox = new System.Windows.Forms.ListBox();
             this.jobsLabel = new System.Windows.Forms.Label();
@@ -339,7 +339,6 @@
             this.mechanicJobsListBox.Name = "mechanicJobsListBox";
             this.mechanicJobsListBox.Size = new System.Drawing.Size(336, 124);
             this.mechanicJobsListBox.TabIndex = 10;
-            this.mechanicJobsListBox.SelectedIndexChanged += new System.EventHandler(this.mechanicJobsListBox_SelectedIndexChanged);
             // 
             // jobDetailsGroupBox
             // 
@@ -514,7 +513,7 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Garage App v1.0";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagerForm_FormClosing);
             this.detailsGroupBox.ResumeLayout(false);
             this.mechanicDetailsGroupBox2.ResumeLayout(false);
             this.mechanicDetailsGroupBox2.PerformLayout();

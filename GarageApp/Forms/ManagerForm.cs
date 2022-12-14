@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace GarageApp.Forms
 {
-    public partial class MechanicForm : Form
+    public partial class ManagerForm : Form
     {
         readonly Employees Entry;
 
-        public MechanicForm(string? label)
+        public ManagerForm(string? label)
         {
             Entry = Employees.GetInstance();
 
@@ -43,15 +43,12 @@ namespace GarageApp.Forms
 
         private void SetupForm()
         {
-            if (Entry.CurrentUser.GetType().Name == "Manager")
-            {
-                List<Mechanic> mechanics = Entry.CurrentUser.Mechanics;
+            List<Mechanic> mechanics = Entry.CurrentUser.Mechanics;
 
-                BindingSource mechanicsBinding = new BindingSource();
-                mechanicsBinding.DataSource = mechanics;
+            BindingSource mechanicsBinding = new BindingSource();
+            mechanicsBinding.DataSource = mechanics;
 
-                mechanicsListBox.DataSource = mechanicsBinding;
-            }
+            mechanicsListBox.DataSource = mechanicsBinding;
 
             foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
@@ -62,7 +59,7 @@ namespace GarageApp.Forms
         }
 
         // Save employees data before window closes
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void ManagerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Entry.SaveData();
         }
@@ -153,6 +150,11 @@ namespace GarageApp.Forms
 
             Job selectedJob = jobsListBox.SelectedItem as Job;
             if (selectedJob != null) UpdateJobDetails(selectedJob);
+
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+            if (selectedMechanic == null) return;
+
+
         }
 
         private void mechanicsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -246,9 +248,14 @@ namespace GarageApp.Forms
             }
         }
 
-        private void mechanicJobsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateMechanicJobs(Mechanic selectedMechanic)
         {
-            if (mechanicJobsListBox.SelectedIndex == -1)
+            BindingSource mechanicJobsBinding = new BindingSource();
+            mechanicJobsBinding.DataSource = selectedMechanic.Jobs;
+
+            mechanicJobsListBox.DataSource = mechanicJobsBinding;
+
+            if (mechanicJobsListBox.Items.Count == 0)
             {
                 unassignJobButton.Enabled = false;
                 mechanicJobsListBox.DataSource = null;
@@ -256,36 +263,33 @@ namespace GarageApp.Forms
             }
 
             unassignJobButton.Enabled = true;
-
-            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
-
-            BindingSource mechanicJobsBinding = new BindingSource();
-            mechanicJobsBinding.DataSource = selectedMechanic.Jobs;
-
-            mechanicJobsListBox.DataSource = mechanicJobsBinding;
         }
 
         private void assignJobButton_Click(object sender, EventArgs e)
         {
-            // Validate if job is not already in list
-
             Console.WriteLine("Assign job!");
+
             Job selectedJob = jobsListBox.SelectedItem as Job;
-            Console.WriteLine(selectedJob.ToString());
             Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
-            Console.WriteLine(selectedMechanic.ToString());
 
-            if (selectedMechanic != null) selectedMechanic.Jobs.Add(selectedJob);
+            if (selectedJob == null || selectedMechanic == null) return;
+            
+            if (!selectedMechanic.Jobs.Contains(selectedJob)) selectedMechanic.Jobs.Add(selectedJob);
 
-            // Refresh mechanic jobs list
+            UpdateMechanicJobs(selectedMechanic);
         }
 
         private void unassignJobButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Unassign job!");
+
             Job selectedJob = mechanicJobsListBox.SelectedItem as Job;
             Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
 
-            if (selectedMechanic != null) selectedMechanic.Jobs.Remove(selectedJob);
-        }
+
+            if (selectedJob != null && selectedMechanic != null) selectedMechanic.Jobs.Remove(selectedJob);
+
+            if (selectedMechanic != null) UpdateMechanicJobs(selectedMechanic);
+        }        
     }
 }
