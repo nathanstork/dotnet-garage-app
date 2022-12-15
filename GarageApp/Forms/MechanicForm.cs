@@ -49,8 +49,10 @@ namespace GarageApp.Forms
         {
             foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
-                if (status == JobStatus.Unassigned) return;
-                statusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
+                if (status != JobStatus.Unassigned)
+                {
+                    statusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
+                }
             }
 
             SetJobs();

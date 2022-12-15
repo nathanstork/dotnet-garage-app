@@ -9,6 +9,12 @@ namespace GarageApp
             InitializeComponent();
         }
 
+        private void CloseForm()
+        {
+            this.Hide();
+            this.Close();
+        }
+
         private void SubmitForm()
         {
             Employees employees = Employees.GetInstance();
@@ -16,6 +22,8 @@ namespace GarageApp
             try
             {
                 employees.LogIn(userTextBox.Text, passTextBox.Text);
+
+                this.Hide();
 
                 if (employees.CurrentUser.GetType().Name == "Manager")
                 {
@@ -28,7 +36,6 @@ namespace GarageApp
                     mechanicForm.ShowDialog();
                 }
 
-                this.Hide();
                 this.Close();
             }
             catch (Exception ex)
