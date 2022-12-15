@@ -81,7 +81,20 @@ namespace GarageApp.Forms
             jobDateLabel.Text = job.Date;
             jobDescriptionTextBox.Text = job.Description;
             jobPriceTextBox.Text = job.Price.ToString();
-            jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(job.Status.ToString());
+
+            // TODO: If job status is unassigned, enable assign button
+            // TODO: If job status is assigned, enable unasign button
+            string jobStatus = Regex.Replace(job.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
+            jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(jobStatus);
+
+            if (jobStatusComboBox.SelectedText.Replace(" ", "") == JobStatus.Unassigned.ToString())
+            {
+                assignJobButton.Enabled = true;
+            }
+            else
+            {
+                assignJobButton.Enabled = false;
+            }
 
             BindingSource notesBinding = new BindingSource();
             notesBinding.DataSource = job.Notes;
@@ -286,10 +299,32 @@ namespace GarageApp.Forms
             Job selectedJob = mechanicJobsListBox.SelectedItem as Job;
             Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
 
-
             if (selectedJob != null && selectedMechanic != null) selectedMechanic.Jobs.Remove(selectedJob);
 
             if (selectedMechanic != null) UpdateMechanicJobs(selectedMechanic);
-        }        
+        }
+
+        private void mechanicNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+
+            selectedMechanic.Name = mechanicNameTextBox.Text;
+        }
+
+        private void mechanicAddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Mechanic selectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+
+            selectedMechanic.Address = mechanicAddressTextBox.Text;
+        }
+
+        private void jobStatusComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Enum.TryParse(jobStatusComboBox.Text.Replace(" ", ""), out JobStatus status);
+
+            Job selectedJob = jobsListBox.SelectedItem as Job;
+
+            if (selectedJob != null) selectedJob.Status = status;
+        }
     }
 }

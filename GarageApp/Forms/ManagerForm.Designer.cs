@@ -42,19 +42,20 @@
             this.mechanicDetailsGroupBox2 = new System.Windows.Forms.GroupBox();
             this.unassignJobButton = new System.Windows.Forms.Button();
             this.mechanicAddressTextBox = new System.Windows.Forms.TextBox();
-            this.mechanicAddressLabel = new System.Windows.Forms.Label();
-            this.mechanicNameTextBox = new System.Windows.Forms.TextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.assignJobButton = new System.Windows.Forms.Button();
             this.contractGroupBox = new System.Windows.Forms.GroupBox();
             this.hoursTextBox = new System.Windows.Forms.TextBox();
             this.salaryTextBox = new System.Windows.Forms.TextBox();
             this.hoursTextLabel = new System.Windows.Forms.Label();
             this.salaryTextLabel = new System.Windows.Forms.Label();
             this.changeContractButton = new System.Windows.Forms.Button();
+            this.mechanicAddressLabel = new System.Windows.Forms.Label();
+            this.mechanicNameTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.assignJobButton = new System.Windows.Forms.Button();
             this.mechanicJobsLabel = new System.Windows.Forms.Label();
             this.mechanicJobsListBox = new System.Windows.Forms.ListBox();
             this.jobDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.removeNoteButton = new System.Windows.Forms.Button();
             this.addNoteButton = new System.Windows.Forms.Button();
             this.notesLabel = new System.Windows.Forms.Label();
@@ -68,6 +69,8 @@
             this.jobDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.jobDateTextLabel = new System.Windows.Forms.Label();
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fireButton = new System.Windows.Forms.Button();
+            this.hireButton = new System.Windows.Forms.Button();
             this.detailsGroupBox.SuspendLayout();
             this.mechanicDetailsGroupBox2.SuspendLayout();
             this.contractGroupBox.SuspendLayout();
@@ -92,7 +95,7 @@
             this.jobsListBox.ItemHeight = 20;
             this.jobsListBox.Location = new System.Drawing.Point(22, 104);
             this.jobsListBox.Name = "jobsListBox";
-            this.jobsListBox.Size = new System.Drawing.Size(224, 184);
+            this.jobsListBox.Size = new System.Drawing.Size(224, 244);
             this.jobsListBox.TabIndex = 2;
             this.jobsListBox.SelectedValueChanged += new System.EventHandler(this.jobsListBox_SelectedValueChanged);
             // 
@@ -120,9 +123,9 @@
             this.mechanicsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.mechanicsListBox.FormattingEnabled = true;
             this.mechanicsListBox.ItemHeight = 20;
-            this.mechanicsListBox.Location = new System.Drawing.Point(22, 358);
+            this.mechanicsListBox.Location = new System.Drawing.Point(22, 413);
             this.mechanicsListBox.Name = "mechanicsListBox";
-            this.mechanicsListBox.Size = new System.Drawing.Size(224, 184);
+            this.mechanicsListBox.Size = new System.Drawing.Size(224, 244);
             this.mechanicsListBox.TabIndex = 5;
             this.mechanicsListBox.SelectedValueChanged += new System.EventHandler(this.mechanicsListBox_SelectedValueChanged);
             // 
@@ -130,7 +133,7 @@
             // 
             this.mechanicsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.mechanicsLabel.AutoSize = true;
-            this.mechanicsLabel.Location = new System.Drawing.Point(22, 335);
+            this.mechanicsLabel.Location = new System.Drawing.Point(22, 390);
             this.mechanicsLabel.Name = "mechanicsLabel";
             this.mechanicsLabel.Size = new System.Drawing.Size(78, 20);
             this.mechanicsLabel.TabIndex = 6;
@@ -139,7 +142,7 @@
             // addJobButton
             // 
             this.addJobButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addJobButton.Location = new System.Drawing.Point(22, 294);
+            this.addJobButton.Location = new System.Drawing.Point(22, 354);
             this.addJobButton.Name = "addJobButton";
             this.addJobButton.Size = new System.Drawing.Size(100, 29);
             this.addJobButton.TabIndex = 7;
@@ -151,7 +154,7 @@
             // 
             this.removeJobButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.removeJobButton.Enabled = false;
-            this.removeJobButton.Location = new System.Drawing.Point(146, 294);
+            this.removeJobButton.Location = new System.Drawing.Point(146, 354);
             this.removeJobButton.Name = "removeJobButton";
             this.removeJobButton.Size = new System.Drawing.Size(100, 29);
             this.removeJobButton.TabIndex = 8;
@@ -168,7 +171,7 @@
             this.detailsGroupBox.Controls.Add(this.jobDetailsGroupBox);
             this.detailsGroupBox.Location = new System.Drawing.Point(266, 13);
             this.detailsGroupBox.Name = "detailsGroupBox";
-            this.detailsGroupBox.Size = new System.Drawing.Size(703, 529);
+            this.detailsGroupBox.Size = new System.Drawing.Size(703, 679);
             this.detailsGroupBox.TabIndex = 9;
             this.detailsGroupBox.TabStop = false;
             this.detailsGroupBox.Text = "Details";
@@ -180,16 +183,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mechanicDetailsGroupBox2.Controls.Add(this.unassignJobButton);
             this.mechanicDetailsGroupBox2.Controls.Add(this.mechanicAddressTextBox);
+            this.mechanicDetailsGroupBox2.Controls.Add(this.contractGroupBox);
             this.mechanicDetailsGroupBox2.Controls.Add(this.mechanicAddressLabel);
             this.mechanicDetailsGroupBox2.Controls.Add(this.mechanicNameTextBox);
             this.mechanicDetailsGroupBox2.Controls.Add(this.nameLabel);
             this.mechanicDetailsGroupBox2.Controls.Add(this.assignJobButton);
-            this.mechanicDetailsGroupBox2.Controls.Add(this.contractGroupBox);
             this.mechanicDetailsGroupBox2.Controls.Add(this.mechanicJobsLabel);
             this.mechanicDetailsGroupBox2.Controls.Add(this.mechanicJobsListBox);
-            this.mechanicDetailsGroupBox2.Location = new System.Drawing.Point(15, 285);
+            this.mechanicDetailsGroupBox2.Location = new System.Drawing.Point(15, 441);
             this.mechanicDetailsGroupBox2.Name = "mechanicDetailsGroupBox2";
-            this.mechanicDetailsGroupBox2.Size = new System.Drawing.Size(672, 229);
+            this.mechanicDetailsGroupBox2.Size = new System.Drawing.Size(672, 223);
             this.mechanicDetailsGroupBox2.TabIndex = 1;
             this.mechanicDetailsGroupBox2.TabStop = false;
             this.mechanicDetailsGroupBox2.Text = "Mechanic";
@@ -197,7 +200,7 @@
             // unassignJobButton
             // 
             this.unassignJobButton.Enabled = false;
-            this.unassignJobButton.Location = new System.Drawing.Point(444, 185);
+            this.unassignJobButton.Location = new System.Drawing.Point(488, 185);
             this.unassignJobButton.Name = "unassignJobButton";
             this.unassignJobButton.Size = new System.Drawing.Size(120, 29);
             this.unassignJobButton.TabIndex = 21;
@@ -211,49 +214,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mechanicAddressTextBox.Enabled = false;
-            this.mechanicAddressTextBox.Location = new System.Drawing.Point(100, 59);
+            this.mechanicAddressTextBox.Location = new System.Drawing.Point(85, 72);
             this.mechanicAddressTextBox.Name = "mechanicAddressTextBox";
-            this.mechanicAddressTextBox.Size = new System.Drawing.Size(200, 27);
+            this.mechanicAddressTextBox.Size = new System.Drawing.Size(263, 27);
             this.mechanicAddressTextBox.TabIndex = 19;
-            // 
-            // mechanicAddressLabel
-            // 
-            this.mechanicAddressLabel.AutoSize = true;
-            this.mechanicAddressLabel.Location = new System.Drawing.Point(6, 62);
-            this.mechanicAddressLabel.Name = "mechanicAddressLabel";
-            this.mechanicAddressLabel.Size = new System.Drawing.Size(65, 20);
-            this.mechanicAddressLabel.TabIndex = 20;
-            this.mechanicAddressLabel.Text = "Address:";
-            // 
-            // mechanicNameTextBox
-            // 
-            this.mechanicNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mechanicNameTextBox.Enabled = false;
-            this.mechanicNameTextBox.Location = new System.Drawing.Point(100, 26);
-            this.mechanicNameTextBox.Name = "mechanicNameTextBox";
-            this.mechanicNameTextBox.Size = new System.Drawing.Size(200, 27);
-            this.mechanicNameTextBox.TabIndex = 16;
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(6, 29);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(52, 20);
-            this.nameLabel.TabIndex = 16;
-            this.nameLabel.Text = "Name:";
-            // 
-            // assignJobButton
-            // 
-            this.assignJobButton.Location = new System.Drawing.Point(318, 185);
-            this.assignJobButton.Name = "assignJobButton";
-            this.assignJobButton.Size = new System.Drawing.Size(120, 29);
-            this.assignJobButton.TabIndex = 18;
-            this.assignJobButton.Text = "Assign job";
-            this.assignJobButton.UseVisualStyleBackColor = true;
-            this.assignJobButton.Click += new System.EventHandler(this.assignJobButton_Click);
+            this.mechanicAddressTextBox.TextChanged += new System.EventHandler(this.mechanicAddressTextBox_TextChanged);
             // 
             // contractGroupBox
             // 
@@ -262,9 +227,9 @@
             this.contractGroupBox.Controls.Add(this.hoursTextLabel);
             this.contractGroupBox.Controls.Add(this.salaryTextLabel);
             this.contractGroupBox.Controls.Add(this.changeContractButton);
-            this.contractGroupBox.Location = new System.Drawing.Point(6, 92);
+            this.contractGroupBox.Location = new System.Drawing.Point(7, 122);
             this.contractGroupBox.Name = "contractGroupBox";
-            this.contractGroupBox.Size = new System.Drawing.Size(294, 125);
+            this.contractGroupBox.Size = new System.Drawing.Size(350, 92);
             this.contractGroupBox.TabIndex = 17;
             this.contractGroupBox.TabStop = false;
             this.contractGroupBox.Text = "Contract";
@@ -274,10 +239,10 @@
             this.hoursTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.hoursTextBox.Location = new System.Drawing.Point(94, 50);
+            this.hoursTextBox.Location = new System.Drawing.Point(241, 20);
             this.hoursTextBox.Name = "hoursTextBox";
             this.hoursTextBox.ReadOnly = true;
-            this.hoursTextBox.Size = new System.Drawing.Size(192, 27);
+            this.hoursTextBox.Size = new System.Drawing.Size(100, 27);
             this.hoursTextBox.TabIndex = 18;
             // 
             // salaryTextBox
@@ -285,16 +250,16 @@
             this.salaryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.salaryTextBox.Location = new System.Drawing.Point(94, 20);
+            this.salaryTextBox.Location = new System.Drawing.Point(64, 20);
             this.salaryTextBox.Name = "salaryTextBox";
             this.salaryTextBox.ReadOnly = true;
-            this.salaryTextBox.Size = new System.Drawing.Size(192, 27);
+            this.salaryTextBox.Size = new System.Drawing.Size(100, 27);
             this.salaryTextBox.TabIndex = 17;
             // 
             // hoursTextLabel
             // 
             this.hoursTextLabel.AutoSize = true;
-            this.hoursTextLabel.Location = new System.Drawing.Point(7, 53);
+            this.hoursTextLabel.Location = new System.Drawing.Point(184, 24);
             this.hoursTextLabel.Name = "hoursTextLabel";
             this.hoursTextLabel.Size = new System.Drawing.Size(51, 20);
             this.hoursTextLabel.TabIndex = 17;
@@ -312,7 +277,7 @@
             // changeContractButton
             // 
             this.changeContractButton.Enabled = false;
-            this.changeContractButton.Location = new System.Drawing.Point(163, 83);
+            this.changeContractButton.Location = new System.Drawing.Point(218, 52);
             this.changeContractButton.Name = "changeContractButton";
             this.changeContractButton.Size = new System.Drawing.Size(123, 29);
             this.changeContractButton.TabIndex = 10;
@@ -320,10 +285,50 @@
             this.changeContractButton.UseVisualStyleBackColor = true;
             this.changeContractButton.Click += new System.EventHandler(this.changeContractButton_Click);
             // 
+            // mechanicAddressLabel
+            // 
+            this.mechanicAddressLabel.AutoSize = true;
+            this.mechanicAddressLabel.Location = new System.Drawing.Point(6, 75);
+            this.mechanicAddressLabel.Name = "mechanicAddressLabel";
+            this.mechanicAddressLabel.Size = new System.Drawing.Size(65, 20);
+            this.mechanicAddressLabel.TabIndex = 20;
+            this.mechanicAddressLabel.Text = "Address:";
+            // 
+            // mechanicNameTextBox
+            // 
+            this.mechanicNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mechanicNameTextBox.Enabled = false;
+            this.mechanicNameTextBox.Location = new System.Drawing.Point(85, 39);
+            this.mechanicNameTextBox.Name = "mechanicNameTextBox";
+            this.mechanicNameTextBox.Size = new System.Drawing.Size(263, 27);
+            this.mechanicNameTextBox.TabIndex = 16;
+            this.mechanicNameTextBox.TextChanged += new System.EventHandler(this.mechanicNameTextBox_TextChanged);
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(6, 42);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(52, 20);
+            this.nameLabel.TabIndex = 16;
+            this.nameLabel.Text = "Name:";
+            // 
+            // assignJobButton
+            // 
+            this.assignJobButton.Location = new System.Drawing.Point(362, 185);
+            this.assignJobButton.Name = "assignJobButton";
+            this.assignJobButton.Size = new System.Drawing.Size(120, 29);
+            this.assignJobButton.TabIndex = 18;
+            this.assignJobButton.Text = "Assign job";
+            this.assignJobButton.UseVisualStyleBackColor = true;
+            this.assignJobButton.Click += new System.EventHandler(this.assignJobButton_Click);
+            // 
             // mechanicJobsLabel
             // 
             this.mechanicJobsLabel.AutoSize = true;
-            this.mechanicJobsLabel.Location = new System.Drawing.Point(318, 29);
+            this.mechanicJobsLabel.Location = new System.Drawing.Point(362, 29);
             this.mechanicJobsLabel.Name = "mechanicJobsLabel";
             this.mechanicJobsLabel.Size = new System.Drawing.Size(41, 20);
             this.mechanicJobsLabel.TabIndex = 16;
@@ -335,9 +340,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.mechanicJobsListBox.FormattingEnabled = true;
             this.mechanicJobsListBox.ItemHeight = 20;
-            this.mechanicJobsListBox.Location = new System.Drawing.Point(318, 55);
+            this.mechanicJobsListBox.Location = new System.Drawing.Point(362, 55);
             this.mechanicJobsListBox.Name = "mechanicJobsListBox";
-            this.mechanicJobsListBox.Size = new System.Drawing.Size(336, 124);
+            this.mechanicJobsListBox.Size = new System.Drawing.Size(292, 124);
             this.mechanicJobsListBox.TabIndex = 10;
             // 
             // jobDetailsGroupBox
@@ -345,6 +350,7 @@
             this.jobDetailsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.jobDetailsGroupBox.Controls.Add(this.textBox1);
             this.jobDetailsGroupBox.Controls.Add(this.removeNoteButton);
             this.jobDetailsGroupBox.Controls.Add(this.addNoteButton);
             this.jobDetailsGroupBox.Controls.Add(this.notesLabel);
@@ -359,16 +365,29 @@
             this.jobDetailsGroupBox.Controls.Add(this.jobDateTextLabel);
             this.jobDetailsGroupBox.Location = new System.Drawing.Point(15, 23);
             this.jobDetailsGroupBox.Name = "jobDetailsGroupBox";
-            this.jobDetailsGroupBox.Size = new System.Drawing.Size(672, 262);
+            this.jobDetailsGroupBox.Size = new System.Drawing.Size(672, 412);
             this.jobDetailsGroupBox.TabIndex = 0;
             this.jobDetailsGroupBox.TabStop = false;
             this.jobDetailsGroupBox.Text = "Job";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(100, 188);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(554, 95);
+            this.textBox1.TabIndex = 20;
             // 
             // removeNoteButton
             // 
             this.removeNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.removeNoteButton.Enabled = false;
-            this.removeNoteButton.Location = new System.Drawing.Point(578, 223);
+            this.removeNoteButton.Location = new System.Drawing.Point(578, 373);
             this.removeNoteButton.Name = "removeNoteButton";
             this.removeNoteButton.Size = new System.Drawing.Size(76, 29);
             this.removeNoteButton.TabIndex = 19;
@@ -380,7 +399,7 @@
             // 
             this.addNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addNoteButton.Enabled = false;
-            this.addNoteButton.Location = new System.Drawing.Point(578, 188);
+            this.addNoteButton.Location = new System.Drawing.Point(578, 338);
             this.addNoteButton.Name = "addNoteButton";
             this.addNoteButton.Size = new System.Drawing.Size(76, 29);
             this.addNoteButton.TabIndex = 18;
@@ -403,7 +422,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.notesListBox.FormattingEnabled = true;
             this.notesListBox.ItemHeight = 20;
-            this.notesListBox.Location = new System.Drawing.Point(100, 188);
+            this.notesListBox.Location = new System.Drawing.Point(100, 338);
             this.notesListBox.Name = "notesListBox";
             this.notesListBox.Size = new System.Drawing.Size(472, 64);
             this.notesListBox.TabIndex = 16;
@@ -417,6 +436,7 @@
             this.jobStatusComboBox.Name = "jobStatusComboBox";
             this.jobStatusComboBox.Size = new System.Drawing.Size(176, 28);
             this.jobStatusComboBox.TabIndex = 2;
+            this.jobStatusComboBox.SelectedValueChanged += new System.EventHandler(this.jobStatusComboBox_SelectedValueChanged);
             // 
             // jobPriceTextBox
             // 
@@ -492,13 +512,36 @@
             // 
             this.employeesBindingSource.DataSource = typeof(GarageApp.Employees);
             // 
-            // MechanicForm
+            // fireButton
+            // 
+            this.fireButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.fireButton.Enabled = false;
+            this.fireButton.Location = new System.Drawing.Point(146, 663);
+            this.fireButton.Name = "fireButton";
+            this.fireButton.Size = new System.Drawing.Size(100, 29);
+            this.fireButton.TabIndex = 11;
+            this.fireButton.Text = "Fire";
+            this.fireButton.UseVisualStyleBackColor = true;
+            // 
+            // hireButton
+            // 
+            this.hireButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.hireButton.Location = new System.Drawing.Point(22, 663);
+            this.hireButton.Name = "hireButton";
+            this.hireButton.Size = new System.Drawing.Size(100, 29);
+            this.hireButton.TabIndex = 10;
+            this.hireButton.Text = "Hire new";
+            this.hireButton.UseVisualStyleBackColor = true;
+            // 
+            // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(982, 553);
+            this.ClientSize = new System.Drawing.Size(982, 703);
+            this.Controls.Add(this.fireButton);
+            this.Controls.Add(this.hireButton);
             this.Controls.Add(this.detailsGroupBox);
             this.Controls.Add(this.removeJobButton);
             this.Controls.Add(this.addJobButton);
@@ -508,8 +551,10 @@
             this.Controls.Add(this.jobsLabel);
             this.Controls.Add(this.jobsListBox);
             this.Controls.Add(this.userLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MechanicForm";
+            this.MaximizeBox = false;
+            this.Name = "ManagerForm";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Garage App v1.0";
@@ -567,5 +612,8 @@
         private ListBox notesListBox;
         private Button addNoteButton;
         private Button removeNoteButton;
+        private Button fireButton;
+        private Button hireButton;
+        private TextBox textBox1;
     }
 }

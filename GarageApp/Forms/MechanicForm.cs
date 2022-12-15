@@ -20,7 +20,7 @@ namespace GarageApp.Forms
 
         Job selectedJob;
 
-        // TODO: Print receipt after completion
+        // TODO: Print receipt after job's completion
         public MechanicForm(string? label)
         {
             Entry = Employees.GetInstance();
@@ -49,6 +49,7 @@ namespace GarageApp.Forms
         {
             foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
+                if (status == JobStatus.Unassigned) return;
                 statusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
             }
 
