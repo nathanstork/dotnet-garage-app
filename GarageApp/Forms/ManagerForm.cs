@@ -46,7 +46,7 @@ namespace GarageApp.Forms
             SelectedJob = jobsListBox.SelectedItem as Job;
         }
 
-        private void SetupForm()
+        private void SetMechanics()
         {
             List<Mechanic> mechanics = Entry.CurrentUser.Mechanics;
 
@@ -56,6 +56,11 @@ namespace GarageApp.Forms
             mechanicsListBox.DataSource = mechanicsBinding;
 
             SelectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
+        }
+
+        private void SetupForm()
+        {
+            SetMechanics();
 
             foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
@@ -151,6 +156,7 @@ namespace GarageApp.Forms
             mechanicNameTextBox.Enabled = false;
             mechanicAddressTextBox.Enabled = false;
             changeContractButton.Enabled = false;
+            fireButton.Enabled = false;
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -182,6 +188,7 @@ namespace GarageApp.Forms
             mechanicNameTextBox.Enabled = true;
             mechanicAddressTextBox.Enabled = true;
             changeContractButton.Enabled = true;
+            fireButton.Enabled = true;
 
             SelectedMechanic = mechanicsListBox.SelectedItem as Mechanic;
             if (SelectedMechanic != null) UpdateMechanicDetails(SelectedMechanic);
@@ -219,6 +226,7 @@ namespace GarageApp.Forms
 
         private void changeContractButton_Click(object sender, EventArgs e)
         {
+            // TODO: Change contract functionality
             ContractForm contractForm = new ContractForm();
             contractForm.ShowDialog();
         }
@@ -276,12 +284,12 @@ namespace GarageApp.Forms
 
         private void mechanicNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            SelectedMechanic.Name = mechanicNameTextBox.Text;
+            if (SelectedMechanic != null) SelectedMechanic.Name = mechanicNameTextBox.Text;
         }
 
         private void mechanicAddressTextBox_TextChanged(object sender, EventArgs e)
         {
-            SelectedMechanic.Address = mechanicAddressTextBox.Text;
+            if (SelectedMechanic != null) SelectedMechanic.Address = mechanicAddressTextBox.Text;
         }
 
         private void jobStatusComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -299,6 +307,31 @@ namespace GarageApp.Forms
         private void jobNotesTextBox_TextChanged(object sender, EventArgs e)
         {
             if (SelectedJob != null) SelectedJob.Notes = jobNotesTextBox.Text;
+        }
+
+        private void hireButton_Click(object sender, EventArgs e)
+        {
+            // TODO: Hire new employee functionality
+            EmployeeForm employeeForm = new EmployeeForm();
+            employeeForm.ShowDialog();
+        }
+
+        private void fireButton_Click(object sender, EventArgs e)
+        {
+            if (SelectedMechanic == null) return;
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to let " + SelectedMechanic.Name + " go?",
+                "Confirmation of release",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Entry.CurrentUser.Mechanics.Remove(SelectedMechanic);
+                SetMechanics();
+            }
         }
     }
 }

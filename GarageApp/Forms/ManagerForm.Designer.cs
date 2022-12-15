@@ -482,6 +482,7 @@
             this.fireButton.TabIndex = 11;
             this.fireButton.Text = "Fire";
             this.fireButton.UseVisualStyleBackColor = true;
+            this.fireButton.Click += new System.EventHandler(this.fireButton_Click);
             // 
             // hireButton
             // 
@@ -492,6 +493,7 @@
             this.hireButton.TabIndex = 10;
             this.hireButton.Text = "Hire new";
             this.hireButton.UseVisualStyleBackColor = true;
+            this.hireButton.Click += new System.EventHandler(this.hireButton_Click);
             // 
             // ManagerForm
             // 
