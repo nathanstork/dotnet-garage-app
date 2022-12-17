@@ -6,6 +6,7 @@
         internal string Name
         {
             get;
+            set;
         }
         internal string Address
         {
@@ -17,18 +18,18 @@
             get;
             set;
         }
-        internal string Phonenumber
+        internal string Phone
         {
             get;
             set;
         }
 
-        internal Customer(string name, string address, string email, string phonenumber)
+        internal Customer(string name, string address, string email, string phone)
         {
             Name = name;
             Address = address;
             Email = email;
-            Phonenumber = phonenumber;
+            Phone = phone;
         }
     }
 }

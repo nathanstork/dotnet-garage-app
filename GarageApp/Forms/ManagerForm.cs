@@ -105,6 +105,16 @@ namespace GarageApp.Forms
             {
                 assignJobButton.Enabled = false;
             }
+
+            customerNameTextBox.Text = job.Customer.Name;
+            customerAddressTextBox.Text = job.Customer.Address;
+            customerEmailTextBox.Text = job.Customer.Email;
+            customerPhoneTextBox.Text = job.Customer.Phone;
+
+            carPlateTextBox.Text = job.Car.Plate;
+            carBrandTextBox.Text = job.Car.Brand;
+            carModelTextBox.Text = job.Car.Model;
+            carColorTextBox.Text = job.Car.Color.ToString();
         }
 
         private void UpdateMechanicDetails(Mechanic mechanic)
@@ -144,6 +154,16 @@ namespace GarageApp.Forms
             jobPriceTextBox.Text = string.Empty;
             jobDescriptionTextBox.Text = string.Empty;
             jobNotesTextBox.Text = string.Empty;
+
+            customerNameTextBox.Text = string.Empty;
+            customerAddressTextBox.Text = string.Empty;
+            customerEmailTextBox.Text = string.Empty;
+            customerPhoneTextBox.Text = string.Empty;
+
+            carPlateTextBox.Text = string.Empty;
+            carBrandTextBox.Text = string.Empty;
+            carModelTextBox.Text = string.Empty;
+            carColorTextBox.Text = string.Empty;
 
             jobStatusComboBox.SelectedIndex = -1;
 
@@ -274,11 +294,14 @@ namespace GarageApp.Forms
                 SelectedMechanic.Jobs.Add(SelectedJob);
             }
 
+            UpdateJobDetails(SelectedJob);
             UpdateMechanicJobs(SelectedMechanic);
         }
 
         private void unassignJobButton_Click(object sender, EventArgs e)
         {
+            // BUGGED OUT
+
             if (SelectedJob != null && SelectedMechanic != null)
             {
                 DialogResult result = MessageBox.Show(
@@ -371,6 +394,26 @@ Material costs: {SelectedJob.Costs}
 Total: {total}";
 
             MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
+        }
+
+        private void customerNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (SelectedJob != null) SelectedJob.Customer.Name = customerNameTextBox.Text;
+        }
+
+        private void customerAddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (SelectedJob != null) SelectedJob.Customer.Address = customerAddressTextBox.Text;
+        }
+
+        private void customerEmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (SelectedJob != null) SelectedJob.Customer.Email = customerEmailTextBox.Text;
+        }
+
+        private void customerPhoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (SelectedJob != null) SelectedJob.Customer.Phone = customerPhoneTextBox.Text;
         }
     }
 }

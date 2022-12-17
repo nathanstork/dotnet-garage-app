@@ -12,20 +12,29 @@
 
         internal string Password
         {
-            get; set;
+            get;
+            set;
         }
 
         internal string Name
         {
-            get; set;
+            get;
+            set;
         }
 
         internal string Address
         {
-            get; set;
+            get;
+            set;
         }
 
-        internal User(string username, string password, string name, string address)
+        internal Contract Contract
+        {
+            get;
+            set;
+        }
+
+        internal User(string username, string password, string name, string address, Contract contract)
         {
             Garage = Garage.GetInstance();
 
@@ -33,11 +42,7 @@
             Password = password;
             Name = name;
             Address = address;
-        }
-
-        internal void AddJob(Job job)
-        {
-            Garage.AddJob(job);
+            Contract = contract;
         }
     }
 }

@@ -23,13 +23,10 @@ namespace GarageApp
         {
             // Example users
             /*Mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MonthlyContract(2000, 32)));
-            Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
+            Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Valkenswaard", new WeeklyContract(500, 8)));
             Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MonthlyContract(2100, 36)));
 
-            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));
-            Managers.Add(new Manager("admin", "password", "Admin", "Unknown", Mechanics));*/
-
-
+            Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Son en Breugel", new MonthlyContract(3200, 40), Mechanics));*/
 
             // Get mechanics and managers form local file, if it exists
             if (File.Exists(SaveFilePath))
@@ -41,7 +38,7 @@ namespace GarageApp
             else
             {
                 // Always add admin user
-                Managers.Add(new Manager("admin", "password", "Admin", "Unknown", Mechanics));
+                Managers.Add(new Manager("admin", "password", "Admin", "Unknown", new MonthlyContract(0, 0) , Mechanics));
             }
         }
 

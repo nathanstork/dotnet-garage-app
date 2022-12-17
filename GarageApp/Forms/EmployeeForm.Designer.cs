@@ -29,117 +29,75 @@
         private void InitializeComponent()
         {
             this.submitButton = new System.Windows.Forms.Button();
-            this.employeeTabControl = new System.Windows.Forms.TabControl();
-            this.mechanicTabPage = new System.Windows.Forms.TabPage();
             this.contractGroupBox = new System.Windows.Forms.GroupBox();
-            this.typeGroupBox = new System.Windows.Forms.GroupBox();
+            this.contractTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.weeklyRadioButton = new System.Windows.Forms.RadioButton();
             this.monthlyRadioButton = new System.Windows.Forms.RadioButton();
             this.hoursNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.salaryLabel = new System.Windows.Forms.Label();
             this.salaryNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.hoursLabel = new System.Windows.Forms.Label();
-            this.mechanicPersonalDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.mechanicPersonalDetailsErrorLabel = new System.Windows.Forms.Label();
-            this.mechanicAddressLabel = new System.Windows.Forms.Label();
-            this.mechanicNameTextBox = new System.Windows.Forms.TextBox();
-            this.mechanicAddressTextBox = new System.Windows.Forms.TextBox();
-            this.mechanicNameLabel = new System.Windows.Forms.Label();
-            this.mechanicLoginGroupBox = new System.Windows.Forms.GroupBox();
-            this.mechanicLoginErrorLabel = new System.Windows.Forms.Label();
-            this.mechanicRepeatPasswordLabel = new System.Windows.Forms.Label();
-            this.mechanicRepeatPasswordTextbox = new System.Windows.Forms.TextBox();
-            this.mechanicPasswordLabel = new System.Windows.Forms.Label();
-            this.mechanicPasswordTextbox = new System.Windows.Forms.TextBox();
-            this.mechanicUsernameLabel = new System.Windows.Forms.Label();
-            this.mechanicUsernameTextBox = new System.Windows.Forms.TextBox();
-            this.managerTabPage = new System.Windows.Forms.TabPage();
-            this.managerPersonalDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.managerPersonalDetailsErrorLabel = new System.Windows.Forms.Label();
-            this.managerAddressLabel = new System.Windows.Forms.Label();
-            this.managerNameTextBox = new System.Windows.Forms.TextBox();
-            this.managerAddressTextBox = new System.Windows.Forms.TextBox();
-            this.managerNameLabel = new System.Windows.Forms.Label();
-            this.managerLoginGroupBox = new System.Windows.Forms.GroupBox();
-            this.managerLoginErrorLabel = new System.Windows.Forms.Label();
-            this.managerRepeatPasswordLabel = new System.Windows.Forms.Label();
-            this.managerRepeatPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.managerPasswordLabel = new System.Windows.Forms.Label();
-            this.managerPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.managerUsernameLabel = new System.Windows.Forms.Label();
-            this.managerUsernameTextBox = new System.Windows.Forms.TextBox();
-            this.employeeTabControl.SuspendLayout();
-            this.mechanicTabPage.SuspendLayout();
+            this.personalDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.addressLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.loginGroupBox = new System.Windows.Forms.GroupBox();
+            this.repeatPasswordLabel = new System.Windows.Forms.Label();
+            this.repeatPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.employeeTypeGroupBox = new System.Windows.Forms.GroupBox();
+            this.managerRadioButton = new System.Windows.Forms.RadioButton();
+            this.mechanicRadioButton = new System.Windows.Forms.RadioButton();
             this.contractGroupBox.SuspendLayout();
-            this.typeGroupBox.SuspendLayout();
+            this.contractTypeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hoursNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericUpDown)).BeginInit();
-            this.mechanicPersonalDetailsGroupBox.SuspendLayout();
-            this.mechanicLoginGroupBox.SuspendLayout();
-            this.managerTabPage.SuspendLayout();
-            this.managerPersonalDetailsGroupBox.SuspendLayout();
-            this.managerLoginGroupBox.SuspendLayout();
+            this.personalDetailsGroupBox.SuspendLayout();
+            this.loginGroupBox.SuspendLayout();
+            this.employeeTypeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // submitButton
             // 
             this.submitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.submitButton.Location = new System.Drawing.Point(182, 680);
+            this.submitButton.Location = new System.Drawing.Point(124, 663);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(133, 40);
+            this.submitButton.Size = new System.Drawing.Size(174, 40);
             this.submitButton.TabIndex = 1;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // employeeTabControl
-            // 
-            this.employeeTabControl.Controls.Add(this.mechanicTabPage);
-            this.employeeTabControl.Controls.Add(this.managerTabPage);
-            this.employeeTabControl.Location = new System.Drawing.Point(28, 28);
-            this.employeeTabControl.Name = "employeeTabControl";
-            this.employeeTabControl.SelectedIndex = 0;
-            this.employeeTabControl.Size = new System.Drawing.Size(441, 630);
-            this.employeeTabControl.TabIndex = 2;
-            // 
-            // mechanicTabPage
-            // 
-            this.mechanicTabPage.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.mechanicTabPage.Controls.Add(this.contractGroupBox);
-            this.mechanicTabPage.Controls.Add(this.mechanicPersonalDetailsGroupBox);
-            this.mechanicTabPage.Controls.Add(this.mechanicLoginGroupBox);
-            this.mechanicTabPage.Location = new System.Drawing.Point(4, 29);
-            this.mechanicTabPage.Name = "mechanicTabPage";
-            this.mechanicTabPage.Padding = new System.Windows.Forms.Padding(20);
-            this.mechanicTabPage.Size = new System.Drawing.Size(433, 597);
-            this.mechanicTabPage.TabIndex = 0;
-            this.mechanicTabPage.Text = "Mechanic";
-            // 
             // contractGroupBox
             // 
-            this.contractGroupBox.Controls.Add(this.typeGroupBox);
+            this.contractGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.contractGroupBox.Controls.Add(this.contractTypeGroupBox);
             this.contractGroupBox.Controls.Add(this.hoursNumericUpDown);
             this.contractGroupBox.Controls.Add(this.salaryLabel);
             this.contractGroupBox.Controls.Add(this.salaryNumericUpDown);
             this.contractGroupBox.Controls.Add(this.hoursLabel);
-            this.contractGroupBox.Location = new System.Drawing.Point(23, 418);
+            this.contractGroupBox.Location = new System.Drawing.Point(28, 486);
             this.contractGroupBox.Name = "contractGroupBox";
-            this.contractGroupBox.Size = new System.Drawing.Size(384, 158);
-            this.contractGroupBox.TabIndex = 12;
+            this.contractGroupBox.Size = new System.Drawing.Size(383, 158);
+            this.contractGroupBox.TabIndex = 17;
             this.contractGroupBox.TabStop = false;
             this.contractGroupBox.Text = "Contract";
             // 
-            // typeGroupBox
+            // contractTypeGroupBox
             // 
-            this.typeGroupBox.Controls.Add(this.weeklyRadioButton);
-            this.typeGroupBox.Controls.Add(this.monthlyRadioButton);
-            this.typeGroupBox.Location = new System.Drawing.Point(13, 31);
-            this.typeGroupBox.Name = "typeGroupBox";
-            this.typeGroupBox.Size = new System.Drawing.Size(176, 110);
-            this.typeGroupBox.TabIndex = 6;
-            this.typeGroupBox.TabStop = false;
-            this.typeGroupBox.Text = "Type";
+            this.contractTypeGroupBox.Controls.Add(this.weeklyRadioButton);
+            this.contractTypeGroupBox.Controls.Add(this.monthlyRadioButton);
+            this.contractTypeGroupBox.Location = new System.Drawing.Point(13, 31);
+            this.contractTypeGroupBox.Name = "contractTypeGroupBox";
+            this.contractTypeGroupBox.Size = new System.Drawing.Size(151, 110);
+            this.contractTypeGroupBox.TabIndex = 6;
+            this.contractTypeGroupBox.TabStop = false;
+            this.contractTypeGroupBox.Text = "Type";
             // 
             // weeklyRadioButton
             // 
@@ -148,13 +106,13 @@
             this.weeklyRadioButton.Name = "weeklyRadioButton";
             this.weeklyRadioButton.Size = new System.Drawing.Size(77, 24);
             this.weeklyRadioButton.TabIndex = 1;
-            this.weeklyRadioButton.TabStop = true;
             this.weeklyRadioButton.Text = "Weekly";
             this.weeklyRadioButton.UseVisualStyleBackColor = true;
             // 
             // monthlyRadioButton
             // 
             this.monthlyRadioButton.AutoSize = true;
+            this.monthlyRadioButton.Checked = true;
             this.monthlyRadioButton.Location = new System.Drawing.Point(13, 28);
             this.monthlyRadioButton.Name = "monthlyRadioButton";
             this.monthlyRadioButton.Size = new System.Drawing.Size(84, 24);
@@ -165,20 +123,20 @@
             // 
             // hoursNumericUpDown
             // 
-            this.hoursNumericUpDown.Location = new System.Drawing.Point(221, 54);
+            this.hoursNumericUpDown.Location = new System.Drawing.Point(195, 46);
             this.hoursNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.hoursNumericUpDown.Name = "hoursNumericUpDown";
-            this.hoursNumericUpDown.Size = new System.Drawing.Size(150, 27);
+            this.hoursNumericUpDown.Size = new System.Drawing.Size(175, 27);
             this.hoursNumericUpDown.TabIndex = 7;
             // 
             // salaryLabel
             // 
             this.salaryLabel.AutoSize = true;
-            this.salaryLabel.Location = new System.Drawing.Point(221, 89);
+            this.salaryLabel.Location = new System.Drawing.Point(195, 81);
             this.salaryLabel.Name = "salaryLabel";
             this.salaryLabel.Size = new System.Drawing.Size(49, 20);
             this.salaryLabel.TabIndex = 10;
@@ -186,341 +144,201 @@
             // 
             // salaryNumericUpDown
             // 
-            this.salaryNumericUpDown.Location = new System.Drawing.Point(221, 114);
+            this.salaryNumericUpDown.Location = new System.Drawing.Point(195, 106);
             this.salaryNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.salaryNumericUpDown.Name = "salaryNumericUpDown";
-            this.salaryNumericUpDown.Size = new System.Drawing.Size(150, 27);
+            this.salaryNumericUpDown.Size = new System.Drawing.Size(175, 27);
             this.salaryNumericUpDown.TabIndex = 8;
             // 
             // hoursLabel
             // 
             this.hoursLabel.AutoSize = true;
-            this.hoursLabel.Location = new System.Drawing.Point(221, 31);
+            this.hoursLabel.Location = new System.Drawing.Point(195, 23);
             this.hoursLabel.Name = "hoursLabel";
             this.hoursLabel.Size = new System.Drawing.Size(48, 20);
             this.hoursLabel.TabIndex = 9;
             this.hoursLabel.Text = "Hours";
             // 
-            // mechanicPersonalDetailsGroupBox
+            // personalDetailsGroupBox
             // 
-            this.mechanicPersonalDetailsGroupBox.Controls.Add(this.mechanicPersonalDetailsErrorLabel);
-            this.mechanicPersonalDetailsGroupBox.Controls.Add(this.mechanicAddressLabel);
-            this.mechanicPersonalDetailsGroupBox.Controls.Add(this.mechanicNameTextBox);
-            this.mechanicPersonalDetailsGroupBox.Controls.Add(this.mechanicAddressTextBox);
-            this.mechanicPersonalDetailsGroupBox.Controls.Add(this.mechanicNameLabel);
-            this.mechanicPersonalDetailsGroupBox.Location = new System.Drawing.Point(26, 249);
-            this.mechanicPersonalDetailsGroupBox.Name = "mechanicPersonalDetailsGroupBox";
-            this.mechanicPersonalDetailsGroupBox.Size = new System.Drawing.Size(384, 163);
-            this.mechanicPersonalDetailsGroupBox.TabIndex = 11;
-            this.mechanicPersonalDetailsGroupBox.TabStop = false;
-            this.mechanicPersonalDetailsGroupBox.Text = "Personal details";
+            this.personalDetailsGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.personalDetailsGroupBox.Controls.Add(this.addressLabel);
+            this.personalDetailsGroupBox.Controls.Add(this.nameTextBox);
+            this.personalDetailsGroupBox.Controls.Add(this.addressTextBox);
+            this.personalDetailsGroupBox.Controls.Add(this.nameLabel);
+            this.personalDetailsGroupBox.Location = new System.Drawing.Point(28, 332);
+            this.personalDetailsGroupBox.Name = "personalDetailsGroupBox";
+            this.personalDetailsGroupBox.Size = new System.Drawing.Size(383, 148);
+            this.personalDetailsGroupBox.TabIndex = 16;
+            this.personalDetailsGroupBox.TabStop = false;
+            this.personalDetailsGroupBox.Text = "Personal details";
             // 
-            // mechanicPersonalDetailsErrorLabel
+            // addressLabel
             // 
-            this.mechanicPersonalDetailsErrorLabel.AutoSize = true;
-            this.mechanicPersonalDetailsErrorLabel.Location = new System.Drawing.Point(13, 129);
-            this.mechanicPersonalDetailsErrorLabel.Name = "mechanicPersonalDetailsErrorLabel";
-            this.mechanicPersonalDetailsErrorLabel.Size = new System.Drawing.Size(205, 20);
-            this.mechanicPersonalDetailsErrorLabel.TabIndex = 7;
-            this.mechanicPersonalDetailsErrorLabel.Text = "mechanicPersonalDetailsError";
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Location = new System.Drawing.Point(13, 76);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(62, 20);
+            this.addressLabel.TabIndex = 10;
+            this.addressLabel.Text = "Address";
             // 
-            // mechanicAddressLabel
+            // nameTextBox
             // 
-            this.mechanicAddressLabel.AutoSize = true;
-            this.mechanicAddressLabel.Location = new System.Drawing.Point(13, 76);
-            this.mechanicAddressLabel.Name = "mechanicAddressLabel";
-            this.mechanicAddressLabel.Size = new System.Drawing.Size(62, 20);
-            this.mechanicAddressLabel.TabIndex = 10;
-            this.mechanicAddressLabel.Text = "Address";
+            this.nameTextBox.Location = new System.Drawing.Point(13, 46);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(357, 27);
+            this.nameTextBox.TabIndex = 7;
             // 
-            // mechanicNameTextBox
+            // addressTextBox
             // 
-            this.mechanicNameTextBox.Location = new System.Drawing.Point(13, 46);
-            this.mechanicNameTextBox.Name = "mechanicNameTextBox";
-            this.mechanicNameTextBox.Size = new System.Drawing.Size(358, 27);
-            this.mechanicNameTextBox.TabIndex = 7;
-            this.mechanicNameTextBox.TextChanged += new System.EventHandler(this.mechanicNameTextBox_TextChanged);
+            this.addressTextBox.Location = new System.Drawing.Point(13, 99);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(357, 27);
+            this.addressTextBox.TabIndex = 9;
             // 
-            // mechanicAddressTextBox
+            // nameLabel
             // 
-            this.mechanicAddressTextBox.Location = new System.Drawing.Point(13, 99);
-            this.mechanicAddressTextBox.Name = "mechanicAddressTextBox";
-            this.mechanicAddressTextBox.PasswordChar = '●';
-            this.mechanicAddressTextBox.Size = new System.Drawing.Size(358, 27);
-            this.mechanicAddressTextBox.TabIndex = 9;
-            this.mechanicAddressTextBox.TextChanged += new System.EventHandler(this.mechanicAddressTextBox_TextChanged);
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(13, 23);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(49, 20);
+            this.nameLabel.TabIndex = 8;
+            this.nameLabel.Text = "Name";
             // 
-            // mechanicNameLabel
+            // loginGroupBox
             // 
-            this.mechanicNameLabel.AutoSize = true;
-            this.mechanicNameLabel.Location = new System.Drawing.Point(13, 23);
-            this.mechanicNameLabel.Name = "mechanicNameLabel";
-            this.mechanicNameLabel.Size = new System.Drawing.Size(49, 20);
-            this.mechanicNameLabel.TabIndex = 8;
-            this.mechanicNameLabel.Text = "Name";
+            this.loginGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.loginGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.loginGroupBox.Controls.Add(this.repeatPasswordLabel);
+            this.loginGroupBox.Controls.Add(this.repeatPasswordTextBox);
+            this.loginGroupBox.Controls.Add(this.passwordLabel);
+            this.loginGroupBox.Controls.Add(this.passwordTextBox);
+            this.loginGroupBox.Controls.Add(this.usernameLabel);
+            this.loginGroupBox.Controls.Add(this.usernameTextBox);
+            this.loginGroupBox.Location = new System.Drawing.Point(28, 119);
+            this.loginGroupBox.Name = "loginGroupBox";
+            this.loginGroupBox.Padding = new System.Windows.Forms.Padding(10);
+            this.loginGroupBox.Size = new System.Drawing.Size(383, 207);
+            this.loginGroupBox.TabIndex = 15;
+            this.loginGroupBox.TabStop = false;
+            this.loginGroupBox.Text = "Login credentials";
             // 
-            // mechanicLoginGroupBox
+            // repeatPasswordLabel
             // 
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicLoginErrorLabel);
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicRepeatPasswordLabel);
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicRepeatPasswordTextbox);
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicPasswordLabel);
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicPasswordTextbox);
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicUsernameLabel);
-            this.mechanicLoginGroupBox.Controls.Add(this.mechanicUsernameTextBox);
-            this.mechanicLoginGroupBox.Location = new System.Drawing.Point(23, 23);
-            this.mechanicLoginGroupBox.Name = "mechanicLoginGroupBox";
-            this.mechanicLoginGroupBox.Padding = new System.Windows.Forms.Padding(10);
-            this.mechanicLoginGroupBox.Size = new System.Drawing.Size(384, 220);
-            this.mechanicLoginGroupBox.TabIndex = 1;
-            this.mechanicLoginGroupBox.TabStop = false;
-            this.mechanicLoginGroupBox.Text = "Login credentials";
+            this.repeatPasswordLabel.AutoSize = true;
+            this.repeatPasswordLabel.Location = new System.Drawing.Point(13, 136);
+            this.repeatPasswordLabel.Name = "repeatPasswordLabel";
+            this.repeatPasswordLabel.Size = new System.Drawing.Size(123, 20);
+            this.repeatPasswordLabel.TabIndex = 5;
+            this.repeatPasswordLabel.Text = "Repeat password";
             // 
-            // mechanicLoginErrorLabel
+            // repeatPasswordTextBox
             // 
-            this.mechanicLoginErrorLabel.AutoSize = true;
-            this.mechanicLoginErrorLabel.Location = new System.Drawing.Point(13, 190);
-            this.mechanicLoginErrorLabel.Name = "mechanicLoginErrorLabel";
-            this.mechanicLoginErrorLabel.Size = new System.Drawing.Size(141, 20);
-            this.mechanicLoginErrorLabel.TabIndex = 6;
-            this.mechanicLoginErrorLabel.Text = "mechanicLoginError";
+            this.repeatPasswordTextBox.Location = new System.Drawing.Point(13, 159);
+            this.repeatPasswordTextBox.Name = "repeatPasswordTextBox";
+            this.repeatPasswordTextBox.PasswordChar = '●';
+            this.repeatPasswordTextBox.Size = new System.Drawing.Size(357, 27);
+            this.repeatPasswordTextBox.TabIndex = 4;
             // 
-            // mechanicRepeatPasswordLabel
+            // passwordLabel
             // 
-            this.mechanicRepeatPasswordLabel.AutoSize = true;
-            this.mechanicRepeatPasswordLabel.Location = new System.Drawing.Point(13, 136);
-            this.mechanicRepeatPasswordLabel.Name = "mechanicRepeatPasswordLabel";
-            this.mechanicRepeatPasswordLabel.Size = new System.Drawing.Size(123, 20);
-            this.mechanicRepeatPasswordLabel.TabIndex = 5;
-            this.mechanicRepeatPasswordLabel.Text = "Repeat password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(13, 83);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(70, 20);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password";
             // 
-            // mechanicRepeatPasswordTextbox
+            // passwordTextBox
             // 
-            this.mechanicRepeatPasswordTextbox.Location = new System.Drawing.Point(13, 159);
-            this.mechanicRepeatPasswordTextbox.Name = "mechanicRepeatPasswordTextbox";
-            this.mechanicRepeatPasswordTextbox.PasswordChar = '●';
-            this.mechanicRepeatPasswordTextbox.Size = new System.Drawing.Size(358, 27);
-            this.mechanicRepeatPasswordTextbox.TabIndex = 4;
-            this.mechanicRepeatPasswordTextbox.TextChanged += new System.EventHandler(this.mechanicRepeatPasswordTextbox_TextChanged);
+            this.passwordTextBox.Location = new System.Drawing.Point(13, 106);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '●';
+            this.passwordTextBox.Size = new System.Drawing.Size(357, 27);
+            this.passwordTextBox.TabIndex = 2;
             // 
-            // mechanicPasswordLabel
+            // usernameLabel
             // 
-            this.mechanicPasswordLabel.AutoSize = true;
-            this.mechanicPasswordLabel.Location = new System.Drawing.Point(13, 83);
-            this.mechanicPasswordLabel.Name = "mechanicPasswordLabel";
-            this.mechanicPasswordLabel.Size = new System.Drawing.Size(70, 20);
-            this.mechanicPasswordLabel.TabIndex = 3;
-            this.mechanicPasswordLabel.Text = "Password";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(13, 30);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(75, 20);
+            this.usernameLabel.TabIndex = 1;
+            this.usernameLabel.Text = "Username";
             // 
-            // mechanicPasswordTextbox
+            // usernameTextBox
             // 
-            this.mechanicPasswordTextbox.Location = new System.Drawing.Point(13, 106);
-            this.mechanicPasswordTextbox.Name = "mechanicPasswordTextbox";
-            this.mechanicPasswordTextbox.PasswordChar = '●';
-            this.mechanicPasswordTextbox.Size = new System.Drawing.Size(358, 27);
-            this.mechanicPasswordTextbox.TabIndex = 2;
-            this.mechanicPasswordTextbox.TextChanged += new System.EventHandler(this.mechanicPasswordTextbox_TextChanged);
+            this.usernameTextBox.Location = new System.Drawing.Point(13, 53);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(357, 27);
+            this.usernameTextBox.TabIndex = 0;
             // 
-            // mechanicUsernameLabel
+            // employeeTypeGroupBox
             // 
-            this.mechanicUsernameLabel.AutoSize = true;
-            this.mechanicUsernameLabel.Location = new System.Drawing.Point(13, 30);
-            this.mechanicUsernameLabel.Name = "mechanicUsernameLabel";
-            this.mechanicUsernameLabel.Size = new System.Drawing.Size(75, 20);
-            this.mechanicUsernameLabel.TabIndex = 1;
-            this.mechanicUsernameLabel.Text = "Username";
+            this.employeeTypeGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.employeeTypeGroupBox.Controls.Add(this.managerRadioButton);
+            this.employeeTypeGroupBox.Controls.Add(this.mechanicRadioButton);
+            this.employeeTypeGroupBox.Location = new System.Drawing.Point(28, 18);
+            this.employeeTypeGroupBox.Name = "employeeTypeGroupBox";
+            this.employeeTypeGroupBox.Size = new System.Drawing.Size(383, 95);
+            this.employeeTypeGroupBox.TabIndex = 18;
+            this.employeeTypeGroupBox.TabStop = false;
+            this.employeeTypeGroupBox.Text = "Type";
             // 
-            // mechanicUsernameTextBox
+            // managerRadioButton
             // 
-            this.mechanicUsernameTextBox.Location = new System.Drawing.Point(13, 53);
-            this.mechanicUsernameTextBox.Name = "mechanicUsernameTextBox";
-            this.mechanicUsernameTextBox.Size = new System.Drawing.Size(358, 27);
-            this.mechanicUsernameTextBox.TabIndex = 0;
-            this.mechanicUsernameTextBox.TextChanged += new System.EventHandler(this.mechanicUsernameTextBox_TextChanged);
+            this.managerRadioButton.AutoSize = true;
+            this.managerRadioButton.Location = new System.Drawing.Point(17, 56);
+            this.managerRadioButton.Name = "managerRadioButton";
+            this.managerRadioButton.Size = new System.Drawing.Size(89, 24);
+            this.managerRadioButton.TabIndex = 1;
+            this.managerRadioButton.Text = "Manager";
+            this.managerRadioButton.UseVisualStyleBackColor = true;
             // 
-            // managerTabPage
+            // mechanicRadioButton
             // 
-            this.managerTabPage.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.managerTabPage.Controls.Add(this.managerPersonalDetailsGroupBox);
-            this.managerTabPage.Controls.Add(this.managerLoginGroupBox);
-            this.managerTabPage.Location = new System.Drawing.Point(4, 29);
-            this.managerTabPage.Name = "managerTabPage";
-            this.managerTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.managerTabPage.Size = new System.Drawing.Size(433, 597);
-            this.managerTabPage.TabIndex = 1;
-            this.managerTabPage.Text = "Manager";
-            // 
-            // managerPersonalDetailsGroupBox
-            // 
-            this.managerPersonalDetailsGroupBox.Controls.Add(this.managerPersonalDetailsErrorLabel);
-            this.managerPersonalDetailsGroupBox.Controls.Add(this.managerAddressLabel);
-            this.managerPersonalDetailsGroupBox.Controls.Add(this.managerNameTextBox);
-            this.managerPersonalDetailsGroupBox.Controls.Add(this.managerAddressTextBox);
-            this.managerPersonalDetailsGroupBox.Controls.Add(this.managerNameLabel);
-            this.managerPersonalDetailsGroupBox.Location = new System.Drawing.Point(23, 343);
-            this.managerPersonalDetailsGroupBox.Name = "managerPersonalDetailsGroupBox";
-            this.managerPersonalDetailsGroupBox.Size = new System.Drawing.Size(384, 163);
-            this.managerPersonalDetailsGroupBox.TabIndex = 13;
-            this.managerPersonalDetailsGroupBox.TabStop = false;
-            this.managerPersonalDetailsGroupBox.Text = "Personal details";
-            // 
-            // managerPersonalDetailsErrorLabel
-            // 
-            this.managerPersonalDetailsErrorLabel.AutoSize = true;
-            this.managerPersonalDetailsErrorLabel.Location = new System.Drawing.Point(13, 129);
-            this.managerPersonalDetailsErrorLabel.Name = "managerPersonalDetailsErrorLabel";
-            this.managerPersonalDetailsErrorLabel.Size = new System.Drawing.Size(201, 20);
-            this.managerPersonalDetailsErrorLabel.TabIndex = 7;
-            this.managerPersonalDetailsErrorLabel.Text = "managerPersonalDetailsError";
-            // 
-            // managerAddressLabel
-            // 
-            this.managerAddressLabel.AutoSize = true;
-            this.managerAddressLabel.Location = new System.Drawing.Point(13, 76);
-            this.managerAddressLabel.Name = "managerAddressLabel";
-            this.managerAddressLabel.Size = new System.Drawing.Size(62, 20);
-            this.managerAddressLabel.TabIndex = 10;
-            this.managerAddressLabel.Text = "Address";
-            // 
-            // managerNameTextBox
-            // 
-            this.managerNameTextBox.Location = new System.Drawing.Point(13, 46);
-            this.managerNameTextBox.Name = "managerNameTextBox";
-            this.managerNameTextBox.Size = new System.Drawing.Size(358, 27);
-            this.managerNameTextBox.TabIndex = 7;
-            this.managerNameTextBox.TextChanged += new System.EventHandler(this.managerNameTextBox_TextChanged);
-            // 
-            // managerAddressTextBox
-            // 
-            this.managerAddressTextBox.Location = new System.Drawing.Point(13, 99);
-            this.managerAddressTextBox.Name = "managerAddressTextBox";
-            this.managerAddressTextBox.PasswordChar = '●';
-            this.managerAddressTextBox.Size = new System.Drawing.Size(358, 27);
-            this.managerAddressTextBox.TabIndex = 9;
-            this.managerAddressTextBox.TextChanged += new System.EventHandler(this.managerAddressTextBox_TextChanged);
-            // 
-            // managerNameLabel
-            // 
-            this.managerNameLabel.AutoSize = true;
-            this.managerNameLabel.Location = new System.Drawing.Point(13, 23);
-            this.managerNameLabel.Name = "managerNameLabel";
-            this.managerNameLabel.Size = new System.Drawing.Size(49, 20);
-            this.managerNameLabel.TabIndex = 8;
-            this.managerNameLabel.Text = "Name";
-            // 
-            // managerLoginGroupBox
-            // 
-            this.managerLoginGroupBox.Controls.Add(this.managerLoginErrorLabel);
-            this.managerLoginGroupBox.Controls.Add(this.managerRepeatPasswordLabel);
-            this.managerLoginGroupBox.Controls.Add(this.managerRepeatPasswordTextBox);
-            this.managerLoginGroupBox.Controls.Add(this.managerPasswordLabel);
-            this.managerLoginGroupBox.Controls.Add(this.managerPasswordTextBox);
-            this.managerLoginGroupBox.Controls.Add(this.managerUsernameLabel);
-            this.managerLoginGroupBox.Controls.Add(this.managerUsernameTextBox);
-            this.managerLoginGroupBox.Location = new System.Drawing.Point(23, 91);
-            this.managerLoginGroupBox.Name = "managerLoginGroupBox";
-            this.managerLoginGroupBox.Padding = new System.Windows.Forms.Padding(10);
-            this.managerLoginGroupBox.Size = new System.Drawing.Size(384, 220);
-            this.managerLoginGroupBox.TabIndex = 12;
-            this.managerLoginGroupBox.TabStop = false;
-            this.managerLoginGroupBox.Text = "Login credentials";
-            // 
-            // managerLoginErrorLabel
-            // 
-            this.managerLoginErrorLabel.AutoSize = true;
-            this.managerLoginErrorLabel.Location = new System.Drawing.Point(13, 190);
-            this.managerLoginErrorLabel.Name = "managerLoginErrorLabel";
-            this.managerLoginErrorLabel.Size = new System.Drawing.Size(137, 20);
-            this.managerLoginErrorLabel.TabIndex = 6;
-            this.managerLoginErrorLabel.Text = "managerLoginError";
-            // 
-            // managerRepeatPasswordLabel
-            // 
-            this.managerRepeatPasswordLabel.AutoSize = true;
-            this.managerRepeatPasswordLabel.Location = new System.Drawing.Point(20, 143);
-            this.managerRepeatPasswordLabel.Name = "managerRepeatPasswordLabel";
-            this.managerRepeatPasswordLabel.Size = new System.Drawing.Size(123, 20);
-            this.managerRepeatPasswordLabel.TabIndex = 5;
-            this.managerRepeatPasswordLabel.Text = "Repeat password";
-            // 
-            // managerRepeatPasswordTextBox
-            // 
-            this.managerRepeatPasswordTextBox.Location = new System.Drawing.Point(13, 159);
-            this.managerRepeatPasswordTextBox.Name = "managerRepeatPasswordTextBox";
-            this.managerRepeatPasswordTextBox.PasswordChar = '●';
-            this.managerRepeatPasswordTextBox.Size = new System.Drawing.Size(358, 27);
-            this.managerRepeatPasswordTextBox.TabIndex = 4;
-            this.managerRepeatPasswordTextBox.TextChanged += new System.EventHandler(this.managerRepeatPasswordTextBox_TextChanged);
-            // 
-            // managerPasswordLabel
-            // 
-            this.managerPasswordLabel.AutoSize = true;
-            this.managerPasswordLabel.Location = new System.Drawing.Point(20, 90);
-            this.managerPasswordLabel.Name = "managerPasswordLabel";
-            this.managerPasswordLabel.Size = new System.Drawing.Size(70, 20);
-            this.managerPasswordLabel.TabIndex = 3;
-            this.managerPasswordLabel.Text = "Password";
-            // 
-            // managerPasswordTextBox
-            // 
-            this.managerPasswordTextBox.Location = new System.Drawing.Point(13, 106);
-            this.managerPasswordTextBox.Name = "managerPasswordTextBox";
-            this.managerPasswordTextBox.PasswordChar = '●';
-            this.managerPasswordTextBox.Size = new System.Drawing.Size(358, 27);
-            this.managerPasswordTextBox.TabIndex = 2;
-            this.managerPasswordTextBox.TextChanged += new System.EventHandler(this.managerPasswordTextBox_TextChanged);
-            // 
-            // managerUsernameLabel
-            // 
-            this.managerUsernameLabel.AutoSize = true;
-            this.managerUsernameLabel.Location = new System.Drawing.Point(20, 37);
-            this.managerUsernameLabel.Name = "managerUsernameLabel";
-            this.managerUsernameLabel.Size = new System.Drawing.Size(75, 20);
-            this.managerUsernameLabel.TabIndex = 1;
-            this.managerUsernameLabel.Text = "Username";
-            // 
-            // managerUsernameTextBox
-            // 
-            this.managerUsernameTextBox.Location = new System.Drawing.Point(13, 53);
-            this.managerUsernameTextBox.Name = "managerUsernameTextBox";
-            this.managerUsernameTextBox.Size = new System.Drawing.Size(358, 27);
-            this.managerUsernameTextBox.TabIndex = 0;
-            this.managerUsernameTextBox.TextChanged += new System.EventHandler(this.managerUsernameTextBox_TextChanged);
+            this.mechanicRadioButton.AutoSize = true;
+            this.mechanicRadioButton.Checked = true;
+            this.mechanicRadioButton.Location = new System.Drawing.Point(17, 26);
+            this.mechanicRadioButton.Name = "mechanicRadioButton";
+            this.mechanicRadioButton.Size = new System.Drawing.Size(93, 24);
+            this.mechanicRadioButton.TabIndex = 0;
+            this.mechanicRadioButton.TabStop = true;
+            this.mechanicRadioButton.Text = "Mechanic";
+            this.mechanicRadioButton.UseVisualStyleBackColor = true;
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(497, 748);
-            this.Controls.Add(this.employeeTabControl);
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ClientSize = new System.Drawing.Size(439, 731);
+            this.Controls.Add(this.employeeTypeGroupBox);
+            this.Controls.Add(this.contractGroupBox);
+            this.Controls.Add(this.personalDetailsGroupBox);
+            this.Controls.Add(this.loginGroupBox);
             this.Controls.Add(this.submitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EmployeeForm";
             this.Padding = new System.Windows.Forms.Padding(25);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Hire new employee";
-            this.employeeTabControl.ResumeLayout(false);
-            this.mechanicTabPage.ResumeLayout(false);
             this.contractGroupBox.ResumeLayout(false);
             this.contractGroupBox.PerformLayout();
-            this.typeGroupBox.ResumeLayout(false);
-            this.typeGroupBox.PerformLayout();
+            this.contractTypeGroupBox.ResumeLayout(false);
+            this.contractTypeGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hoursNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericUpDown)).EndInit();
-            this.mechanicPersonalDetailsGroupBox.ResumeLayout(false);
-            this.mechanicPersonalDetailsGroupBox.PerformLayout();
-            this.mechanicLoginGroupBox.ResumeLayout(false);
-            this.mechanicLoginGroupBox.PerformLayout();
-            this.managerTabPage.ResumeLayout(false);
-            this.managerPersonalDetailsGroupBox.ResumeLayout(false);
-            this.managerPersonalDetailsGroupBox.PerformLayout();
-            this.managerLoginGroupBox.ResumeLayout(false);
-            this.managerLoginGroupBox.PerformLayout();
+            this.personalDetailsGroupBox.ResumeLayout(false);
+            this.personalDetailsGroupBox.PerformLayout();
+            this.loginGroupBox.ResumeLayout(false);
+            this.loginGroupBox.PerformLayout();
+            this.employeeTypeGroupBox.ResumeLayout(false);
+            this.employeeTypeGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -528,44 +346,28 @@
         #endregion
 
         private Button submitButton;
-        private TabControl employeeTabControl;
-        private TabPage mechanicTabPage;
-        private TabPage managerTabPage;
-        private GroupBox mechanicLoginGroupBox;
-        private Label mechanicPasswordLabel;
-        private TextBox mechanicPasswordTextbox;
-        private Label mechanicUsernameLabel;
-        private TextBox mechanicUsernameTextBox;
-        private Label mechanicRepeatPasswordLabel;
-        private TextBox mechanicRepeatPasswordTextbox;
-        private Label salaryLabel;
-        private Label hoursLabel;
-        private GroupBox typeGroupBox;
+        private GroupBox contractGroupBox;
+        private GroupBox contractTypeGroupBox;
         private RadioButton weeklyRadioButton;
         private RadioButton monthlyRadioButton;
-        private NumericUpDown salaryNumericUpDown;
         private NumericUpDown hoursNumericUpDown;
-        private Label mechanicLoginErrorLabel;
-        private GroupBox mechanicPersonalDetailsGroupBox;
-        private Label mechanicPersonalDetailsErrorLabel;
-        private Label mechanicAddressLabel;
-        private TextBox mechanicNameTextBox;
-        private TextBox mechanicAddressTextBox;
-        private Label mechanicNameLabel;
-        private GroupBox contractGroupBox;
-        private GroupBox managerPersonalDetailsGroupBox;
-        private Label managerPersonalDetailsErrorLabel;
-        private Label managerAddressLabel;
-        private TextBox managerNameTextBox;
-        private TextBox managerAddressTextBox;
-        private Label managerNameLabel;
-        private GroupBox managerLoginGroupBox;
-        private Label managerLoginErrorLabel;
-        private Label managerRepeatPasswordLabel;
-        private TextBox managerRepeatPasswordTextBox;
-        private Label managerPasswordLabel;
-        private TextBox managerPasswordTextBox;
-        private Label managerUsernameLabel;
-        private TextBox managerUsernameTextBox;
+        private Label salaryLabel;
+        private NumericUpDown salaryNumericUpDown;
+        private Label hoursLabel;
+        private GroupBox personalDetailsGroupBox;
+        private Label addressLabel;
+        private TextBox nameTextBox;
+        private TextBox addressTextBox;
+        private Label nameLabel;
+        private GroupBox loginGroupBox;
+        private Label repeatPasswordLabel;
+        private TextBox repeatPasswordTextBox;
+        private Label passwordLabel;
+        private TextBox passwordTextBox;
+        private Label usernameLabel;
+        private TextBox usernameTextBox;
+        private GroupBox employeeTypeGroupBox;
+        private RadioButton managerRadioButton;
+        private RadioButton mechanicRadioButton;
     }
 }

@@ -11,7 +11,7 @@ namespace GarageApp.Users
     {
         internal List<Mechanic> Mechanics;
 
-        internal Manager(string username, string password, string name, string address, List<Mechanic> mechanics) : base(username, password, name, address)
+        internal Manager(string username, string password, string name, string address, Contract contract, List<Mechanic> mechanics) : base(username, password, name, address, contract)
         {
             Mechanics = mechanics;
         }
