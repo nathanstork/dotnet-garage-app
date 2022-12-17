@@ -34,9 +34,9 @@
             this.weeklyRadioButton = new System.Windows.Forms.RadioButton();
             this.monthlyRadioButton = new System.Windows.Forms.RadioButton();
             this.hoursNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.hoursLabel = new System.Windows.Forms.Label();
             this.salaryLabel = new System.Windows.Forms.Label();
             this.salaryNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.hoursLabel = new System.Windows.Forms.Label();
             this.personalDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.addressLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -78,9 +78,9 @@
             this.contractGroupBox.BackColor = System.Drawing.Color.Transparent;
             this.contractGroupBox.Controls.Add(this.contractTypeGroupBox);
             this.contractGroupBox.Controls.Add(this.hoursNumericUpDown);
+            this.contractGroupBox.Controls.Add(this.hoursLabel);
             this.contractGroupBox.Controls.Add(this.salaryLabel);
             this.contractGroupBox.Controls.Add(this.salaryNumericUpDown);
-            this.contractGroupBox.Controls.Add(this.hoursLabel);
             this.contractGroupBox.Location = new System.Drawing.Point(28, 486);
             this.contractGroupBox.Name = "contractGroupBox";
             this.contractGroupBox.Size = new System.Drawing.Size(383, 158);
@@ -123,7 +123,7 @@
             // 
             // hoursNumericUpDown
             // 
-            this.hoursNumericUpDown.Location = new System.Drawing.Point(195, 46);
+            this.hoursNumericUpDown.Location = new System.Drawing.Point(187, 107);
             this.hoursNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -133,10 +133,19 @@
             this.hoursNumericUpDown.Size = new System.Drawing.Size(175, 27);
             this.hoursNumericUpDown.TabIndex = 7;
             // 
+            // hoursLabel
+            // 
+            this.hoursLabel.AutoSize = true;
+            this.hoursLabel.Location = new System.Drawing.Point(188, 84);
+            this.hoursLabel.Name = "hoursLabel";
+            this.hoursLabel.Size = new System.Drawing.Size(48, 20);
+            this.hoursLabel.TabIndex = 9;
+            this.hoursLabel.Text = "Hours";
+            // 
             // salaryLabel
             // 
             this.salaryLabel.AutoSize = true;
-            this.salaryLabel.Location = new System.Drawing.Point(195, 81);
+            this.salaryLabel.Location = new System.Drawing.Point(187, 25);
             this.salaryLabel.Name = "salaryLabel";
             this.salaryLabel.Size = new System.Drawing.Size(49, 20);
             this.salaryLabel.TabIndex = 10;
@@ -144,7 +153,7 @@
             // 
             // salaryNumericUpDown
             // 
-            this.salaryNumericUpDown.Location = new System.Drawing.Point(195, 106);
+            this.salaryNumericUpDown.Location = new System.Drawing.Point(187, 50);
             this.salaryNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -153,15 +162,6 @@
             this.salaryNumericUpDown.Name = "salaryNumericUpDown";
             this.salaryNumericUpDown.Size = new System.Drawing.Size(175, 27);
             this.salaryNumericUpDown.TabIndex = 8;
-            // 
-            // hoursLabel
-            // 
-            this.hoursLabel.AutoSize = true;
-            this.hoursLabel.Location = new System.Drawing.Point(195, 23);
-            this.hoursLabel.Name = "hoursLabel";
-            this.hoursLabel.Size = new System.Drawing.Size(48, 20);
-            this.hoursLabel.TabIndex = 9;
-            this.hoursLabel.Text = "Hours";
             // 
             // personalDetailsGroupBox
             // 

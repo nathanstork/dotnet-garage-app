@@ -34,8 +34,8 @@
             this.jobsListBox = new System.Windows.Forms.ListBox();
             this.jobsLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
-            this.mechanicsListBox = new System.Windows.Forms.ListBox();
-            this.mechanicsLabel = new System.Windows.Forms.Label();
+            this.employeesListBox = new System.Windows.Forms.ListBox();
+            this.employeesLabel = new System.Windows.Forms.Label();
             this.addJobButton = new System.Windows.Forms.Button();
             this.removeJobButton = new System.Windows.Forms.Button();
             this.detailsGroupBox = new System.Windows.Forms.GroupBox();
@@ -58,6 +58,7 @@
             this.mechanicJobsLabel = new System.Windows.Forms.Label();
             this.mechanicJobsListBox = new System.Windows.Forms.ListBox();
             this.jobDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.jobStatusTextBox = new System.Windows.Forms.TextBox();
             this.customerGroupBox = new System.Windows.Forms.GroupBox();
             this.customerPhoneTextBox = new System.Windows.Forms.TextBox();
             this.customerAddressTextBox = new System.Windows.Forms.TextBox();
@@ -143,27 +144,27 @@
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
-            // mechanicsListBox
+            // employeesListBox
             // 
-            this.mechanicsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.mechanicsListBox.FormattingEnabled = true;
-            this.mechanicsListBox.ItemHeight = 20;
-            this.mechanicsListBox.Location = new System.Drawing.Point(22, 413);
-            this.mechanicsListBox.Name = "mechanicsListBox";
-            this.mechanicsListBox.Size = new System.Drawing.Size(224, 244);
-            this.mechanicsListBox.Sorted = true;
-            this.mechanicsListBox.TabIndex = 5;
-            this.mechanicsListBox.SelectedValueChanged += new System.EventHandler(this.mechanicsListBox_SelectedValueChanged);
+            this.employeesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.employeesListBox.FormattingEnabled = true;
+            this.employeesListBox.ItemHeight = 20;
+            this.employeesListBox.Location = new System.Drawing.Point(22, 413);
+            this.employeesListBox.Name = "employeesListBox";
+            this.employeesListBox.Size = new System.Drawing.Size(224, 244);
+            this.employeesListBox.Sorted = true;
+            this.employeesListBox.TabIndex = 5;
+            this.employeesListBox.SelectedValueChanged += new System.EventHandler(this.mechanicsListBox_SelectedValueChanged);
             // 
-            // mechanicsLabel
+            // employeesLabel
             // 
-            this.mechanicsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.mechanicsLabel.AutoSize = true;
-            this.mechanicsLabel.Location = new System.Drawing.Point(22, 390);
-            this.mechanicsLabel.Name = "mechanicsLabel";
-            this.mechanicsLabel.Size = new System.Drawing.Size(78, 20);
-            this.mechanicsLabel.TabIndex = 6;
-            this.mechanicsLabel.Text = "Mechanics";
+            this.employeesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.employeesLabel.AutoSize = true;
+            this.employeesLabel.Location = new System.Drawing.Point(22, 390);
+            this.employeesLabel.Name = "employeesLabel";
+            this.employeesLabel.Size = new System.Drawing.Size(81, 20);
+            this.employeesLabel.TabIndex = 6;
+            this.employeesLabel.Text = "Employees";
             // 
             // addJobButton
             // 
@@ -225,11 +226,12 @@
             // 
             this.employeeTypeLabel.AutoSize = true;
             this.employeeTypeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.employeeTypeLabel.Location = new System.Drawing.Point(544, 20);
+            this.employeeTypeLabel.Location = new System.Drawing.Point(579, 20);
             this.employeeTypeLabel.Name = "employeeTypeLabel";
             this.employeeTypeLabel.Size = new System.Drawing.Size(110, 20);
             this.employeeTypeLabel.TabIndex = 23;
             this.employeeTypeLabel.Text = "employeeType";
+            this.employeeTypeLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // unassignJobButton
             // 
@@ -385,10 +387,12 @@
             this.mechanicJobsListBox.Location = new System.Drawing.Point(362, 46);
             this.mechanicJobsListBox.Name = "mechanicJobsListBox";
             this.mechanicJobsListBox.Size = new System.Drawing.Size(292, 104);
+            this.mechanicJobsListBox.Sorted = true;
             this.mechanicJobsListBox.TabIndex = 10;
             // 
             // jobDetailsGroupBox
             // 
+            this.jobDetailsGroupBox.Controls.Add(this.jobStatusTextBox);
             this.jobDetailsGroupBox.Controls.Add(this.customerGroupBox);
             this.jobDetailsGroupBox.Controls.Add(this.carGroupBox);
             this.jobDetailsGroupBox.Controls.Add(this.receiptButton);
@@ -408,6 +412,17 @@
             this.jobDetailsGroupBox.TabIndex = 0;
             this.jobDetailsGroupBox.TabStop = false;
             this.jobDetailsGroupBox.Text = "Job";
+            // 
+            // jobStatusTextBox
+            // 
+            this.jobStatusTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.jobStatusTextBox.Location = new System.Drawing.Point(100, 51);
+            this.jobStatusTextBox.Name = "jobStatusTextBox";
+            this.jobStatusTextBox.ReadOnly = true;
+            this.jobStatusTextBox.Size = new System.Drawing.Size(212, 27);
+            this.jobStatusTextBox.TabIndex = 24;
             // 
             // customerGroupBox
             // 
@@ -585,6 +600,7 @@
             // 
             // receiptButton
             // 
+            this.receiptButton.Enabled = false;
             this.receiptButton.Location = new System.Drawing.Point(535, 19);
             this.receiptButton.Name = "receiptButton";
             this.receiptButton.Size = new System.Drawing.Size(131, 29);
@@ -615,12 +631,12 @@
             // 
             // jobStatusComboBox
             // 
-            this.jobStatusComboBox.Enabled = false;
             this.jobStatusComboBox.FormattingEnabled = true;
             this.jobStatusComboBox.Location = new System.Drawing.Point(100, 51);
             this.jobStatusComboBox.Name = "jobStatusComboBox";
             this.jobStatusComboBox.Size = new System.Drawing.Size(213, 28);
             this.jobStatusComboBox.TabIndex = 2;
+            this.jobStatusComboBox.Visible = false;
             this.jobStatusComboBox.SelectedValueChanged += new System.EventHandler(this.jobStatusComboBox_SelectedValueChanged);
             // 
             // jobPriceTextBox
@@ -752,8 +768,8 @@
             this.Controls.Add(this.detailsGroupBox);
             this.Controls.Add(this.removeJobButton);
             this.Controls.Add(this.addJobButton);
-            this.Controls.Add(this.mechanicsLabel);
-            this.Controls.Add(this.mechanicsListBox);
+            this.Controls.Add(this.employeesLabel);
+            this.Controls.Add(this.employeesListBox);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.jobsLabel);
             this.Controls.Add(this.jobsListBox);
@@ -790,8 +806,8 @@
         private ListBox jobsListBox;
         private Label jobsLabel;
         private Button logoutButton;
-        private ListBox mechanicsListBox;
-        private Label mechanicsLabel;
+        private ListBox employeesListBox;
+        private Label employeesLabel;
         private Button addJobButton;
         private Button removeJobButton;
         private GroupBox detailsGroupBox;
@@ -848,5 +864,6 @@
         private Label customerAddressLabel;
         private Label customerNameLabel;
         private Label employeeTypeLabel;
+        private TextBox jobStatusTextBox;
     }
 }

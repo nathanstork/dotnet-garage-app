@@ -78,7 +78,7 @@
             // 
             // hoursNumericUpDown
             // 
-            this.hoursNumericUpDown.Location = new System.Drawing.Point(28, 166);
+            this.hoursNumericUpDown.Location = new System.Drawing.Point(29, 238);
             this.hoursNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -90,7 +90,7 @@
             // 
             // salaryNumericUpDown
             // 
-            this.salaryNumericUpDown.Location = new System.Drawing.Point(28, 234);
+            this.salaryNumericUpDown.Location = new System.Drawing.Point(29, 165);
             this.salaryNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -103,7 +103,7 @@
             // hoursLabel
             // 
             this.hoursLabel.AutoSize = true;
-            this.hoursLabel.Location = new System.Drawing.Point(28, 143);
+            this.hoursLabel.Location = new System.Drawing.Point(29, 215);
             this.hoursLabel.Name = "hoursLabel";
             this.hoursLabel.Size = new System.Drawing.Size(48, 20);
             this.hoursLabel.TabIndex = 4;
@@ -112,7 +112,7 @@
             // salaryLabel
             // 
             this.salaryLabel.AutoSize = true;
-            this.salaryLabel.Location = new System.Drawing.Point(28, 211);
+            this.salaryLabel.Location = new System.Drawing.Point(28, 142);
             this.salaryLabel.Name = "salaryLabel";
             this.salaryLabel.Size = new System.Drawing.Size(49, 20);
             this.salaryLabel.TabIndex = 5;
@@ -136,8 +136,8 @@
             this.ClientSize = new System.Drawing.Size(232, 353);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.salaryLabel);
-            this.Controls.Add(this.hoursLabel);
             this.Controls.Add(this.salaryNumericUpDown);
+            this.Controls.Add(this.hoursLabel);
             this.Controls.Add(this.hoursNumericUpDown);
             this.Controls.Add(this.typeGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

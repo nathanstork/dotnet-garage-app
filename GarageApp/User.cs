@@ -44,5 +44,11 @@
             Address = address;
             Contract = contract;
         }
+
+        // Override display member with Name property
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

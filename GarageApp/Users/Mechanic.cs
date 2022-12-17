@@ -12,11 +12,5 @@ namespace GarageApp.Users
         internal List<Job> Jobs = new List<Job>();
 
         internal Mechanic(string username, string password, string name, string address, Contract contract) : base(username, password, name, address, contract) { }
-
-        // Override display member with Name property
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }

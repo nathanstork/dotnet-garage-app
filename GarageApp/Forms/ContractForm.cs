@@ -1,37 +1,27 @@
 ﻿using GarageApp.Contracts;
-using GarageApp.Users;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GarageApp.Forms
 {
     public partial class ContractForm : Form
     {
-        private Mechanic Employee;
+        private User Employee;
 
         private Action Callback;
 
-        internal ContractForm(Mechanic mechanic, Action? callback = null)
+        internal ContractForm(User user, Action? callback = null)
         {
-            Employee = mechanic;
+            Employee = user;
             Callback = callback;
 
             InitializeComponent();
 
-            if (mechanic.Contract.GetType().Name == "WeeklyContract")
+            if (user.Contract.GetType().Name == "WeeklyContract")
             {
                 weeklyRadioButton.Select();
             }
 
-            hoursNumericUpDown.Value = mechanic.Contract.Hours;
-            salaryNumericUpDown.Value = mechanic.Contract.Salary;
+            salaryNumericUpDown.Value = user.Contract.Salary;
+            hoursNumericUpDown.Value = user.Contract.Hours;
         }
 
         private void SubmitForm()
@@ -56,14 +46,14 @@ namespace GarageApp.Forms
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            if (hoursNumericUpDown.Value == 0)
-            {
-                ShowWarningMessageBox("The contract's hours must be greater than zero.", "Error");
-                return;
-            }
             if (salaryNumericUpDown.Value == 0)
             {
                 ShowWarningMessageBox("The contract's salary must be greater than zero.", "Error");
+                return;
+            }
+            if (hoursNumericUpDown.Value == 0)
+            {
+                ShowWarningMessageBox("The contract's hours must be greater than zero.", "Error");
                 return;
             }
 
@@ -79,8 +69,8 @@ namespace GarageApp.Forms
         {
             if (monthlyRadioButton.Checked)
             {
-                hoursLabel.Text = "Monthly hours";
                 salaryLabel.Text = "Monthly salary";
+                hoursLabel.Text = "Monthly hours";
             }
         }
 
@@ -88,8 +78,8 @@ namespace GarageApp.Forms
         {
             if (weeklyRadioButton.Checked)
             {
-                hoursLabel.Text = "Weekly hours";
                 salaryLabel.Text = "Weekly salary";
+                hoursLabel.Text = "Weekly hours";
             }
         }
     }

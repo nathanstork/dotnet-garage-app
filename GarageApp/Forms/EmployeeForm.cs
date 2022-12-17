@@ -54,14 +54,14 @@ namespace GarageApp.Forms
                 ShowWarningMessageBox("The address can not be empty.", "Error");
                 return;
             }
-            if (hoursNumericUpDown.Value == 0)
-            {
-                ShowWarningMessageBox("The contract's hours must be greater than zero.", "Error");
-                return;
-            }
             if (salaryNumericUpDown.Value == 0)
             {
                 ShowWarningMessageBox("The contract's salary must be greater than zero.", "Error");
+                return;
+            }
+            if (hoursNumericUpDown.Value == 0)
+            {
+                ShowWarningMessageBox("The contract's hours must be greater than zero.", "Error");
                 return;
             }
 

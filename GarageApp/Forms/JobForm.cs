@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace GarageApp.Forms
+﻿namespace GarageApp.Forms
 {
     public partial class JobForm : Form
     {
@@ -86,6 +75,11 @@ namespace GarageApp.Forms
             if (nameTextBox.Text == "")
             {
                 ShowWarningMessageBox("The customers's name can not be empty.", "Error");
+                return;
+            }
+            if (nameTextBox.Text.ToLower() == "admin")
+            {
+                ShowWarningMessageBox("The customers's name can not be 'Admin'.", "Error");
                 return;
             }
             if (addressTextBox.Text == "")
