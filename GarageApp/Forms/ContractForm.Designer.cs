@@ -146,7 +146,7 @@
             this.Name = "ContractForm";
             this.Padding = new System.Windows.Forms.Padding(25);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Contract";
+            this.Text = "Change contract";
             this.TopMost = true;
             this.typeGroupBox.ResumeLayout(false);
             this.typeGroupBox.PerformLayout();

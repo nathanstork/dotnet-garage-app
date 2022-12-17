@@ -43,6 +43,8 @@
             this.unassignJobButton = new System.Windows.Forms.Button();
             this.mechanicAddressTextBox = new System.Windows.Forms.TextBox();
             this.contractGroupBox = new System.Windows.Forms.GroupBox();
+            this.contractTypeLabel = new System.Windows.Forms.Label();
+            this.contractTypeTextLabel = new System.Windows.Forms.Label();
             this.hoursTextBox = new System.Windows.Forms.TextBox();
             this.salaryTextBox = new System.Windows.Forms.TextBox();
             this.hoursTextLabel = new System.Windows.Forms.Label();
@@ -69,8 +71,6 @@
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fireButton = new System.Windows.Forms.Button();
             this.hireButton = new System.Windows.Forms.Button();
-            this.contractTypeTextLabel = new System.Windows.Forms.Label();
-            this.contractTypeLabel = new System.Windows.Forms.Label();
             this.detailsGroupBox.SuspendLayout();
             this.mechanicDetailsGroupBox2.SuspendLayout();
             this.contractGroupBox.SuspendLayout();
@@ -236,6 +236,24 @@
             this.contractGroupBox.TabStop = false;
             this.contractGroupBox.Text = "Contract";
             // 
+            // contractTypeLabel
+            // 
+            this.contractTypeLabel.AutoSize = true;
+            this.contractTypeLabel.Location = new System.Drawing.Point(64, 56);
+            this.contractTypeLabel.Name = "contractTypeLabel";
+            this.contractTypeLabel.Size = new System.Drawing.Size(94, 20);
+            this.contractTypeLabel.TabIndex = 20;
+            this.contractTypeLabel.Text = "contractType";
+            // 
+            // contractTypeTextLabel
+            // 
+            this.contractTypeTextLabel.AutoSize = true;
+            this.contractTypeTextLabel.Location = new System.Drawing.Point(8, 56);
+            this.contractTypeTextLabel.Name = "contractTypeTextLabel";
+            this.contractTypeTextLabel.Size = new System.Drawing.Size(43, 20);
+            this.contractTypeTextLabel.TabIndex = 19;
+            this.contractTypeTextLabel.Text = "Type:";
+            // 
             // hoursTextBox
             // 
             this.hoursTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -365,14 +383,14 @@
             this.jobDetailsGroupBox.Controls.Add(this.jobDateTextLabel);
             this.jobDetailsGroupBox.Location = new System.Drawing.Point(15, 23);
             this.jobDetailsGroupBox.Name = "jobDetailsGroupBox";
-            this.jobDetailsGroupBox.Size = new System.Drawing.Size(672, 412);
+            this.jobDetailsGroupBox.Size = new System.Drawing.Size(672, 337);
             this.jobDetailsGroupBox.TabIndex = 0;
             this.jobDetailsGroupBox.TabStop = false;
             this.jobDetailsGroupBox.Text = "Job";
             // 
             // receiptButton
             // 
-            this.receiptButton.Location = new System.Drawing.Point(6, 377);
+            this.receiptButton.Location = new System.Drawing.Point(523, 289);
             this.receiptButton.Name = "receiptButton";
             this.receiptButton.Size = new System.Drawing.Size(131, 29);
             this.receiptButton.TabIndex = 21;
@@ -446,10 +464,11 @@
             // 
             this.jobDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.jobDateLabel.AutoSize = true;
-            this.jobDateLabel.Location = new System.Drawing.Point(654, 23);
+            this.jobDateLabel.Location = new System.Drawing.Point(591, 23);
             this.jobDateLabel.Name = "jobDateLabel";
-            this.jobDateLabel.Size = new System.Drawing.Size(0, 20);
+            this.jobDateLabel.Size = new System.Drawing.Size(63, 20);
             this.jobDateLabel.TabIndex = 10;
+            this.jobDateLabel.Text = "jobDate";
             // 
             // jobDescriptionLabel
             // 
@@ -510,24 +529,6 @@
             this.hireButton.Text = "Hire new";
             this.hireButton.UseVisualStyleBackColor = true;
             this.hireButton.Click += new System.EventHandler(this.hireButton_Click);
-            // 
-            // contractTypeTextLabel
-            // 
-            this.contractTypeTextLabel.AutoSize = true;
-            this.contractTypeTextLabel.Location = new System.Drawing.Point(8, 56);
-            this.contractTypeTextLabel.Name = "contractTypeTextLabel";
-            this.contractTypeTextLabel.Size = new System.Drawing.Size(43, 20);
-            this.contractTypeTextLabel.TabIndex = 19;
-            this.contractTypeTextLabel.Text = "Type:";
-            // 
-            // contractTypeLabel
-            // 
-            this.contractTypeLabel.AutoSize = true;
-            this.contractTypeLabel.Location = new System.Drawing.Point(64, 56);
-            this.contractTypeLabel.Name = "contractTypeLabel";
-            this.contractTypeLabel.Size = new System.Drawing.Size(94, 20);
-            this.contractTypeLabel.TabIndex = 20;
-            this.contractTypeLabel.Text = "contractType";
             // 
             // ManagerForm
             // 

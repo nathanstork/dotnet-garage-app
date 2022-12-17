@@ -327,8 +327,7 @@ namespace GarageApp.Forms
 
         private void hireButton_Click(object sender, EventArgs e)
         {
-            // TODO: Hire new employee functionality
-            EmployeeForm employeeForm = new EmployeeForm();
+            EmployeeForm employeeForm = new EmployeeForm(SetMechanics);
             employeeForm.ShowDialog();
         }
 
@@ -340,7 +339,7 @@ namespace GarageApp.Forms
                 "Are you sure you want to let " + SelectedMechanic.Name + " go?",
                 "Confirmation of release",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
+                MessageBoxIcon.Warning
             );
 
             if (result == DialogResult.Yes)

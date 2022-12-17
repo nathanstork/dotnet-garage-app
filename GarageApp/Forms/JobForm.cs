@@ -41,10 +41,7 @@ namespace GarageApp.Forms
                 new Customer(nameTextBox.Text, addressTextBox.Text, emailTextBox.Text, phoneTextBox.Text)
             ));
 
-            if (Callback != null)
-            {
-                Callback();
-            }
+            if (Callback != null) Callback();
         }
 
         private void ShowWarningMessageBox(string message, string title)

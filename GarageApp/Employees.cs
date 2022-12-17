@@ -81,14 +81,6 @@ namespace GarageApp
                 }
             });
 
-            // Admin credentials
-            /*if (user == "admin" & pass == "password")
-            {
-                Garage garageInstance = 
-                CurrentUser = new Manager(user, pass, "Admin", "Unknown", Mechanics);
-                // TODO: Add all jobs to new Garage class instance
-            }*/
-
             if (CurrentUser == null) throw new Exception("Incorrect credentials. Please try again.");
         }
 
@@ -98,7 +90,6 @@ namespace GarageApp
             SaveData();
         }
 
-        // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
         private ValueTuple<List<Mechanic>, List<Manager>> LoadData()
         {
             using (Stream stream = File.Open(SaveFilePath, FileMode.Open))
@@ -108,7 +99,6 @@ namespace GarageApp
             }
         }
 
-        // BinaryFormatter is obsolete: https://aka.ms/binaryformatter
         internal void SaveData()
         {
             Console.WriteLine("Saving data...");
