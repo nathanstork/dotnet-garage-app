@@ -230,7 +230,7 @@ namespace GarageApp.Forms
                 }
                 else
                 {
-                    UpdateJobDetails(jobsListBox.SelectedValue as Job);
+                    UpdateJobDetails(SelectedJob);
                 }
             }
         }
@@ -346,6 +346,14 @@ namespace GarageApp.Forms
             {
                 Entry.CurrentUser.Mechanics.Remove(SelectedMechanic);
                 SetMechanics();
+                if (mechanicsListBox.Items.Count == 0)
+                {
+                    ResetMechanicFields();
+                }
+                else
+                {
+                    UpdateMechanicDetails(SelectedMechanic);
+                }
             }
         }
 
