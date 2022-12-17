@@ -287,6 +287,7 @@
             // 
             // hoursTextBox
             // 
+            this.hoursTextBox.Enabled = false;
             this.hoursTextBox.Location = new System.Drawing.Point(241, 24);
             this.hoursTextBox.Name = "hoursTextBox";
             this.hoursTextBox.ReadOnly = true;
@@ -295,6 +296,7 @@
             // 
             // salaryTextBox
             // 
+            this.salaryTextBox.Enabled = false;
             this.salaryTextBox.Location = new System.Drawing.Point(66, 24);
             this.salaryTextBox.Name = "salaryTextBox";
             this.salaryTextBox.ReadOnly = true;
@@ -511,6 +513,7 @@
             // 
             // carModelTextBox
             // 
+            this.carModelTextBox.Enabled = false;
             this.carModelTextBox.Location = new System.Drawing.Point(78, 86);
             this.carModelTextBox.Name = "carModelTextBox";
             this.carModelTextBox.ReadOnly = true;
@@ -519,6 +522,7 @@
             // 
             // carColorTextBox
             // 
+            this.carColorTextBox.Enabled = false;
             this.carColorTextBox.Location = new System.Drawing.Point(78, 119);
             this.carColorTextBox.Name = "carColorTextBox";
             this.carColorTextBox.ReadOnly = true;
@@ -527,6 +531,7 @@
             // 
             // carBrandTextBox
             // 
+            this.carBrandTextBox.Enabled = false;
             this.carBrandTextBox.Location = new System.Drawing.Point(78, 53);
             this.carBrandTextBox.Name = "carBrandTextBox";
             this.carBrandTextBox.ReadOnly = true;
@@ -535,6 +540,7 @@
             // 
             // carPlateTextBox
             // 
+            this.carPlateTextBox.Enabled = false;
             this.carPlateTextBox.Location = new System.Drawing.Point(78, 20);
             this.carPlateTextBox.Name = "carPlateTextBox";
             this.carPlateTextBox.ReadOnly = true;
@@ -622,6 +628,7 @@
             this.jobPriceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.jobPriceTextBox.Enabled = false;
             this.jobPriceTextBox.Location = new System.Drawing.Point(453, 52);
             this.jobPriceTextBox.Name = "jobPriceTextBox";
             this.jobPriceTextBox.ReadOnly = true;

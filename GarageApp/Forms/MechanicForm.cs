@@ -18,7 +18,7 @@ namespace GarageApp.Forms
     {
         readonly Employees Entry;
 
-        Job selectedJob;
+        Job SelectedJob;
 
         // TODO: Print receipt after job's completion
         public MechanicForm(string? label)
@@ -57,7 +57,7 @@ namespace GarageApp.Forms
 
             SetJobs();
 
-            selectedJob = jobsListBox.SelectedValue as Job;
+            SelectedJob = jobsListBox.SelectedValue as Job;
         }
 
         // Save employees data before window closes
@@ -94,11 +94,21 @@ namespace GarageApp.Forms
             descriptionTextBox.Text = string.Empty;
             notesTextBox.Text = string.Empty;
 
+            carPlateTextBox.Text = string.Empty;
+            carBrandTextBox.Text = string.Empty;
+            carModelTextBox.Text = string.Empty;
+            carColorTextBox.Text = string.Empty;
+
             statusComboBox.SelectedIndex = -1;
 
             statusComboBox.Enabled = false;
             descriptionTextBox.Enabled = false;
             notesTextBox.Enabled = false;
+
+            carPlateTextBox.Enabled = false;
+            carBrandTextBox.Enabled = false;
+            carModelTextBox.Enabled = false;
+            carColorTextBox.Enabled = false;
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -112,9 +122,13 @@ namespace GarageApp.Forms
             statusComboBox.Enabled = true;
             descriptionTextBox.Enabled = true;
             notesTextBox.Enabled = true;
+            carPlateTextBox.Enabled = true;
+            carBrandTextBox.Enabled = true;
+            carModelTextBox.Enabled = true;
+            carColorTextBox.Enabled = true;
 
-            selectedJob = jobsListBox.SelectedItem as Job;
-            if (selectedJob != null) UpdateJobDetails(selectedJob);
+            SelectedJob = jobsListBox.SelectedItem as Job;
+            if (SelectedJob != null) UpdateJobDetails(SelectedJob);
         }
 
         private void addJobButton_Click(object sender, EventArgs e)
@@ -130,21 +144,32 @@ namespace GarageApp.Forms
             if (status == JobStatus.Completed || status == JobStatus.UnableToComplete)
             {
                 JobCompletionForm completionForm = new JobCompletionForm(
-                    selectedJob,
+                    SelectedJob,
                     Entry.CurrentUser.Name,
                     new Action(() =>
                     {
-                        selectedJob.Status = status;
+                        SelectedJob.Status = status;
 
-                        Entry.CurrentUser.Jobs.Remove(selectedJob);
+                        Entry.CurrentUser.Jobs.Remove(SelectedJob);
 
                         SetJobs();
                     }),
                     new Action(() =>
                     {
-                        string jobStatus = Regex.Replace(selectedJob.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
+                        string jobStatus = Regex.Replace(SelectedJob.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
 
                         statusComboBox.SelectedIndex = statusComboBox.FindString(jobStatus);
+
+                        int total = SelectedJob.Price + SelectedJob.Costs;
+
+                        string content = @$"{SelectedJob.ToString()}
+
+Labour costs: {SelectedJob.Price}
+Material costs: {SelectedJob.Costs}
+------------------------ +
+Total: {total}";
+
+                        MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
                     })
                 );
 
@@ -152,18 +177,18 @@ namespace GarageApp.Forms
             }
             else
             {
-                if (selectedJob != null) selectedJob.Status = status;
+                if (SelectedJob != null) SelectedJob.Status = status;
             }
         }
 
         private void descriptionTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (selectedJob != null) selectedJob.Description = descriptionTextBox.Text;
+            if (SelectedJob != null) SelectedJob.Description = descriptionTextBox.Text;
         }
 
         private void notesTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (selectedJob != null) selectedJob.Notes = notesTextBox.Text;
+            if (SelectedJob != null) SelectedJob.Notes = notesTextBox.Text;
         }
     }
 }

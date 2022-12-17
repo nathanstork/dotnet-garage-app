@@ -165,13 +165,19 @@ namespace GarageApp.Forms
             carModelTextBox.Text = string.Empty;
             carColorTextBox.Text = string.Empty;
 
+            removeJobButton.Enabled = false;
+            assignJobButton.Enabled = false;
+
             jobStatusComboBox.SelectedIndex = -1;
 
             jobStatusComboBox.Enabled = false;
             jobDescriptionTextBox.Enabled = false;
             jobNotesTextBox.Enabled= false;
-            removeJobButton.Enabled = false;
-            assignJobButton.Enabled = false;
+
+            carPlateTextBox.Enabled = false;
+            carBrandTextBox.Enabled = false;
+            carModelTextBox.Enabled = false;
+            carColorTextBox.Enabled = false;
         }
 
         private void ResetMechanicFields()
@@ -203,6 +209,10 @@ namespace GarageApp.Forms
             jobNotesTextBox.Enabled = true;
             removeJobButton.Enabled = true;
             assignJobButton.Enabled = true;
+            carPlateTextBox.Enabled = true;
+            carBrandTextBox.Enabled = true;
+            carModelTextBox.Enabled = true;
+            carColorTextBox.Enabled = true;
 
             SelectedJob = jobsListBox.SelectedItem as Job;
             if (SelectedJob != null) UpdateJobDetails(SelectedJob);
