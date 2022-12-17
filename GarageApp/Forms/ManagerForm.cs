@@ -249,7 +249,7 @@ namespace GarageApp.Forms
                 employeeTypeLabel.Text = "Mechanic";
 
                 // ?????
-                if (Entry.CurrentUser.Garage.Jobs.Count > 0)
+                /*if (Entry.CurrentUser.Garage.Jobs.Count > 0)
                 {
                     assignJobButton.Enabled = true;
                 }
@@ -265,12 +265,14 @@ namespace GarageApp.Forms
                 else
                 {
                     unassignJobButton.Enabled = false;
-                }
+                }*/
 
                 BindingSource mechanicJobsBinding = new BindingSource();
                 mechanicJobsBinding.DataSource = mechanic.Jobs;
 
                 mechanicJobsListBox.DataSource = mechanicJobsBinding;
+
+                mechanicJobsListBox.Enabled = true;
             }
             else
             {
@@ -279,7 +281,7 @@ namespace GarageApp.Forms
                 mechanicJobsListBox.DataSource = null;
                 mechanicJobsListBox.Enabled = false;
 
-                assignJobButton.Enabled = true;
+                assignJobButton.Enabled = false;
                 unassignJobButton.Enabled = false;
             }
         }
