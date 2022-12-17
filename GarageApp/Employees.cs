@@ -17,14 +17,14 @@ namespace GarageApp
         internal List<Mechanic> Mechanics = new List<Mechanic>();
         internal List<Manager> Managers = new List<Manager>();
 
-        internal readonly string SaveFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/save.bin";
+        internal readonly string SaveFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "/data.bin";
 
         private Employees()
         {
             // Example users
-            /*Mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MontlyContract(2000, 32)));
+            /*Mechanics.Add(new Mechanic("hrooij", "12345", "Hans de Rooij", "Mallelaan 52 Eindhoven", new MonthlyContract(2000, 32)));
             Mechanics.Add(new Mechanic("mvloon", "password", "Michiel van Loon", "Eriksenstraat 11 Geldrop", new WeeklyContract(500, 8)));
-            Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MontlyContract(2100, 36)));
+            Mechanics.Add(new Mechanic("berta", "arend", "Bert Arend", "Kadettenplein 733 Veldhoven", new MonthlyContract(2100, 36)));
 
             Managers.Add(new Manager("nicholas", "pass67", "Nicholas Brecht", "Utrechtseweg 6 Apeldoorn", Mechanics));
             Managers.Add(new Manager("admin", "password", "Admin", "Unknown", Mechanics));*/

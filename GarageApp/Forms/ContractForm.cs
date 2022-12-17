@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GarageApp.Contracts;
+using GarageApp.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,22 +14,38 @@ namespace GarageApp.Forms
 {
     public partial class ContractForm : Form
     {
+        private Mechanic Employee;
+
         private Action Callback;
 
-        public ContractForm(Action? callback = null)
+        internal ContractForm(Mechanic mechanic, Action? callback = null)
         {
+            Employee = mechanic;
             Callback = callback;
 
             InitializeComponent();
+
+            if (mechanic.Contract.GetType().Name == "WeeklyContract")
+            {
+                weeklyRadioButton.Select();
+            }
+
+            hoursNumericUpDown.Value = mechanic.Contract.Hours;
+            salaryNumericUpDown.Value = mechanic.Contract.Salary;
         }
 
         private void SubmitForm()
         {
-            Employees employees = Employees.GetInstance();
+            int salary = Convert.ToInt32(salaryNumericUpDown.Value);
+            int hours = Convert.ToInt32(hoursNumericUpDown.Value);
 
-            if (Callback != null)
+            if (monthlyRadioButton.Checked)
             {
-                Callback();
+                Employee.Contract = new MonthlyContract(salary, hours);
+            }
+            else
+            {
+                Employee.Contract = new WeeklyContract(salary, hours);
             }
         }
 
@@ -38,63 +56,41 @@ namespace GarageApp.Forms
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            /*if (descriptionTextBox.Text.Trim() == string.Empty)
+            if (hoursNumericUpDown.Value == 0)
             {
-                ShowWarningMessageBox("The job's description can not be empty.", "Error");
+                ShowWarningMessageBox("The contract's hours must be greater than zero.", "Error");
                 return;
             }
-            if (priceNumericUpDown.Value == 0)
+            if (salaryNumericUpDown.Value == 0)
             {
-                ShowWarningMessageBox("The job's price must be greater than zero.", "Error");
+                ShowWarningMessageBox("The contract's salary must be greater than zero.", "Error");
                 return;
             }
-
-            if (plateTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The car's plate can not be empty.", "Error");
-                return;
-            }
-            if (brandTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The car's brand can not be empty.", "Error");
-                return;
-            }
-            if (modelTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The car's model can not be empty.", "Error");
-                return;
-            }
-            if (colorsComboBox.Text == "")
-            {
-                ShowWarningMessageBox("The car's color can not be empty.", "Error");
-                return;
-            }
-
-            if (nameTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The customers's name can not be empty.", "Error");
-                return;
-            }
-            if (addressTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The customers's address can not be empty.", "Error");
-                return;
-            }
-            if (emailTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The customers's e-mail can not be empty.", "Error");
-                return;
-            }
-            if (phoneTextBox.Text == "")
-            {
-                ShowWarningMessageBox("The customers's phone number can not be empty.", "Error");
-                return;
-            }*/
 
             SubmitForm();
 
+            if (Callback != null) Callback();
+
             this.Hide();
             this.Close();
+        }
+
+        private void monthlyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (monthlyRadioButton.Checked)
+            {
+                hoursLabel.Text = "Monthly hours";
+                salaryLabel.Text = "Monthly salary";
+            }
+        }
+
+        private void weeklyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (weeklyRadioButton.Checked)
+            {
+                hoursLabel.Text = "Weekly hours";
+                salaryLabel.Text = "Weekly salary";
+            }
         }
     }
 }

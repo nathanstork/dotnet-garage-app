@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GarageApp.Forms
 {
@@ -113,6 +114,15 @@ namespace GarageApp.Forms
             salaryTextBox.Text = mechanic.Contract.Salary.ToString();
             hoursTextBox.Text = mechanic.Contract.Hours.ToString();
 
+            if (mechanic.Contract.GetType().Name == "MonthlyContract")
+            {
+                contractTypeLabel.Text = "Monthly";
+            }
+            else
+            {
+                contractTypeLabel.Text = "Weekly";
+            }
+
             if (mechanic.Jobs.Count > 0)
             {
                 unassignJobButton.Enabled = true;
@@ -150,6 +160,7 @@ namespace GarageApp.Forms
             mechanicAddressTextBox.Text = string.Empty;
             salaryTextBox.Text = string.Empty;
             hoursTextBox.Text = string.Empty;
+            contractTypeLabel.Text = string.Empty;
 
             mechanicJobsListBox.DataSource = null;
 
@@ -226,8 +237,13 @@ namespace GarageApp.Forms
 
         private void changeContractButton_Click(object sender, EventArgs e)
         {
-            // TODO: Change contract functionality
-            ContractForm contractForm = new ContractForm();
+            if (SelectedMechanic == null) return;
+
+            ContractForm contractForm = new ContractForm(SelectedMechanic, new Action(() =>
+            {
+                if (SelectedMechanic != null) UpdateMechanicDetails(SelectedMechanic);
+            }));
+
             contractForm.ShowDialog();
         }
 
@@ -332,6 +348,22 @@ namespace GarageApp.Forms
                 Entry.CurrentUser.Mechanics.Remove(SelectedMechanic);
                 SetMechanics();
             }
+        }
+
+        private void receiptButton_Click(object sender, EventArgs e)
+        {
+            if (SelectedJob == null) return;
+
+            int total = SelectedJob.Price + SelectedJob.Costs;
+
+            string content = @$"{SelectedJob.ToString()}
+
+Labour costs: {SelectedJob.Price}
+Material costs: {SelectedJob.Costs}
+------------------------ +
+Total: {total}";
+
+            MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
         }
     }
 }

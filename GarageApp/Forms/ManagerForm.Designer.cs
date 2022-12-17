@@ -55,6 +55,7 @@
             this.mechanicJobsLabel = new System.Windows.Forms.Label();
             this.mechanicJobsListBox = new System.Windows.Forms.ListBox();
             this.jobDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.receiptButton = new System.Windows.Forms.Button();
             this.jobNotesTextBox = new System.Windows.Forms.TextBox();
             this.notesLabel = new System.Windows.Forms.Label();
             this.jobStatusComboBox = new System.Windows.Forms.ComboBox();
@@ -68,6 +69,8 @@
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fireButton = new System.Windows.Forms.Button();
             this.hireButton = new System.Windows.Forms.Button();
+            this.contractTypeTextLabel = new System.Windows.Forms.Label();
+            this.contractTypeLabel = new System.Windows.Forms.Label();
             this.detailsGroupBox.SuspendLayout();
             this.mechanicDetailsGroupBox2.SuspendLayout();
             this.contractGroupBox.SuspendLayout();
@@ -219,6 +222,8 @@
             // 
             // contractGroupBox
             // 
+            this.contractGroupBox.Controls.Add(this.contractTypeLabel);
+            this.contractGroupBox.Controls.Add(this.contractTypeTextLabel);
             this.contractGroupBox.Controls.Add(this.hoursTextBox);
             this.contractGroupBox.Controls.Add(this.salaryTextBox);
             this.contractGroupBox.Controls.Add(this.hoursTextLabel);
@@ -347,6 +352,7 @@
             this.jobDetailsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.jobDetailsGroupBox.Controls.Add(this.receiptButton);
             this.jobDetailsGroupBox.Controls.Add(this.jobNotesTextBox);
             this.jobDetailsGroupBox.Controls.Add(this.notesLabel);
             this.jobDetailsGroupBox.Controls.Add(this.jobStatusComboBox);
@@ -363,6 +369,16 @@
             this.jobDetailsGroupBox.TabIndex = 0;
             this.jobDetailsGroupBox.TabStop = false;
             this.jobDetailsGroupBox.Text = "Job";
+            // 
+            // receiptButton
+            // 
+            this.receiptButton.Location = new System.Drawing.Point(6, 377);
+            this.receiptButton.Name = "receiptButton";
+            this.receiptButton.Size = new System.Drawing.Size(131, 29);
+            this.receiptButton.TabIndex = 21;
+            this.receiptButton.Text = "Show receipt";
+            this.receiptButton.UseVisualStyleBackColor = true;
+            this.receiptButton.Click += new System.EventHandler(this.receiptButton_Click);
             // 
             // jobNotesTextBox
             // 
@@ -495,6 +511,24 @@
             this.hireButton.UseVisualStyleBackColor = true;
             this.hireButton.Click += new System.EventHandler(this.hireButton_Click);
             // 
+            // contractTypeTextLabel
+            // 
+            this.contractTypeTextLabel.AutoSize = true;
+            this.contractTypeTextLabel.Location = new System.Drawing.Point(8, 56);
+            this.contractTypeTextLabel.Name = "contractTypeTextLabel";
+            this.contractTypeTextLabel.Size = new System.Drawing.Size(43, 20);
+            this.contractTypeTextLabel.TabIndex = 19;
+            this.contractTypeTextLabel.Text = "Type:";
+            // 
+            // contractTypeLabel
+            // 
+            this.contractTypeLabel.AutoSize = true;
+            this.contractTypeLabel.Location = new System.Drawing.Point(64, 56);
+            this.contractTypeLabel.Name = "contractTypeLabel";
+            this.contractTypeLabel.Size = new System.Drawing.Size(94, 20);
+            this.contractTypeLabel.TabIndex = 20;
+            this.contractTypeLabel.Text = "contractType";
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -574,5 +608,8 @@
         private Button fireButton;
         private Button hireButton;
         private TextBox jobNotesTextBox;
+        private Button receiptButton;
+        private Label contractTypeLabel;
+        private Label contractTypeTextLabel;
     }
 }

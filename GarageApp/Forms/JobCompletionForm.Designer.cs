@@ -68,6 +68,11 @@
             // hoursNumericUpDown
             // 
             this.hoursNumericUpDown.Location = new System.Drawing.Point(28, 48);
+            this.hoursNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.hoursNumericUpDown.Name = "hoursNumericUpDown";
             this.hoursNumericUpDown.Size = new System.Drawing.Size(226, 27);
             this.hoursNumericUpDown.TabIndex = 8;
@@ -75,6 +80,11 @@
             // costsNumericUpDown
             // 
             this.costsNumericUpDown.Location = new System.Drawing.Point(28, 135);
+            this.costsNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.costsNumericUpDown.Name = "costsNumericUpDown";
             this.costsNumericUpDown.Size = new System.Drawing.Size(226, 27);
             this.costsNumericUpDown.TabIndex = 9;

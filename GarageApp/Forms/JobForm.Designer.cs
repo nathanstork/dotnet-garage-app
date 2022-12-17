@@ -40,20 +40,20 @@
             this.plateTextBox = new System.Windows.Forms.TextBox();
             this.plateLabel = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.addressLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.dateLabel = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.priceLabel = new System.Windows.Forms.Label();
-            this.addressTextBox = new System.Windows.Forms.TextBox();
-            this.addressLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.phoneTextBox = new System.Windows.Forms.TextBox();
-            this.phoneLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
@@ -170,6 +170,70 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customer";
             // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.Location = new System.Drawing.Point(77, 123);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(343, 27);
+            this.phoneTextBox.TabIndex = 28;
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Location = new System.Drawing.Point(6, 126);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(53, 20);
+            this.phoneLabel.TabIndex = 27;
+            this.phoneLabel.Text = "Phone:";
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Location = new System.Drawing.Point(77, 90);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(343, 27);
+            this.emailTextBox.TabIndex = 26;
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Location = new System.Drawing.Point(6, 93);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(55, 20);
+            this.emailLabel.TabIndex = 25;
+            this.emailLabel.Text = "E-mail:";
+            // 
+            // addressTextBox
+            // 
+            this.addressTextBox.Location = new System.Drawing.Point(77, 57);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(343, 27);
+            this.addressTextBox.TabIndex = 24;
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(6, 27);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(52, 20);
+            this.nameLabel.TabIndex = 19;
+            this.nameLabel.Text = "Name:";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(77, 24);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(343, 27);
+            this.nameTextBox.TabIndex = 20;
+            // 
+            // addressLabel
+            // 
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Location = new System.Drawing.Point(6, 60);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(65, 20);
+            this.addressLabel.TabIndex = 23;
+            this.addressLabel.Text = "Address:";
+            // 
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
@@ -208,6 +272,11 @@
             // priceNumericUpDown
             // 
             this.priceNumericUpDown.Location = new System.Drawing.Point(78, 179);
+            this.priceNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.priceNumericUpDown.Name = "priceNumericUpDown";
             this.priceNumericUpDown.Size = new System.Drawing.Size(115, 27);
             this.priceNumericUpDown.TabIndex = 7;
@@ -220,70 +289,6 @@
             this.priceLabel.Size = new System.Drawing.Size(44, 20);
             this.priceLabel.TabIndex = 8;
             this.priceLabel.Text = "Price:";
-            // 
-            // addressTextBox
-            // 
-            this.addressTextBox.Location = new System.Drawing.Point(77, 57);
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(343, 27);
-            this.addressTextBox.TabIndex = 24;
-            // 
-            // addressLabel
-            // 
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(6, 60);
-            this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(65, 20);
-            this.addressLabel.TabIndex = 23;
-            this.addressLabel.Text = "Address:";
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.Location = new System.Drawing.Point(77, 24);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(343, 27);
-            this.nameTextBox.TabIndex = 20;
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(6, 27);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(52, 20);
-            this.nameLabel.TabIndex = 19;
-            this.nameLabel.Text = "Name:";
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.Location = new System.Drawing.Point(77, 90);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(343, 27);
-            this.emailTextBox.TabIndex = 26;
-            // 
-            // emailLabel
-            // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(6, 93);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(55, 20);
-            this.emailLabel.TabIndex = 25;
-            this.emailLabel.Text = "E-mail:";
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.Location = new System.Drawing.Point(77, 123);
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(343, 27);
-            this.phoneTextBox.TabIndex = 28;
-            // 
-            // phoneLabel
-            // 
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(6, 126);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(53, 20);
-            this.phoneLabel.TabIndex = 27;
-            this.phoneLabel.Text = "Phone:";
             // 
             // JobForm
             // 

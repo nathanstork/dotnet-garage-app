@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace GarageApp.Contracts
 {
     [Serializable]
-    internal class MontlyContract : Contract
+    internal class MonthlyContract : Contract
     {
-        public MontlyContract(int salary, int hours) : base(salary, hours)
+        public MonthlyContract(int salary, int hours) : base(salary, hours)
         {
         }
 
