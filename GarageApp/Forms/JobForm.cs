@@ -77,11 +77,6 @@
                 ShowWarningMessageBox("The customers's name can not be empty.", "Error");
                 return;
             }
-            if (nameTextBox.Text.ToLower() == "admin")
-            {
-                ShowWarningMessageBox("The customers's name can not be 'Admin'.", "Error");
-                return;
-            }
             if (addressTextBox.Text == "")
             {
                 ShowWarningMessageBox("The customers's address can not be empty.", "Error");

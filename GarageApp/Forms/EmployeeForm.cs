@@ -1,5 +1,6 @@
 ﻿using GarageApp.Contracts;
 using GarageApp.Users;
+using System.Data;
 
 namespace GarageApp.Forms
 {
@@ -29,6 +30,39 @@ namespace GarageApp.Forms
                 ShowWarningMessageBox("The username can not be empty.", "Error");
                 return;
             }
+            if (usernameTextBox.Text.ToLower() == "admin")
+            {
+                ShowWarningMessageBox("The username can not be 'Admin'.", "Error");
+                return;
+            }
+
+            // Check if username is unique
+            bool unique = true;
+            for (int i = 0; i < Entry.Mechanics.Count; i++)
+            {
+                if (Entry.Mechanics[i].Username == usernameTextBox.Text.ToLower())
+                {
+                    unique = false;
+                    break;
+                }
+            }
+            if (unique)
+            {
+                for (int i = 0; i < Entry.Managers.Count; i++)
+                {
+                    if (Entry.Managers[i].Username == usernameTextBox.Text.ToLower())
+                    {
+                        unique = false;
+                        break;
+                    }
+                }
+            }
+            if (!unique)
+            {
+                ShowWarningMessageBox("This username is already taken.", "Error");
+                return;
+            }
+
             if (passwordTextBox.Text == string.Empty)
             {
                 ShowWarningMessageBox("The password can not be empty.", "Error");

@@ -21,7 +21,7 @@ namespace GarageApp
 
             try
             {
-                employees.LogIn(userTextBox.Text, passTextBox.Text);
+                employees.LogIn(userTextBox.Text.ToLower(), passTextBox.Text);
 
                 this.Hide();
 

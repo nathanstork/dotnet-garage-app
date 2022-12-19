@@ -48,6 +48,9 @@ namespace GarageApp.Forms
             // Remove admin user from employees list
             employees.Remove(employees.Find(item => item.Name == "Admin"));
 
+            // Remove current user from employees list
+            employees.Remove(employees.Find(item => item.Equals(Entry.CurrentUser)));
+
             BindingSource mechanicsBinding = new BindingSource();
             mechanicsBinding.DataSource = employees;
 
@@ -568,6 +571,11 @@ Total: {total}";
         private void customerPhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             if (SelectedJob != null) SelectedJob.Customer.Phone = customerPhoneTextBox.Text;
+        }
+
+        private void profitButton_Click(object sender, EventArgs e)
+        {
+            // TODO: Calculate profit functionality and other statistical user story implementations
         }
     }
 }

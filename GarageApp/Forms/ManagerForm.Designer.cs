@@ -744,6 +744,7 @@
             this.profitButton.TabIndex = 24;
             this.profitButton.Text = "Calculate profit";
             this.profitButton.UseVisualStyleBackColor = true;
+            this.profitButton.Click += new System.EventHandler(this.profitButton_Click);
             // 
             // garageGroupBox
             // 
