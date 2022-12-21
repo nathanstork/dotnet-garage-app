@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerForm));
             this.userLabel = new System.Windows.Forms.Label();
             this.jobsListBox = new System.Windows.Forms.ListBox();
             this.jobsLabel = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.mechanicJobsLabel = new System.Windows.Forms.Label();
             this.mechanicJobsListBox = new System.Windows.Forms.ListBox();
             this.jobDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.completedByLabel = new System.Windows.Forms.Label();
             this.jobStatusTextBox = new System.Windows.Forms.TextBox();
             this.customerGroupBox = new System.Windows.Forms.GroupBox();
             this.customerPhoneTextBox = new System.Windows.Forms.TextBox();
@@ -80,7 +80,6 @@
             this.receiptButton = new System.Windows.Forms.Button();
             this.jobNotesTextBox = new System.Windows.Forms.TextBox();
             this.notesLabel = new System.Windows.Forms.Label();
-            this.jobStatusComboBox = new System.Windows.Forms.ComboBox();
             this.jobPriceTextBox = new System.Windows.Forms.TextBox();
             this.jobStatusLabel = new System.Windows.Forms.Label();
             this.jobPriceLabel = new System.Windows.Forms.Label();
@@ -93,6 +92,7 @@
             this.hireButton = new System.Windows.Forms.Button();
             this.profitButton = new System.Windows.Forms.Button();
             this.garageGroupBox = new System.Windows.Forms.GroupBox();
+            this.chartButton = new System.Windows.Forms.Button();
             this.detailsGroupBox.SuspendLayout();
             this.employeeGroupBox.SuspendLayout();
             this.contractGroupBox.SuspendLayout();
@@ -154,7 +154,7 @@
             this.employeesListBox.Size = new System.Drawing.Size(224, 244);
             this.employeesListBox.Sorted = true;
             this.employeesListBox.TabIndex = 5;
-            this.employeesListBox.SelectedValueChanged += new System.EventHandler(this.mechanicsListBox_SelectedValueChanged);
+            this.employeesListBox.SelectedValueChanged += new System.EventHandler(this.employeesListBox_SelectedValueChanged);
             // 
             // employeesLabel
             // 
@@ -392,13 +392,13 @@
             // 
             // jobDetailsGroupBox
             // 
+            this.jobDetailsGroupBox.Controls.Add(this.completedByLabel);
             this.jobDetailsGroupBox.Controls.Add(this.jobStatusTextBox);
             this.jobDetailsGroupBox.Controls.Add(this.customerGroupBox);
             this.jobDetailsGroupBox.Controls.Add(this.carGroupBox);
             this.jobDetailsGroupBox.Controls.Add(this.receiptButton);
             this.jobDetailsGroupBox.Controls.Add(this.jobNotesTextBox);
             this.jobDetailsGroupBox.Controls.Add(this.notesLabel);
-            this.jobDetailsGroupBox.Controls.Add(this.jobStatusComboBox);
             this.jobDetailsGroupBox.Controls.Add(this.jobPriceTextBox);
             this.jobDetailsGroupBox.Controls.Add(this.jobStatusLabel);
             this.jobDetailsGroupBox.Controls.Add(this.jobPriceLabel);
@@ -413,6 +413,18 @@
             this.jobDetailsGroupBox.TabStop = false;
             this.jobDetailsGroupBox.Text = "Job";
             // 
+            // completedByLabel
+            // 
+            this.completedByLabel.AutoSize = true;
+            this.completedByLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.completedByLabel.Location = new System.Drawing.Point(272, 54);
+            this.completedByLabel.Name = "completedByLabel";
+            this.completedByLabel.Size = new System.Drawing.Size(101, 20);
+            this.completedByLabel.TabIndex = 25;
+            this.completedByLabel.Text = "completedBy";
+            this.completedByLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.completedByLabel.Visible = false;
+            // 
             // jobStatusTextBox
             // 
             this.jobStatusTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -421,7 +433,7 @@
             this.jobStatusTextBox.Location = new System.Drawing.Point(100, 51);
             this.jobStatusTextBox.Name = "jobStatusTextBox";
             this.jobStatusTextBox.ReadOnly = true;
-            this.jobStatusTextBox.Size = new System.Drawing.Size(212, 27);
+            this.jobStatusTextBox.Size = new System.Drawing.Size(166, 27);
             this.jobStatusTextBox.TabIndex = 24;
             // 
             // customerGroupBox
@@ -601,9 +613,9 @@
             // receiptButton
             // 
             this.receiptButton.Enabled = false;
-            this.receiptButton.Location = new System.Drawing.Point(535, 19);
+            this.receiptButton.Location = new System.Drawing.Point(514, 19);
             this.receiptButton.Name = "receiptButton";
-            this.receiptButton.Size = new System.Drawing.Size(131, 29);
+            this.receiptButton.Size = new System.Drawing.Size(152, 29);
             this.receiptButton.TabIndex = 21;
             this.receiptButton.Text = "Show receipt";
             this.receiptButton.UseVisualStyleBackColor = true;
@@ -629,26 +641,16 @@
             this.notesLabel.TabIndex = 17;
             this.notesLabel.Text = "Notes:";
             // 
-            // jobStatusComboBox
-            // 
-            this.jobStatusComboBox.FormattingEnabled = true;
-            this.jobStatusComboBox.Location = new System.Drawing.Point(100, 51);
-            this.jobStatusComboBox.Name = "jobStatusComboBox";
-            this.jobStatusComboBox.Size = new System.Drawing.Size(213, 28);
-            this.jobStatusComboBox.TabIndex = 2;
-            this.jobStatusComboBox.Visible = false;
-            this.jobStatusComboBox.SelectedValueChanged += new System.EventHandler(this.jobStatusComboBox_SelectedValueChanged);
-            // 
             // jobPriceTextBox
             // 
             this.jobPriceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.jobPriceTextBox.Enabled = false;
-            this.jobPriceTextBox.Location = new System.Drawing.Point(453, 52);
+            this.jobPriceTextBox.Location = new System.Drawing.Point(535, 51);
             this.jobPriceTextBox.Name = "jobPriceTextBox";
             this.jobPriceTextBox.ReadOnly = true;
-            this.jobPriceTextBox.Size = new System.Drawing.Size(213, 27);
+            this.jobPriceTextBox.Size = new System.Drawing.Size(130, 27);
             this.jobPriceTextBox.TabIndex = 15;
             // 
             // jobStatusLabel
@@ -663,7 +665,7 @@
             // jobPriceLabel
             // 
             this.jobPriceLabel.AutoSize = true;
-            this.jobPriceLabel.Location = new System.Drawing.Point(374, 55);
+            this.jobPriceLabel.Location = new System.Drawing.Point(464, 54);
             this.jobPriceLabel.Name = "jobPriceLabel";
             this.jobPriceLabel.Size = new System.Drawing.Size(44, 20);
             this.jobPriceLabel.TabIndex = 11;
@@ -740,7 +742,7 @@
             // 
             this.profitButton.Location = new System.Drawing.Point(6, 26);
             this.profitButton.Name = "profitButton";
-            this.profitButton.Size = new System.Drawing.Size(131, 29);
+            this.profitButton.Size = new System.Drawing.Size(315, 29);
             this.profitButton.TabIndex = 24;
             this.profitButton.Text = "Calculate profit";
             this.profitButton.UseVisualStyleBackColor = true;
@@ -748,6 +750,7 @@
             // 
             // garageGroupBox
             // 
+            this.garageGroupBox.Controls.Add(this.chartButton);
             this.garageGroupBox.Controls.Add(this.profitButton);
             this.garageGroupBox.Location = new System.Drawing.Point(266, 622);
             this.garageGroupBox.Name = "garageGroupBox";
@@ -755,6 +758,16 @@
             this.garageGroupBox.TabIndex = 12;
             this.garageGroupBox.TabStop = false;
             this.garageGroupBox.Text = "Garage";
+            // 
+            // chartButton
+            // 
+            this.chartButton.Location = new System.Drawing.Point(382, 26);
+            this.chartButton.Name = "chartButton";
+            this.chartButton.Size = new System.Drawing.Size(315, 29);
+            this.chartButton.TabIndex = 25;
+            this.chartButton.Text = "Show chart";
+            this.chartButton.UseVisualStyleBackColor = true;
+            this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
             // 
             // ManagerForm
             // 
@@ -776,7 +789,6 @@
             this.Controls.Add(this.jobsListBox);
             this.Controls.Add(this.userLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ManagerForm";
             this.Padding = new System.Windows.Forms.Padding(10);
@@ -823,7 +835,6 @@
         private Label jobDateLabel;
         private Label jobStatusLabel;
         private Label jobPriceLabel;
-        private ComboBox jobStatusComboBox;
         private Label mechanicJobsLabel;
         private ListBox mechanicJobsListBox;
         private Label salaryTextLabel;
@@ -866,5 +877,7 @@
         private Label customerNameLabel;
         private Label employeeTypeLabel;
         private TextBox jobStatusTextBox;
+        private Button chartButton;
+        private Label completedByLabel;
     }
 }

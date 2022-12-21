@@ -1,4 +1,5 @@
 ﻿using GarageApp.Users;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Data;
 using System.Text.RegularExpressions;
 
@@ -63,10 +64,10 @@ namespace GarageApp.Forms
         {
             SetEmployees();
 
-            foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
+            /*foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
             {
                 jobStatusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
-            }
+            }*/
 
             SetJobs();
         }
@@ -96,24 +97,25 @@ namespace GarageApp.Forms
 
             if (job.Status == JobStatus.Completed || job.Status == JobStatus.UnableToComplete)
             {
+                completedByLabel.Text = "By: " + job.CompletedBy;
+                completedByLabel.Visible = true;
+
                 receiptButton.Enabled = true;
             }
             else
             {
+                completedByLabel.Text = string.Empty;
+                completedByLabel.Visible = false;
+
                 receiptButton.Enabled = false;
             }
 
-            string jobStatus = Regex.Replace(job.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
-            jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(jobStatus);
+            /*string jobStatus = Regex.Replace(job.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
+            jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(jobStatus);*/
+            
+            jobStatusTextBox.Text = Regex.Replace(job.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
 
-            if (job.Status.ToString().Replace(" ", "") == JobStatus.Unassigned.ToString())
-            {
-                assignJobButton.Enabled = true;
-            }
-            else
-            {
-                assignJobButton.Enabled = false;
-            }
+            checkMechanicJobFields();
 
             customerNameTextBox.Text = job.Customer.Name;
             customerAddressTextBox.Text = job.Customer.Address;
@@ -177,7 +179,8 @@ namespace GarageApp.Forms
             removeJobButton.Enabled = false;
             assignJobButton.Enabled = false;
 
-            jobStatusComboBox.SelectedIndex = -1;
+            //jobStatusComboBox.SelectedIndex = -1;
+            jobStatusTextBox.Text = string.Empty;
 
             //jobStatusComboBox.Enabled = false;
             jobDescriptionTextBox.Enabled = false;
@@ -189,7 +192,7 @@ namespace GarageApp.Forms
             carColorTextBox.Enabled = false;
         }
 
-        private void ResetMechanicFields()
+        private void ResetEmployeeFields()
         {
             mechanicNameTextBox.Text = string.Empty;
             mechanicAddressTextBox.Text = string.Empty;
@@ -229,6 +232,43 @@ namespace GarageApp.Forms
             if (SelectedJob != null) UpdateJobDetails(SelectedJob);
         }
 
+        private void checkMechanicJobFields()
+        {
+            // No user is selected or selected a manager
+            if (SelectedUser == null || SelectedUser.GetType().Name != "Mechanic")
+            {
+                assignJobButton.Enabled = false;
+                unassignJobButton.Enabled = false;
+                return;
+            }
+
+            Mechanic mechanic = SelectedUser as Mechanic;
+
+            // If a job is selected
+            if (SelectedJob != null)
+            {
+                if (SelectedJob.Status == JobStatus.Unassigned)
+                {
+                    assignJobButton.Enabled = true;
+                }
+                else
+                {
+                    assignJobButton.Enabled = false;
+                }
+            }
+            else
+            {
+                if (mechanic.Jobs.Count > 0)
+                {
+                    unassignJobButton.Enabled = true;
+                }
+                else
+                {
+                    unassignJobButton.Enabled = false;
+                }
+            }
+        }
+
         private void UpdateUserDetails(User user)
         {
             mechanicNameTextBox.Text = user.Name;
@@ -251,24 +291,7 @@ namespace GarageApp.Forms
 
                 employeeTypeLabel.Text = "Mechanic";
 
-                // ?????
-                /*if (Entry.CurrentUser.Garage.Jobs.Count > 0)
-                {
-                    assignJobButton.Enabled = true;
-                }
-                else
-                {
-                    assignJobButton.Enabled = false;
-                }
-
-                if (mechanic.Jobs.Count > 0)
-                {
-                    unassignJobButton.Enabled = true;
-                }
-                else
-                {
-                    unassignJobButton.Enabled = false;
-                }*/
+                checkMechanicJobFields();
 
                 BindingSource mechanicJobsBinding = new BindingSource();
                 mechanicJobsBinding.DataSource = mechanic.Jobs;
@@ -290,11 +313,11 @@ namespace GarageApp.Forms
         }
 
 
-        private void mechanicsListBox_SelectedValueChanged(object sender, EventArgs e)
+        private void employeesListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (employeesListBox.Items.Count == 0)
             {
-                ResetMechanicFields();
+                ResetEmployeeFields();
                 return;
             }
 
@@ -454,14 +477,14 @@ namespace GarageApp.Forms
             if (SelectedUser != null) SelectedUser.Address = mechanicAddressTextBox.Text;
         }
 
-        private void jobStatusComboBox_SelectedValueChanged(object sender, EventArgs e)
+        /*private void jobStatusComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             Enum.TryParse(jobStatusComboBox.Text.Replace(" ", ""), out JobStatus status);
 
             if (SelectedJob != null) SelectedJob.Status = status;
 
             jobStatusTextBox.Text = jobStatusComboBox.Text;
-        }
+        }*/
 
         private void jobDescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -527,7 +550,7 @@ namespace GarageApp.Forms
 
                 if (employeesListBox.Items.Count == 0)
                 {
-                    ResetMechanicFields();
+                    ResetEmployeeFields();
                 }
                 else
                 {
@@ -575,7 +598,23 @@ Total: {total}";
 
         private void profitButton_Click(object sender, EventArgs e)
         {
-            // TODO: Calculate profit functionality and other statistical user story implementations
+            // TODO: Calculate profit and display in message box
+            string content = @$"Profits as of {DateTime.Now}.
+
+Monthly profit: €{Entry.CurrentUser.Garage.GetMonthlyProfit()},-
+Total profit: €{Entry.CurrentUser.Garage.GetTotalProfit()},-";
+
+            MessageBox.Show(
+                content,
+                "Garage's profit",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+        private void chartButton_Click(object sender, EventArgs e)
+        {
+            // TODO: Open chart form
         }
     }
 }

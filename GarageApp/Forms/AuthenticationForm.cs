@@ -4,35 +4,31 @@ namespace GarageApp
 {
     public partial class AuthenticationForm : Form
     {
+        private Employees Employees;
+
         public AuthenticationForm()
         {
-            InitializeComponent();
-        }
+            Employees = Employees.GetInstance();
 
-        private void CloseForm()
-        {
-            this.Hide();
-            this.Close();
+            InitializeComponent();
         }
 
         private void SubmitForm()
         {
-            Employees employees = Employees.GetInstance();
-
             try
             {
-                employees.LogIn(userTextBox.Text.ToLower(), passTextBox.Text);
+                Employees.LogIn(userTextBox.Text.ToLower(), passTextBox.Text);
 
                 this.Hide();
 
-                if (employees.CurrentUser.GetType().Name == "Manager")
+                if (Employees.CurrentUser.GetType().Name == "Manager")
                 {
-                    ManagerForm managerForm = new ManagerForm("Logged in as " + employees.CurrentUser.Name);
+                    ManagerForm managerForm = new ManagerForm("Logged in as " + Employees.CurrentUser.Name);
                     managerForm.ShowDialog();
                 }
                 else
                 {
-                    MechanicForm mechanicForm = new MechanicForm("Logged in as " + employees.CurrentUser.Name);
+                    MechanicForm mechanicForm = new MechanicForm("Logged in as " + Employees.CurrentUser.Name);
                     mechanicForm.ShowDialog();
                 }
 

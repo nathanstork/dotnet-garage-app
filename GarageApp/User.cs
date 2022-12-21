@@ -13,7 +13,6 @@
         internal string Password
         {
             get;
-            set;
         }
 
         internal string Name

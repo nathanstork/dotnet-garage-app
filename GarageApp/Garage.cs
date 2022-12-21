@@ -30,6 +30,13 @@
                 125,
                 new Car("8-DJZ-49", "A7", "Audi", CarColor.Black),
                 new Customer("Luke Cornelissen", "Emmasingel 11 Eindhoven", "email@gmail.be", "+31 0623775123")
+            ));
+            Jobs.Add(new Job(
+                "Test description 4",
+                "28/11/2022",
+                125,
+                new Car("AB-33-KL", "A1", "Audi", CarColor.Black),
+                new Customer("Nate de Vries", "Woenselscheweg 8 Eindhoven", "email@gmail.be", "+31 0674482356")
             ));*/
         }
 
@@ -40,6 +47,28 @@
                 _instance = new Garage();
             }
             return _instance;
+        }
+
+        internal int GetTotalProfit()
+        {
+            int gainings = 0;
+            int costs = 0;
+
+            foreach (Job job in Jobs)
+            {
+                if (job.Status == JobStatus.Completed || job.Status == JobStatus.UnableToComplete)
+                {
+                    gainings += (job.Price + job.Costs);
+                    costs += job.LabourCosts;
+                }
+            }
+
+            return gainings - costs;
+        }
+
+        internal int GetMonthlyProfit()
+        {
+            return 0;
         }
     }
 }

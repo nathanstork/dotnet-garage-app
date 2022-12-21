@@ -30,7 +30,6 @@
         internal int Price
         {
             get;
-            set;
         }
         internal Car Car
         {
@@ -54,6 +53,12 @@
         }
 
         internal int Hours
+        {
+            get;
+            set;
+        }
+
+        internal int LabourCosts
         {
             get;
             set;

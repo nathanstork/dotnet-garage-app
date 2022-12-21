@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using GarageApp.Users;
 
 namespace GarageApp.Forms
 {
     public partial class JobCompletionForm : Form
     {
         private Job Job;
-        private string MechanicName;
+        private Mechanic Mechanic;
         private Action SuccessCallback;
         private Action CancelCallback;
 
-        internal JobCompletionForm(Job job, string mechanicName, Action successCallback, Action cancelCallback)
+        internal JobCompletionForm(Job job, Mechanic mechanic, Action successCallback, Action cancelCallback)
         {
             Job = job;
-            MechanicName = mechanicName;
+            Mechanic = mechanic;
             SuccessCallback = successCallback;
             CancelCallback = cancelCallback;
 
@@ -39,10 +30,12 @@ namespace GarageApp.Forms
 
             if (result == DialogResult.Yes)
             {
-                Job.CompletedBy = MechanicName;
-
                 Job.Hours = Convert.ToInt32(hoursNumericUpDown.Value);
                 Job.Costs = Convert.ToInt32(costsNumericUpDown.Value);
+
+                Job.LabourCosts = Convert.ToInt32(Job.Hours * Mechanic.Contract.GetHourlySalary());
+
+                Job.CompletedBy = Mechanic.Name;
 
                 SuccessCallback();
 

@@ -72,7 +72,7 @@ namespace GarageAppTests
             GarageApp.Users.Mechanic newMechanic = new GarageApp.Users.Mechanic("user", "pass", "name", "address", new MonthlyContract(1, 1));
             Employees.Mechanics.Add(newMechanic);
 
-            GarageApp.Users.Manager newManager = new GarageApp.Users.Manager("user", "pass", "name", "address", Employees.Mechanics);
+            GarageApp.Users.Manager newManager = new GarageApp.Users.Manager("user", "pass", "name", "address", new MonthlyContract(2600, 40), Employees.Mechanics);
             Employees.Managers.Add(newManager);
 
             Employees.SaveData();

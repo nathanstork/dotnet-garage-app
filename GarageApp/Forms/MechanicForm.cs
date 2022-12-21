@@ -1,16 +1,4 @@
-﻿using GarageApp.Users;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using System.Text.RegularExpressions;
 
 namespace GarageApp.Forms
 {
@@ -20,7 +8,6 @@ namespace GarageApp.Forms
 
         Job SelectedJob;
 
-        // TODO: Print receipt after job's completion
         public MechanicForm(string? label)
         {
             Entry = Employees.GetInstance();
@@ -145,20 +132,25 @@ namespace GarageApp.Forms
             {
                 JobCompletionForm completionForm = new JobCompletionForm(
                     SelectedJob,
-                    Entry.CurrentUser.Name,
+                    Entry.CurrentUser,
                     new Action(() =>
                     {
                         SelectedJob.Status = status;
 
+                        SelectedJob.CompletedBy = Entry.CurrentUser.Name;
+
                         Entry.CurrentUser.Jobs.Remove(SelectedJob);
 
                         SetJobs();
-                    }),
-                    new Action(() =>
-                    {
-                        string jobStatus = Regex.Replace(SelectedJob.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
 
-                        statusComboBox.SelectedIndex = statusComboBox.FindString(jobStatus);
+                        if (jobsListBox.Items.Count > 0)
+                        {
+                            UpdateJobDetails(SelectedJob);
+                        }
+                        else
+                        {
+                            ResetJobFields();
+                        }
 
                         int total = SelectedJob.Price + SelectedJob.Costs;
 
@@ -170,6 +162,13 @@ Material costs: {SelectedJob.Costs}
 Total: {total}";
 
                         MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
+                    }),
+                    new Action(() =>
+                    {
+                        // Rest job status to it's current value
+                        string jobStatus = Regex.Replace(SelectedJob.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
+
+                        statusComboBox.SelectedIndex = statusComboBox.FindString(jobStatus);
                     })
                 );
 
