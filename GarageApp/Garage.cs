@@ -49,6 +49,16 @@
             return _instance;
         }
 
+        private List<Job> GetJobsByDate(int month, int year)
+        {
+            return Jobs.FindAll(job =>
+            {
+                string[] nums = job.Date.Split("/");
+
+                return nums[1] == month.ToString() && nums[2] == year.ToString();
+            });
+        }
+
         internal int GetTotalProfit()
         {
             int gainings = 0;
@@ -68,7 +78,21 @@
 
         internal int GetMonthlyProfit()
         {
-            return 0;
+            int gainings = 0;
+            int costs = 0;
+
+            List<Job> monthsJobs = GetJobsByDate(11, 2022);
+
+            foreach (Job job in monthsJobs)
+            {
+                if (job.Status == JobStatus.Completed || job.Status == JobStatus.UnableToComplete)
+                {
+                    gainings += (job.Price + job.Costs);
+                    costs += job.LabourCosts;
+                }
+            }
+
+            return gainings - costs;
         }
     }
 }
