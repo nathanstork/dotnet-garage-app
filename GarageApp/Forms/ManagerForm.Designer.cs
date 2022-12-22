@@ -711,10 +711,6 @@
             this.jobDateTextLabel.TabIndex = 0;
             this.jobDateTextLabel.Text = "Date:";
             // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataSource = typeof(GarageApp.Employees);
-            // 
             // fireButton
             // 
             this.fireButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -742,9 +738,9 @@
             // 
             this.profitButton.Location = new System.Drawing.Point(6, 26);
             this.profitButton.Name = "profitButton";
-            this.profitButton.Size = new System.Drawing.Size(315, 29);
+            this.profitButton.Size = new System.Drawing.Size(335, 29);
             this.profitButton.TabIndex = 24;
-            this.profitButton.Text = "Calculate profit";
+            this.profitButton.Text = "Calculate month\'s profit";
             this.profitButton.UseVisualStyleBackColor = true;
             this.profitButton.Click += new System.EventHandler(this.profitButton_Click);
             // 
@@ -761,13 +757,13 @@
             // 
             // chartButton
             // 
-            this.chartButton.Location = new System.Drawing.Point(382, 26);
+            this.chartButton.Location = new System.Drawing.Point(362, 26);
             this.chartButton.Name = "chartButton";
-            this.chartButton.Size = new System.Drawing.Size(315, 29);
+            this.chartButton.Size = new System.Drawing.Size(335, 29);
             this.chartButton.TabIndex = 25;
-            this.chartButton.Text = "Show chart";
+            this.chartButton.Text = "Show all time overview";
             this.chartButton.UseVisualStyleBackColor = true;
-            this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
+            this.chartButton.Click += new System.EventHandler(this.overviewButton_Click);
             // 
             // ManagerForm
             // 

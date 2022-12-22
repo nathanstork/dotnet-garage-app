@@ -122,10 +122,6 @@
             this.addJobButton.UseVisualStyleBackColor = true;
             this.addJobButton.Click += new System.EventHandler(this.addJobButton_Click);
             // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataSource = typeof(GarageApp.Employees);
-            // 
             // jobDetailsGroupBox
             // 
             this.jobDetailsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -172,6 +168,7 @@
             // 
             this.customerPhoneTextBox.Location = new System.Drawing.Point(78, 119);
             this.customerPhoneTextBox.Name = "customerPhoneTextBox";
+            this.customerPhoneTextBox.ReadOnly = true;
             this.customerPhoneTextBox.Size = new System.Drawing.Size(264, 27);
             this.customerPhoneTextBox.TabIndex = 15;
             // 
@@ -179,6 +176,7 @@
             // 
             this.customerAddressTextBox.Location = new System.Drawing.Point(78, 53);
             this.customerAddressTextBox.Name = "customerAddressTextBox";
+            this.customerAddressTextBox.ReadOnly = true;
             this.customerAddressTextBox.Size = new System.Drawing.Size(264, 27);
             this.customerAddressTextBox.TabIndex = 14;
             // 
@@ -186,6 +184,7 @@
             // 
             this.customerEmailTextBox.Location = new System.Drawing.Point(78, 86);
             this.customerEmailTextBox.Name = "customerEmailTextBox";
+            this.customerEmailTextBox.ReadOnly = true;
             this.customerEmailTextBox.Size = new System.Drawing.Size(264, 27);
             this.customerEmailTextBox.TabIndex = 13;
             // 
@@ -193,6 +192,7 @@
             // 
             this.customerNameTextBox.Location = new System.Drawing.Point(78, 20);
             this.customerNameTextBox.Name = "customerNameTextBox";
+            this.customerNameTextBox.ReadOnly = true;
             this.customerNameTextBox.Size = new System.Drawing.Size(264, 27);
             this.customerNameTextBox.TabIndex = 12;
             // 

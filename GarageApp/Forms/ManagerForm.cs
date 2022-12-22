@@ -1,5 +1,4 @@
 ﻿using GarageApp.Users;
-using Microsoft.VisualBasic.ApplicationServices;
 using System.Data;
 using System.Text.RegularExpressions;
 
@@ -576,6 +575,66 @@ Total: {total}";
             MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
         }
 
+        private void profitButton_Click(object sender, EventArgs e)
+        {
+            string content = @$"Profits as of {DateTime.Now}.
+
+Monthly profit: €{Entry.CurrentUser.Garage.GetMonthlyProfit(DateTime.Now.Month, DateTime.Now.Year)},-
+Total profit: €{Entry.CurrentUser.Garage.GetTotalProfit()},-";
+
+            MessageBox.Show(
+                content,
+                "Garage's profit",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+        private void overviewButton_Click(object sender, EventArgs e)
+        {
+            Garage garage = Entry.CurrentUser.Garage;
+
+            List<(int, int)> dates = new List<(int, int)>();
+
+            List<Job> jobs = garage.Jobs;
+            jobs.ForEach(job =>
+            {
+                string[] chunks = job.Date.Split("/");
+
+                (int, int) dateTuple = (Convert.ToInt32(chunks[1]), Convert.ToInt32(chunks[2]));
+
+                if (!dates.Contains(dateTuple)) dates.Add(dateTuple);
+            });
+
+            List<int> years = new List<int>();
+            dates.ForEach(date =>
+            {
+                if (!years.Contains(date.Item2)) years.Add(date.Item2);
+            });
+
+            string content = "All time profits.\n";
+
+            years.ForEach(year =>
+            {
+                content += $"\n{year}:\n";
+
+                dates.ForEach(date =>
+                {
+                    if (date.Item2 == year)
+                    {
+                        content += $"    Month {date.Item1}: \t€{garage.GetMonthlyProfit(date.Item1, date.Item2)},-\n";
+                    }
+                });
+            });
+
+            MessageBox.Show(
+                content,
+                "Garage's profit overview",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
         private void customerNameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (SelectedJob != null) SelectedJob.Customer.Name = customerNameTextBox.Text;
@@ -594,27 +653,6 @@ Total: {total}";
         private void customerPhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             if (SelectedJob != null) SelectedJob.Customer.Phone = customerPhoneTextBox.Text;
-        }
-
-        private void profitButton_Click(object sender, EventArgs e)
-        {
-            // TODO: Calculate profit and display in message box
-            string content = @$"Profits as of {DateTime.Now}.
-
-Monthly profit: €{Entry.CurrentUser.Garage.GetMonthlyProfit()},-
-Total profit: €{Entry.CurrentUser.Garage.GetTotalProfit()},-";
-
-            MessageBox.Show(
-                content,
-                "Garage's profit",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
-        }
-
-        private void chartButton_Click(object sender, EventArgs e)
-        {
-            // TODO: Open chart form
         }
     }
 }

@@ -39,6 +39,17 @@ namespace GarageApp.Forms
 
                 SuccessCallback();
 
+                int total = Job.Price + Job.Costs;
+
+                string content = @$"{Job.ToString()}
+
+Labour costs: {Job.Price}
+Material costs: {Job.Costs}
+------------------------ +
+Total: {total}";
+
+                MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
+
                 this.Hide();
                 this.Close();
             }

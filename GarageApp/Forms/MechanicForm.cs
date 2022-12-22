@@ -72,6 +72,16 @@ namespace GarageApp.Forms
             priceTextBox.Text = job.Price.ToString();
             descriptionTextBox.Text = job.Description;
             notesTextBox.Text = job.Notes;
+
+            carPlateTextBox.Text = job.Car.Plate;
+            carBrandTextBox.Text = job.Car.Brand;
+            carModelTextBox.Text = job.Car.Model;
+            carColorTextBox.Text = job.Car.Color.ToString();
+
+            customerNameTextBox.Text = job.Customer.Name;
+            customerAddressTextBox.Text = job.Customer.Address;
+            customerEmailTextBox.Text = job.Customer.Email;
+            customerPhoneTextBox.Text = job.Customer.Phone;
         }
 
         private void ResetJobFields()
@@ -86,16 +96,21 @@ namespace GarageApp.Forms
             carModelTextBox.Text = string.Empty;
             carColorTextBox.Text = string.Empty;
 
+            customerNameTextBox.Text = string.Empty;
+            customerAddressTextBox.Text = string.Empty;
+            customerEmailTextBox.Text = string.Empty;
+            customerPhoneTextBox.Text = string.Empty;
+
             statusComboBox.SelectedIndex = -1;
 
             statusComboBox.Enabled = false;
             descriptionTextBox.Enabled = false;
             notesTextBox.Enabled = false;
 
-            carPlateTextBox.Enabled = false;
+            /*carPlateTextBox.Enabled = false;
             carBrandTextBox.Enabled = false;
             carModelTextBox.Enabled = false;
-            carColorTextBox.Enabled = false;
+            carColorTextBox.Enabled = false;*/
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -109,10 +124,10 @@ namespace GarageApp.Forms
             statusComboBox.Enabled = true;
             descriptionTextBox.Enabled = true;
             notesTextBox.Enabled = true;
-            carPlateTextBox.Enabled = true;
+            /*carPlateTextBox.Enabled = true;
             carBrandTextBox.Enabled = true;
             carModelTextBox.Enabled = true;
-            carColorTextBox.Enabled = true;
+            carColorTextBox.Enabled = true;*/
 
             SelectedJob = jobsListBox.SelectedItem as Job;
             if (SelectedJob != null) UpdateJobDetails(SelectedJob);
@@ -137,8 +152,6 @@ namespace GarageApp.Forms
                     {
                         SelectedJob.Status = status;
 
-                        SelectedJob.CompletedBy = Entry.CurrentUser.Name;
-
                         Entry.CurrentUser.Jobs.Remove(SelectedJob);
 
                         SetJobs();
@@ -151,21 +164,10 @@ namespace GarageApp.Forms
                         {
                             ResetJobFields();
                         }
-
-                        int total = SelectedJob.Price + SelectedJob.Costs;
-
-                        string content = @$"{SelectedJob.ToString()}
-
-Labour costs: {SelectedJob.Price}
-Material costs: {SelectedJob.Costs}
------------------------- +
-Total: {total}";
-
-                        MessageBox.Show(content, "Receipt", MessageBoxButtons.OK);
                     }),
                     new Action(() =>
                     {
-                        // Rest job status to it's current value
+                        // Reset job status to it's current value
                         string jobStatus = Regex.Replace(SelectedJob.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
 
                         statusComboBox.SelectedIndex = statusComboBox.FindString(jobStatus);
