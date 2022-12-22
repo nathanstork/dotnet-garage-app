@@ -91,12 +91,14 @@
             return jobs;
         }
 
-        internal int GetTotalProfit()
+        internal int GetMonthlyProfit(int month, int year)
         {
             int gainings = 0;
             int costs = 0;
 
-            foreach (Job job in Jobs)
+            List<Job> monthsJobs = GetJobsByDate(month, year);
+
+            foreach (Job job in monthsJobs)
             {
                 if (job.Status == JobStatus.Completed || job.Status == JobStatus.UnableToComplete)
                 {
@@ -108,14 +110,12 @@
             return gainings - costs;
         }
 
-        internal int GetMonthlyProfit(int month, int year)
+        internal int GetTotalProfit()
         {
             int gainings = 0;
             int costs = 0;
 
-            List<Job> monthsJobs = GetJobsByDate(month, year);
-
-            foreach (Job job in monthsJobs)
+            foreach (Job job in Jobs)
             {
                 if (job.Status == JobStatus.Completed || job.Status == JobStatus.UnableToComplete)
                 {

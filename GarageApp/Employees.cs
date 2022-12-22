@@ -1,9 +1,6 @@
 ﻿using GarageApp.Contracts;
 using GarageApp.Users;
-using Microsoft.VisualBasic.ApplicationServices;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace GarageApp
 {
@@ -98,13 +95,11 @@ namespace GarageApp
 
         internal void SaveData()
         {
-            Console.WriteLine("Saving data...");
             using (Stream stream = File.Open(SaveFilePath, FileMode.Create))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, (Mechanics, Managers));
             }
-            Console.WriteLine("Done! Bye now.");
         }
     }
 }

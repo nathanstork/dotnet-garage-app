@@ -63,11 +63,6 @@ namespace GarageApp.Forms
         {
             SetEmployees();
 
-            /*foreach (JobStatus status in Enum.GetValues(typeof(JobStatus)))
-            {
-                jobStatusComboBox.Items.Add(Regex.Replace(status.ToString(), "([a-z])([A-Z])", "$1 $2"));
-            }*/
-
             SetJobs();
         }
 
@@ -108,9 +103,6 @@ namespace GarageApp.Forms
 
                 receiptButton.Enabled = false;
             }
-
-            /*string jobStatus = Regex.Replace(job.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
-            jobStatusComboBox.SelectedIndex = jobStatusComboBox.FindString(jobStatus);*/
             
             jobStatusTextBox.Text = Regex.Replace(job.Status.ToString(), "([a-z])([A-Z])", "$1 $2");
 
@@ -178,10 +170,8 @@ namespace GarageApp.Forms
             removeJobButton.Enabled = false;
             assignJobButton.Enabled = false;
 
-            //jobStatusComboBox.SelectedIndex = -1;
             jobStatusTextBox.Text = string.Empty;
 
-            //jobStatusComboBox.Enabled = false;
             jobDescriptionTextBox.Enabled = false;
             jobNotesTextBox.Enabled= false;
 
@@ -217,7 +207,6 @@ namespace GarageApp.Forms
                 return;
             }
 
-            //jobStatusComboBox.Enabled = true;
             jobDescriptionTextBox.Enabled = true;
             jobNotesTextBox.Enabled = true;
             removeJobButton.Enabled = true;
@@ -325,9 +314,6 @@ namespace GarageApp.Forms
             changeContractButton.Enabled = true;
             fireButton.Enabled = true;
 
-            //SelectedMechanic = employeesListBox.SelectedItem as Mechanic;
-            //if (SelectedMechanic != null) UpdateMechanicDetails(SelectedMechanic);
-
             SelectedUser = employeesListBox.SelectedItem as User;
             if (SelectedUser != null) UpdateUserDetails(SelectedUser);
         }
@@ -364,13 +350,7 @@ namespace GarageApp.Forms
 
         private void changeContractButton_Click(object sender, EventArgs e)
         {
-            //if (SelectedMechanic == null) return;
             if (SelectedUser == null) return;
-
-            /*ContractForm contractForm = new ContractForm(SelectedMechanic, new Action(() =>
-            {
-                if (SelectedMechanic != null) UpdateMechanicDetails(SelectedMechanic);
-            }));*/
 
             ContractForm contractForm = new ContractForm(SelectedUser, new Action(() =>
             {
@@ -399,14 +379,7 @@ namespace GarageApp.Forms
 
         private void assignJobButton_Click(object sender, EventArgs e)
         {
-            //if (SelectedJob == null || SelectedMechanic == null) return;
             if (SelectedJob == null || SelectedUser == null) return;
-
-            /*if (!SelectedMechanic.Jobs.Contains(SelectedJob))
-            {
-                SelectedJob.Status = JobStatus.Assigned;
-                SelectedMechanic.Jobs.Add(SelectedJob);
-            }*/
 
             if (SelectedUser.GetType().Name != "Mechanic") return;
 
@@ -444,46 +417,17 @@ namespace GarageApp.Forms
                 UpdateMechanicJobs(mechanic);
                 UpdateJobDetails(SelectedJob);
             }
-
-            /*if (SelectedJob != null && SelectedMechanic != null)
-            {
-                DialogResult result = MessageBox.Show(
-                    "Are you sure you want to unassign this job?",
-                    "Unassign job",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (result == DialogResult.Yes)
-                {
-                    SelectedMechanic.Jobs.Remove(SelectedJob);
-                    SelectedJob.Status = JobStatus.Unassigned;
-                }
-            }
-
-            if (SelectedMechanic != null) UpdateMechanicJobs(SelectedMechanic);*/
         }
 
         private void mechanicNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            //if (SelectedMechanic != null) SelectedMechanic.Name = mechanicNameTextBox.Text;
             if (SelectedUser != null) SelectedUser.Name = mechanicNameTextBox.Text;
         }
 
         private void mechanicAddressTextBox_TextChanged(object sender, EventArgs e)
         {
-            //if (SelectedMechanic != null) SelectedMechanic.Address = mechanicAddressTextBox.Text;
             if (SelectedUser != null) SelectedUser.Address = mechanicAddressTextBox.Text;
         }
-
-        /*private void jobStatusComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            Enum.TryParse(jobStatusComboBox.Text.Replace(" ", ""), out JobStatus status);
-
-            if (SelectedJob != null) SelectedJob.Status = status;
-
-            jobStatusTextBox.Text = jobStatusComboBox.Text;
-        }*/
 
         private void jobDescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -503,29 +447,7 @@ namespace GarageApp.Forms
 
         private void fireButton_Click(object sender, EventArgs e)
         {
-            //if (SelectedMechanic == null) return;
             if (SelectedUser == null) return;
-
-            /*DialogResult result = MessageBox.Show(
-                "Are you sure you want to let " + SelectedMechanic.Name + " go?",
-                "Confirmation of release",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                Entry.CurrentUser.Mechanics.Remove(SelectedMechanic);
-                SetMechanics();
-                if (employeesListBox.Items.Count == 0)
-                {
-                    ResetMechanicFields();
-                }
-                else
-                {
-                    UpdateMechanicDetails(SelectedMechanic);
-                }
-            }*/
 
             DialogResult result = MessageBox.Show(
                 "Are you sure you want to let " + SelectedUser.Name + " go?",
@@ -553,7 +475,6 @@ namespace GarageApp.Forms
                 }
                 else
                 {
-                    //UpdateMechanicDetails(SelectedMechanic);
                     UpdateUserDetails(SelectedUser);
                 }
             }

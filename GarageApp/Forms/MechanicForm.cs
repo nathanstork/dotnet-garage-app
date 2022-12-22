@@ -106,11 +106,6 @@ namespace GarageApp.Forms
             statusComboBox.Enabled = false;
             descriptionTextBox.Enabled = false;
             notesTextBox.Enabled = false;
-
-            /*carPlateTextBox.Enabled = false;
-            carBrandTextBox.Enabled = false;
-            carModelTextBox.Enabled = false;
-            carColorTextBox.Enabled = false;*/
         }
 
         private void jobsListBox_SelectedValueChanged(object sender, EventArgs e)
@@ -124,10 +119,6 @@ namespace GarageApp.Forms
             statusComboBox.Enabled = true;
             descriptionTextBox.Enabled = true;
             notesTextBox.Enabled = true;
-            /*carPlateTextBox.Enabled = true;
-            carBrandTextBox.Enabled = true;
-            carModelTextBox.Enabled = true;
-            carColorTextBox.Enabled = true;*/
 
             SelectedJob = jobsListBox.SelectedItem as Job;
             if (SelectedJob != null) UpdateJobDetails(SelectedJob);

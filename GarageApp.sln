@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarageApp", "GarageApp\GarageApp.csproj", "{A409B687-7B41-494A-95FA-66376E781BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageAppTests", "GarageAppTests\GarageAppTests.csproj", "{731A6828-2762-4366-8F48-18EA43BEEEF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarageAppTests", "GarageAppTests\GarageAppTests.csproj", "{731A6828-2762-4366-8F48-18EA43BEEEF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
