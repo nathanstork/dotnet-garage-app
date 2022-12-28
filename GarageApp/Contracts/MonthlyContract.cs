@@ -3,9 +3,7 @@
     [Serializable]
     internal class MonthlyContract : Contract
     {
-        public MonthlyContract(int salary, int hours) : base(salary, hours)
-        {
-        }
+        public MonthlyContract(int salary, int hours) : base(salary, hours) {}
 
         internal override int GetMontlyHours()
         {
