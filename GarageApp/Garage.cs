@@ -77,6 +77,16 @@
             return _instance;
         }
 
+        internal void AddJob(Job job)
+        {
+            Jobs.Add(job);
+        }
+
+        internal void RemoveJob(Job job)
+        {
+            Jobs.Remove(job);
+        }
+
         private List<Job> GetJobsByDate(int month, int year)
         {
             List<Job> jobs = Jobs.FindAll(job =>
