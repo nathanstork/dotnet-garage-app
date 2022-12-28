@@ -2,6 +2,10 @@
 
 namespace GarageAppTests
 {
+    // Arrange
+    // Act
+    // Assert
+
     internal class GarageTests
     {
         private Employees Employees;
