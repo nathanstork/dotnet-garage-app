@@ -89,14 +89,14 @@
 
         private List<Job> GetJobsByDate(int month, int year)
         {
+            if (Jobs.Count == 0) return new List<Job>();
+
             List<Job> jobs = Jobs.FindAll(job =>
             {
                 string[] nums = job.Date.Split("/"); //02
 
                 return Int32.Parse(nums[1]) == month && Int32.Parse(nums[2]) == year;
             });
-
-            Console.WriteLine(jobs.Count.ToString());
 
             return jobs;
         }

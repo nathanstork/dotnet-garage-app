@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace GarageAppTests
 {
@@ -33,14 +28,12 @@ namespace GarageAppTests
 
             Garage.AddJob(newJob);
 
-            if (Garage.Jobs.Count == previousCount + 1 && previousCount != 0)
-            {
-                Assert.Pass();
-            }
-            else
+            if (Garage.Jobs.Count != previousCount + 1)
             {
                 Assert.Fail();
             }
+
+            Garage.Jobs.Remove(newJob);
         }
 
         [Test]
@@ -54,40 +47,82 @@ namespace GarageAppTests
 
             Garage.Jobs.Remove(newJob);
 
-            if (Garage.Jobs.Count == previousCount - 1)
-            {
-                Assert.Pass();
-            }
-            else
+            if (Garage.Jobs.Count != previousCount - 1)
             {
                 Assert.Fail();
             }
+        }
+
+        private List<Job> GetNewJobs(int price)
+        {
+            List<Job> newJobs = new List<Job>();
+
+            newJobs.Add(new Job("", "10/10/2000", price, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
+            newJobs.Add(new Job("", "3/3/2020", price, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
+            newJobs.Add(new Job("", "9/5/2021", price, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
+            newJobs.Add(new Job("", "31/6/2035", price, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
+            newJobs.Add(new Job("", "24/11/2022", price, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
+
+            return newJobs;
         }
 
         [Test]
         public void GetTotalProfitTest()
         {
             int previousProfit = Garage.GetTotalProfit();
-            Console.WriteLine(previousProfit);
-            Console.WriteLine(Garage.Jobs.Count);
 
-            Garage.Jobs.Add(new Job("", "10/10/2000", 200, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
-            Garage.Jobs.Add(new Job("", "3/3/2020", 200, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
-            Garage.Jobs.Add(new Job("", "9/5/2021", 200, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
-            Garage.Jobs.Add(new Job("", "31/6/2035", 200, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
-            Garage.Jobs.Add(new Job("", "24/11/2022", 200, new Car("", "", "", CarColor.Black), new Customer("", "", "", "")));
+            // Get new jobs with equal price
+            List<Job> newJobs = GetNewJobs(200);
+
+            // Add and set all new jobs with equal costs
+            newJobs.ForEach(job => {
+                job.Status = JobStatus.Completed;
+                job.Costs = 50;
+                job.LabourCosts = 25;
+
+                Garage.AddJob(job);
+            });
 
             int newProfit = Garage.GetTotalProfit();
-            Console.WriteLine(newProfit);
 
-            if (previousProfit + (5 * 200) == newProfit)
-            {
-                Assert.Pass();
-            }
-            else
+            if (previousProfit + (5 * (200 + 50)) - (5 * 25) != newProfit)
             {
                 Assert.Fail();
             }
+
+            // Remove all newly added jobs
+            newJobs.ForEach(job => {
+                Garage.RemoveJob(job);
+            });
+        }
+
+        [Test]
+        public void GetMonthlyProfitTest()
+        {
+            // Get new jobs with equal price
+            List<Job> newJobs = GetNewJobs(250);
+
+            // Add and set all new jobs with equal costs
+            newJobs.ForEach(job => {
+                string[] dateChunks = job.Date.Split("/");
+
+                int previousProfit = (Garage.GetMonthlyProfit(Convert.ToInt32(dateChunks[1]), Convert.ToInt32(dateChunks[2])));
+
+                job.Status = JobStatus.UnableToComplete;
+                job.Costs = 75;
+                job.LabourCosts = 50;
+
+                Garage.AddJob(job);
+
+                int newProfit = (Garage.GetMonthlyProfit(Convert.ToInt32(dateChunks[1]), Convert.ToInt32(dateChunks[2])));
+
+                if (previousProfit + 250 + 75 - 50 != newProfit) Assert.Fail();
+            });
+
+            // Remove all newly added jobs
+            newJobs.ForEach(job => {
+                Garage.RemoveJob(job);
+            });
         }
     }
 }

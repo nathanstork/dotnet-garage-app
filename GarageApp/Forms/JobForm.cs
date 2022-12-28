@@ -22,7 +22,7 @@
 
             CarColor carColor = (CarColor) Enum.Parse(typeof(CarColor), colorsComboBox.Text.Replace(" ", ""));
 
-            employees.CurrentUser.Garage.Jobs.Add(new Job(
+            employees.CurrentUser.Garage.AddJob(new Job(
                 descriptionTextBox.Text,
                 dateTimePicker.Value.ToShortDateString(),
                 Convert.ToInt32(priceNumericUpDown.Value),
