@@ -1,1 +1,1 @@
-# GarageApp
+# garage-app
