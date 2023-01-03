@@ -102,13 +102,13 @@ namespace GarageApp.Forms
 
             if (mechanicRadioButton.Checked)
             {
-                Entry.CurrentUser.Mechanics.Add(
+                Entry.Mechanics.Add(
                     new Mechanic(usernameTextBox.Text, passwordTextBox.Text, nameTextBox.Text, addressTextBox.Text, contract)
                 );
             }
             else
             {
-                Entry.CurrentUser.Managers.Add(
+                Entry.Managers.Add(
                     new Manager(usernameTextBox.Text, passwordTextBox.Text, nameTextBox.Text, addressTextBox.Text, contract, Entry.Mechanics)
                 );
             }
