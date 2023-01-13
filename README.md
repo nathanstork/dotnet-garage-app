@@ -1,3 +1,3 @@
 # garage-app
 
-![image info](GarageApp/Assets/Garage App UML Class Diagram Complete.png)
+![image info](GarageApp/Assets/uml-class-diagram.png)
