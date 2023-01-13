@@ -2,11 +2,17 @@
 
 Windows Forms .NET application to showcase my ability to analyse, design and programm functional, object oriented software.
 
+## Class diagram
+
 ![UML class diargram](GarageApp/Assets/uml-class-diagram.png)
+
+## Domain diagram
 
 ![UML domain diagram](GarageApp/Assets/uml-domain-diagram.png)
 
-##Requirements
+## About
+
+## Requirements
 -	As a manager I want to be able to register a new job to the garage for a car form a customer, so that it can be assigned to a mechanic.
 -	As a mechanic I want to be able to register a new job to the garage for a car from a customer, so that a manager could assign the job.
 -	As a manager I want to be able to assign any job to a mechanic, so that the workload can be divided between mechanics.
