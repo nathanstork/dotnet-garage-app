@@ -1,3 +1,5 @@
-# garage-app
+# .NET Garage App
 
-![image info](GarageApp/Assets/uml-class-diagram.png)
+![UML class diargram](GarageApp/Assets/uml-class-diagram.png)
+
+![UML domain diagram](GarageApp/Assets/uml-domain-diagram.png)
