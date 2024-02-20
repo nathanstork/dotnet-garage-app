@@ -1,6 +1,6 @@
 # .NET Garage App
 
-Windows Forms .NET application to showcase my ability to analyse, design and programm functional, object oriented software.
+Windows Forms .NET application to showcase my ability to analyze, design and program functional, object oriented software.
 
 ## Class diagram
 
